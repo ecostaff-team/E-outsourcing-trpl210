@@ -5,16 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class SuperAdmin extends Authenticatable
+class Hr extends Authenticatable
 {
     use HasFactory;
 
-    protected $table = 'super_admin';
-    protected $primaryKey = 'id_admin';
+    protected $table = 'hr';
+    protected $primaryKey = 'id_hr';
 
     protected $fillable = [
-        'nama',
+        'status',
+        'username',
         'password',
+        'nama',
+        'alamat',
+        'no_hp',
+        'email',
     ];
 
     protected $hidden = [
@@ -24,4 +29,9 @@ class SuperAdmin extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
     ];
+
+    public function hrAdminVendors()
+    {
+        return $this->hasMany(HrAdminVendor::class, 'id_hr', 'id_hr');
+    }
 }

@@ -34,9 +34,9 @@
         </div>
 
         <!-- RIGHT -->
-        <div class="w-5/12 flex items-center justify-center bg-white/60 backdrop-blur-md">
+        <div class="w-5/12 flex items-center justify-center bg-white/10 backdrop-blur-md">
             <div class="w-full max-w-md p-10">
-                <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">
+                <h2 class="text-5xl font-bold mb-16 text-center text-white/90">
                     Masuk
                 </h2>
 
@@ -44,20 +44,33 @@
                     @csrf
 
                     <div class="mb-4">
-                        <label class="block text-sm mb-1">Email</label>
-                        <input type="email"
-                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                            placeholder="Masukkan email">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-white/50"></span>
+
+                        </span>
+
+                        <input type="text" placeholder="👤Enter username"
+                            class="w-full pl-10 pr-4 py-2 mb-3 bg-white/80 text-black placeholder-black/70 rounded-lg
+           outline-none transition
+           focus:placeholder-black/90
+           focus:ring-2 focus:ring-emerald-500
+           focus:shadow-[0_0_12px_rgba(255,255,255,0.25)]" />
                     </div>
 
                     <div class="mb-6">
-                        <label class="block text-sm mb-1">Password</label>
-                        <input type="password"
-                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                            placeholder="Masukkan password">
+                        <input type="password" placeholder="🔑Enter password"
+                            class="w-full pl-10 pr-4 mb-6 py-2 bg-white/80 text-black placeholder-black/70 rounded-lg
+        outline-none transition
+        focus:placeholder-black/90
+        focus:ring-2 focus:ring-emerald-500
+        focus:shadow-[0_0_12px_rgba(255,255,255,0.25)]" />
                     </div>
 
-                    <button class="w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition">
+                    <button
+                        class="w-full mb-3 bg-emerald-600 text-white/70 hover:text-white transition py-2 rounded-lg hover:bg-emerald-700 transition">
+                        Login
+                    </button>
+                    <button
+                        class="w-full bg-transparent border border-white/50 text-white/70 hover:text-white transition py-2 rounded-lg hover:bg-white/10 transition">
                         Login
                     </button>
 

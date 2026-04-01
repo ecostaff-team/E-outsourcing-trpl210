@@ -42,6 +42,26 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'super_admin' => [
+            'driver' => 'session',
+            'provider' => 'super_admin',
+        ],
+        'admin_vendor' => [
+            'driver' => 'session',
+            'provider' => 'admin_vendor',
+        ],
+        'hr' => [
+            'driver' => 'session',
+            'provider' => 'hr',
+        ],
+        'kepala_departement' => [
+            'driver' => 'session',
+            'provider' => 'kepala_departement',
+        ],
+        'karyawan' => [
+            'driver' => 'session',
+            'provider' => 'karyawan',
+        ],
     ],
 
     /*
@@ -65,6 +85,26 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', User::class),
+        ],
+        'super_admin' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\SuperAdmin::class,
+        ],
+        'admin_vendor' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\AdminVendor::class,
+        ],
+        'hr' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Hr::class,
+        ],
+        'kepala_departement' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\KepalaDepartement::class,
+        ],
+        'karyawan' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Karyawan::class,
         ],
 
         // 'users' => [
