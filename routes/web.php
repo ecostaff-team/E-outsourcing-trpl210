@@ -11,5 +11,5 @@ Route::get('/adminOutsorcing', function () {
 });
 
 Route::get('/tamplate adminOUT', function () {
-    return view('adminOutsorcing.employee');
+    return view('tamplate adminOUT.tamplate');
 });
