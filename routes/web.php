@@ -13,3 +13,7 @@ Route::get('/adminOutsorcing', function () {
 Route::get('/tamplate adminOUT', function () {
     return view('tamplate adminOUT.tamplate');
 });
+
+Route::get('/adminOutsorcing/karyawan', function () {
+    return view('adminOutsorcing.karyawan');
+});
