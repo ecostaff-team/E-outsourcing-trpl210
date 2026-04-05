@@ -10,6 +10,11 @@ Route::get('/adminOutsorcing', function () {
     return view('adminOutsorcing.dahsboard');
 });
 
-Route::get('/tamplate adminOUT', function () {
+Route::get('/tamplate-adminOUT', function () {
     return view('adminOutsorcing.employee');
 });
+Route::get('/superAdmin', function () {
+    return view('superAdmin.dashboardAdmin');
+});
+
+
