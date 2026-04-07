@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login eco-outsourcing</title>
 
     @vite('resources/css/app.css')
 
@@ -20,7 +20,7 @@
         <!-- LEFT -->
         <div class="w-7/12 bg-black/50 text-white flex items-center justify-center p-12">
             <div class="max-w-md text-center">
-                <img src="/images/logo.png" class="w-32 mx-auto mb-6" alt="Logo">
+                <img src="/images/logo.png" class="w-32 mx-auto mb-6 transition duration-300 transform hover:scale-110 hover:-translate-y-1 hover:shadow-xl" alt="Logo">
 
                 <h1 class="text-3xl font-bold mb-4">
                     Eco Green
@@ -67,11 +67,11 @@
 
                     <button
                         class="w-full mb-3 bg-emerald-600 text-white/70 hover:text-white transition py-2 rounded-lg hover:bg-emerald-700 transition">
-                        Login
+                        Masuk
                     </button>
                     <button
                         class="w-full bg-transparent border border-white/50 text-white/70 hover:text-white transition py-2 rounded-lg hover:bg-white/10 transition">
-                        Login
+                        Lupa Password
                     </button>
 
                 </form>
