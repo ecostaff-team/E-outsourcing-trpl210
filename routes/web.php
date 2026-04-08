@@ -3,29 +3,21 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('main');
+    return view('index');
 });
 
-Route::get('/adminOutsorcing', function () {
-    return view('adminOutsorcing.dahsboard');
+Route::get('/admin-outsourcing', function () {
+    return view('adminOutsourcing.dashboard');
 });
 
-
-Route::get('/tamplate-adminOUT', function () {
-    return view('adminOutsorcing.employee');
+Route::get('/admin-outsorcing/karyawan', function () {
+    return view('adminOutsourcing.karyawan');
 });
 
-Route::get('/tamplate adminOUT', function () {
-    return view('tamplate adminOUT.tamplate');
+Route::get('/pengajuan-karyawan', function () {
+    return view('adminOutsourcing.pengajuanKaryawan');
 });
 
-Route::get('/adminOutsorcing/karyawan', function () {
-    return view('adminOutsorcing.karyawan');
-
-});
 Route::get('/superAdmin', function () {
     return view('superAdmin.dashboardAdmin');
 });
-
-
-
