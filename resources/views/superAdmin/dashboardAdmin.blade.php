@@ -90,8 +90,8 @@
   <div class="bg-white p-8 rounded-lg shadow-lg mt-6">
     <div class="flex flex-col md:flex-row md:justify-between gap-3 mb-4">
       <div class="flex flex-col sm:flex-row gap-2">
-        <input type="text" placeholder="Cari nama atau email" class="border rounded-lg px-3 py-2 text-sm w-64 focus:ring-2 focus:ring-green-500 outline-none">
-        <select class="border rounded-lg px-3 py-2 text-sm w-64 focus:ring-2 focus:ring-green-500 outline-none">
+        <input type="text" placeholder="Cari nama atau email" class="border border-gray-500 rounded-lg px-3 py-2 text-sm w-64 focus:ring-2 focus:ring-green-500 outline-none">
+        <select class="border border-gray-500 rounded-lg px-3 py-2 text-sm w-64 focus:ring-2 focus:ring-green-500 outline-none">
           <option>Semua Status</option>
           <option>Aktif</option>
           <option>Nonaktif</option>
@@ -130,6 +130,83 @@
   </div>
 </div>
 
+
+
+<!-- MODAL TAMBAH AKUN -->
+<div id="modalTambah" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50 px-4">
+  <div class="bg-white w-full max-w-xl rounded-xl overflow-y-auto shadow-lg">
+    
+    <!-- HEADER -->
+    <div class="bg-green-700 text-white px-5 py-4 flex justify-between items-center">
+      <div>
+        <h3 class="font-semibold text-lg">Tambah Akun</h3>
+        <p class="text-xs text-green-200">Isi semua kolom yang wajib diisi</p>
+      </div>
+      <button onclick="closeModal()" class="text-white text-xl">✕</button>
+    </div>
+
+    <!-- BODY -->
+    <div class="p-10 grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+      <div>
+        <label class="font-bold">Nama Depan <span class="text-red-500">*</span></label>
+        <input type="text" placeholder="Contoh: Rizky" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1">
+      </div>
+      <div>
+        <label class="font-bold">Nama Belakang <span class="text-red-500">*</span></label>
+        <input type="text" placeholder="Contoh: Darmawan" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1">
+      </div>
+
+      <div class="md:col-span-2">
+        <label class="font-bold">Email <span class="text-red-500">*</span></label>
+        <input type="email" placeholder="email@domain.co.id" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1">
+      </div>
+
+      <div class="md:col-span-2">
+        <label class="font-bold">Role <span class="text-red-500">*</span></label>
+        <select class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1">
+          <option>--- Pilih Role ---</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="font-bold">Password <span class="text-red-500">*</span></label>
+        <input type="password" placeholder="Min. 8 Karakter" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1">
+      </div>
+      <div>
+        <label class="font-bold">Konfirmasi Password <span class="text-red-500">*</span></label>
+        <input type="password" placeholder="Ulangi Password" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1">
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="flex flex-col md:flex-row justify-end gap-3 px-5 py-4 border-t border-gray-200">
+      <button onclick="closeModal()" class="px-4 py-2 border border-gray-300 rounded-lg w-full md:w-auto hover:bg-w-800 hover:shadow-2xl transform hover:-translate-y-0.5 transition-all duration-200">Batal</button>
+      <button class="px-4 py-2 bg-green-700 text-white rounded-lg w-full md:w-auto shadow-xl hover:bg-green-800 hover:shadow-2xl transform hover:-translate-y-0.5 transition-all duration-200">Simpan</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal(){
+  document.getElementById('modalTambah').classList.remove('hidden');
+  document.getElementById('modalTambah').classList.add('flex');
+}
+
+function closeModal(){
+  document.getElementById('modalTambah').classList.add('hidden');
+}
+
+// HUBUNGKAN KE BUTTON TAMBAH
+const btnTambah = document.querySelectorAll('button');
+btnTambah.forEach(btn => {
+  if(btn.innerText.includes('Tambah')){
+    btn.addEventListener('click', openModal);
+  }
+});
+</script>
+
+
+
 <script>
 const table = document.getElementById('userTable');
 
@@ -143,9 +220,13 @@ table.innerHTML = `
   <td class="p-3">085762360846</td>
   <td class="p-3">10 Apr 2026</td>
   <td class="p-3 text-center">
-    <button class="bg-yellow-400 px-2 py-1 rounded"><i class="fas fa-pen"></i></button>
-    <button class="bg-red-500 text-white px-2 py-1 rounded"><i class="fas fa-trash"></i></button>
-  </td>
+    <button onclick="event.stopPropagation(); editUser('Rizky Darmawan')" 
+class="bg-yellow-400 px-2 py-1 rounded">
+  <i class="fas fa-pen"></i>
+</button>
+<button onclick="event.stopPropagation(); openHapus('Rizky Darmawan')" class="bg-red-500 text-white px-2 py-1 rounded">
+  <i class="fas fa-trash"></i>
+</button>  </td>
 </tr>
 <tr onclick="rowClick('Carmen')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
   <td class="p-3">2</td>
@@ -155,9 +236,13 @@ table.innerHTML = `
   <td class="p-3">089677228168</td>
   <td class="p-3">10 Apr 2026</td>
   <td class="p-3 text-center">
-    <button class="bg-yellow-400 px-2 py-1 rounded"><i class="fas fa-pen"></i></button>
-    <button class="bg-red-500 text-white px-2 py-1 rounded"><i class="fas fa-trash"></i></button>
-  </td>
+    <button onclick="event.stopPropagation(); editUser('Rizky Darmawan')" 
+class="bg-yellow-400 px-2 py-1 rounded">
+  <i class="fas fa-pen"></i>
+</button>
+<button onclick="event.stopPropagation(); openHapus('Carmen Ayu')" class="bg-red-500 text-white px-2 py-1 rounded">
+  <i class="fas fa-trash"></i>
+</button>  </td>
 </tr>
 <tr onclick="rowClick('Rizky')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
   <td class="p-3">3</td>
@@ -167,9 +252,13 @@ table.innerHTML = `
   <td class="p-3">085762360846</td>
   <td class="p-3">10 Apr 2026</td>
   <td class="p-3 text-center">
-    <button class="bg-yellow-400 px-2 py-1 rounded"><i class="fas fa-pen"></i></button>
-    <button class="bg-red-500 text-white px-2 py-1 rounded"><i class="fas fa-trash"></i></button>
-  </td>
+    <button onclick="event.stopPropagation(); editUser('Rizky Darmawan')" 
+class="bg-yellow-400 px-2 py-1 rounded">
+  <i class="fas fa-pen"></i>
+</button>
+<button onclick="event.stopPropagation(); openHapus('Rizky Darmawan')" class="bg-red-500 text-white px-2 py-1 rounded">
+  <i class="fas fa-trash"></i>
+</button>  </td>
 </tr>
 <tr onclick="rowClick('Carmen')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
   <td class="p-3">4</td>
@@ -179,9 +268,13 @@ table.innerHTML = `
   <td class="p-3">089677228168</td>
   <td class="p-3">10 Apr 2026</td>
   <td class="p-3 text-center">
-    <button class="bg-yellow-400 px-2 py-1 rounded"><i class="fas fa-pen"></i></button>
-    <button class="bg-red-500 text-white px-2 py-1 rounded"><i class="fas fa-trash"></i></button>
-  </td>
+    <button onclick="event.stopPropagation(); editUser('Rizky Darmawan')" 
+class="bg-yellow-400 px-2 py-1 rounded">
+  <i class="fas fa-pen"></i>
+</button>
+<button onclick="event.stopPropagation(); openHapus('Carmen Ayu')" class="bg-red-500 text-white px-2 py-1 rounded">
+  <i class="fas fa-trash"></i>
+</button>  </td>
 </tr>
 <tr onclick="rowClick('Rizky')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
   <td class="p-3">5</td>
@@ -191,9 +284,13 @@ table.innerHTML = `
   <td class="p-3">085762360846</td>
   <td class="p-3">10 Apr 2026</td>
   <td class="p-3 text-center">
-    <button class="bg-yellow-400 px-2 py-1 rounded"><i class="fas fa-pen"></i></button>
-    <button class="bg-red-500 text-white px-2 py-1 rounded"><i class="fas fa-trash"></i></button>
-  </td>
+    <button onclick="event.stopPropagation(); editUser('Rizky Darmawan')" 
+class="bg-yellow-400 px-2 py-1 rounded">
+  <i class="fas fa-pen"></i>
+</button>
+<button onclick="event.stopPropagation(); openHapus('Rizky Darmawan')" class="bg-red-500 text-white px-2 py-1 rounded">
+  <i class="fas fa-trash"></i>
+</button>  </td>
 </tr>
 <tr onclick="rowClick('Carmen')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
   <td class="p-3">6</td>
@@ -203,9 +300,77 @@ table.innerHTML = `
   <td class="p-3">089677228168</td>
   <td class="p-3">10 Apr 2026</td>
   <td class="p-3 text-center">
-    <button class="bg-yellow-400 px-2 py-1 rounded"><i class="fas fa-pen"></i></button>
-    <button class="bg-red-500 text-white px-2 py-1 rounded"><i class="fas fa-trash"></i></button>
-  </td>
+    <button onclick="event.stopPropagation(); editUser('Rizky Darmawan')" 
+class="bg-yellow-400 px-2 py-1 rounded">
+  <i class="fas fa-pen"></i>
+</button>
+<button onclick="event.stopPropagation(); openHapus('Carmen Ayu')" class="bg-red-500 text-white px-2 py-1 rounded">
+  <i class="fas fa-trash"></i>
+</button>  </td>
+</tr>
+<tr onclick="rowClick('Carmen')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
+  <td class="p-3">6</td>
+  <td class="p-3">Carmen Ayu</td>
+  <td class="p-3">carmen.ayu@vendor.co.id</td>
+  <td class="p-3"><span class="bg-red-100 text-red-600 px-2 py-1 rounded text-xs">Tidak Aktif</span></td>
+  <td class="p-3">089677228168</td>
+  <td class="p-3">10 Apr 2026</td>
+  <td class="p-3 text-center">
+    <button onclick="event.stopPropagation(); editUser('Rizky Darmawan')" 
+class="bg-yellow-400 px-2 py-1 rounded">
+  <i class="fas fa-pen"></i>
+</button>
+<button onclick="event.stopPropagation(); openHapus('Carmen Ayu')" class="bg-red-500 text-white px-2 py-1 rounded">
+  <i class="fas fa-trash"></i>
+</button>  </td>
+</tr>
+<tr onclick="rowClick('Carmen')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
+  <td class="p-3">6</td>
+  <td class="p-3">Carmen Ayu</td>
+  <td class="p-3">carmen.ayu@vendor.co.id</td>
+  <td class="p-3"><span class="bg-red-100 text-red-600 px-2 py-1 rounded text-xs">Tidak Aktif</span></td>
+  <td class="p-3">089677228168</td>
+  <td class="p-3">10 Apr 2026</td>
+  <td class="p-3 text-center">
+    <button onclick="event.stopPropagation(); editUser('Rizky Darmawan')" 
+class="bg-yellow-400 px-2 py-1 rounded">
+  <i class="fas fa-pen"></i>
+</button>
+<button onclick="event.stopPropagation(); openHapus('Rizky Darmawan')" class="bg-red-500 text-white px-2 py-1 rounded">
+  <i class="fas fa-trash"></i>
+</button>  </td>
+</tr>
+<tr onclick="rowClick('Carmen')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
+  <td class="p-3">6</td>
+  <td class="p-3">Carmen Ayu</td>
+  <td class="p-3">carmen.ayu@vendor.co.id</td>
+  <td class="p-3"><span class="bg-red-100 text-red-600 px-2 py-1 rounded text-xs">Tidak Aktif</span></td>
+  <td class="p-3">089677228168</td>
+  <td class="p-3">10 Apr 2026</td>
+  <td class="p-3 text-center">
+    <button onclick="event.stopPropagation(); editUser('Rizky Darmawan')" 
+class="bg-yellow-400 px-2 py-1 rounded">
+  <i class="fas fa-pen"></i>
+</button>
+<button onclick="event.stopPropagation(); openHapus('Carmen Ayu')" class="bg-red-500 text-white px-2 py-1 rounded">
+  <i class="fas fa-trash"></i>
+</button>  </td>
+</tr>
+<tr onclick="rowClick('Carmen')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
+  <td class="p-3">6</td>
+  <td class="p-3">Carmen Ayu</td>
+  <td class="p-3">carmen.ayu@vendor.co.id</td>
+  <td class="p-3"><span class="bg-red-100 text-red-600 px-2 py-1 rounded text-xs">Tidak Aktif</span></td>
+  <td class="p-3">089677228168</td>
+  <td class="p-3">10 Apr 2026</td>
+  <td class="p-3 text-center">
+    <button onclick="event.stopPropagation(); editUser('Rizky Darmawan')" 
+class="bg-yellow-400 px-2 py-1 rounded">
+  <i class="fas fa-pen"></i>
+</button>
+<button onclick="event.stopPropagation(); openHapus('Carmen Ayu')" class="bg-red-500 text-white px-2 py-1 rounded">
+  <i class="fas fa-trash"></i>
+</button>  </td>
 </tr>
 `;
 
@@ -215,8 +380,113 @@ alert('Klik user: ' + nama)
 
 
 </script>
+<!-- MODAL HAPUS -->
+<div id="modalHapus" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50 px-4">
+  <div class="bg-white w-full max-w-md rounded-2xl shadow-lg text-center p-6">
+    
+    <div class="flex justify-center mb-4">
+      <div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center text-3xl">🗑️</div>
+    </div>
 
+    <h3 class="text-lg font-semibold mb-2">Hapus Akun?</h3>
+    <p class="text-sm text-gray-500 mb-6">
+      Akun <span id="namaHapus" class="font-semibold text-gray-700"></span> akan dihapus permanen.<br>
+      Tindakan ini tidak dapat diurungkan.
+    </p>
 
+    <div class="flex flex-col md:flex-row gap-3 justify-center">
+      <button onclick="closeHapus()" class="px-4 py-2 border rounded-lg w-full md:w-auto">Batal</button>
+      <button class="px-4 py-2 bg-red-600 text-white rounded-lg w-full md:w-auto">Ya, Hapus</button>
+    </div>
 
+  </div>
+</div>
+
+<script>
+function openHapus(nama){
+  document.getElementById('namaHapus').innerText = nama;
+  const modal = document.getElementById('modalHapus');
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+
+function closeHapus(){
+  const modal = document.getElementById('modalHapus');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+}
+
+// HUBUNGKAN KE TOMBOL DELETE
+function deleteUser(name){
+  openHapus(name);
+}
+</script>
+
+<div id="modalEdit" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50 px-4">
+  <div class="bg-white w-full max-w-2xl rounded-2xl overflow-hidden shadow-lg">
+
+    <div class="bg-green-700 text-white px-5 py-4 flex justify-between items-center">
+      <h3 class="font-semibold text-lg">Edit Akun</h3>
+      <button onclick="closeEdit()" class="text-white text-xl">✕</button>
+    </div>
+
+    <div class="p-5 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+      <div>
+        <label>Nama Depan</label>
+        <input id="editNama" type="text" class="w-full border rounded-lg px-3 py-2 mt-1">
+      </div>
+
+      <div>
+        <label>Nama Belakang</label>
+        <input type="text" class="w-full border rounded-lg px-3 py-2 mt-1">
+      </div>
+
+      <div class="md:col-span-2">
+        <label>Email</label>
+        <input type="email" class="w-full border rounded-lg px-3 py-2 mt-1">
+      </div>
+
+      <div class="md:col-span-2">
+        <label>Role</label>
+        <select class="w-full border rounded-lg px-3 py-2 mt-1">
+          <option>Admin Outsourcing</option>
+        </select>
+      </div>
+
+      <div class="md:col-span-2 text-center text-xs text-gray-400 mt-2">
+        KEAMANAN AKUN
+      </div>
+
+      <div>
+        <input type="password" placeholder="Password baru" class="w-full border rounded-lg px-3 py-2 mt-1">
+      </div>
+
+      <div>
+        <input type="password" placeholder="Konfirmasi" class="w-full border rounded-lg px-3 py-2 mt-1">
+      </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row justify-end gap-3 px-5 py-4 border-t">
+      <button onclick="closeEdit()" class="px-4 py-2 border rounded-lg w-full md:w-auto">Batal</button>
+      <button class="px-4 py-2 bg-green-700 text-white rounded-lg w-full md:w-auto">Simpan</button>
+    </div>
+
+  </div>
+</div>
+<script>
+function editUser(name){
+  document.getElementById('editNama').value = name;
+
+  const modal = document.getElementById('modalEdit');
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+
+function closeEdit(){
+  const modal = document.getElementById('modalEdit');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+}
+</script>
 </body>
 </html>
