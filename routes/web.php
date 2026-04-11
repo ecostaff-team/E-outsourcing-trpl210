@@ -3,23 +3,23 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('main');
+    return view('index');
 });
 
 Route::livewire('/post/create', 'pages::post.create');
 
-Route::get('/adminOutsorcing', function () {
-    return view('adminOutsorcing.dahsboard');
+Route::get('/admin-outsourcing', function () {
+    return view('adminOutsourcing.dashboard');
 });
 
-Route::get('/tamplate adminOUT', function () {
-    return view('tamplate adminOUT.tamplate');
+Route::get('/admin-outsourcing/karyawan', function () {
+    return view('adminOutsourcing.karyawan');
 });
 
-Route::get('/adminOutsorcing/karyawan', function () {
-    return view('adminOutsorcing.karyawan');
+Route::get('/pengajuan-karyawan', function () {
+    return view('adminOutsourcing.pengajuanKaryawan');
 });
 
-Route::get('/adminOutsorcing/pengaturan', function () {
-    return view('adminOutsorcing.pengaturan');
+Route::get('/superAdmin', function () {
+    return view('superAdmin.dashboardAdmin');
 });
