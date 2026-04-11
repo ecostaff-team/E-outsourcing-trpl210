@@ -20,6 +20,18 @@ Route::get('/pengajuan-karyawan', function () {
     return view('adminOutsourcing.pengajuanKaryawan');
 });
 
-Route::get('/superAdmin', function () {
-    return view('superAdmin.dashboardAdmin');
+Route::get('/user-hr', function () {
+    return view('hr.dashboard');
+});
+
+Route::get('/user-hr/rekapan-detail', function () {
+    return view('hr.rekapanDetail');
+});
+
+Route::get('/user-hr/ajuan-data-karyawan', function () {
+    return view('hr.ajuanDataKaryawan');
+});
+
+Route::get('/user-hr/data-karyawan', function () {
+    return view('hr.dataKaryawan');
 });
