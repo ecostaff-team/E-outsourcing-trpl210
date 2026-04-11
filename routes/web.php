@@ -10,7 +10,7 @@ Route::get('/admin-outsourcing', function () {
     return view('adminOutsourcing.dashboard');
 });
 
-Route::get('/admin-outsorcing/karyawan', function () {
+Route::get('/admin-outsourcing/karyawan', function () {
     return view('adminOutsourcing.karyawan');
 });
 

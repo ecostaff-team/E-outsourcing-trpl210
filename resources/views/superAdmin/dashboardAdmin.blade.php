@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     @vite('resources/css/app.css')
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -34,7 +34,7 @@
   <h1 class="text-2xl font-semibold">Kelola Akun Pengguna</h1>
   <p class="text-sm text-gray-500 mb-4">Tambah, ubah, dan hapus akun Admin Outsourcing, HR, dan Kepala Departemen</p>
 
-  
+
 
 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
   <div class="bg-white rounded-xl p-4 shadow flex items-center gap-4 border border-gray-200">
@@ -102,7 +102,7 @@
 
     <div class="overflow-x-auto">
   <table class="w-full text-sm border-separate border-spacing-y-2">
-    
+
     <thead class="bg-gray-100 text-gray-600">
       <tr class=" shadow-sm hover:shadow-md hover:-translate-y-0.5 transition cursor-pointer border border-gray-100">
         <th class="p-2 md:p-3 text-left text-xs md:text-sm">NO</th>
@@ -135,7 +135,7 @@ const table = document.getElementById('userTable');
 
 
 table.innerHTML = `
-<tr onclick="rowClick('Rizky')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
+<tr onclick="rowClick('Rizky')" class="odd:bg-white even:bg-gray-100 shadow-sm hover:bg-green-50 cursor-pointer">
   <td class="p-3">1</td>
   <td class="p-3">Rizky Darmawan</td>
   <td class="p-3">rizky.darmawan@vendor.co.id</td>
@@ -147,7 +147,7 @@ table.innerHTML = `
     <button class="bg-red-500 text-white px-2 py-1 rounded"><i class="fas fa-trash"></i></button>
   </td>
 </tr>
-<tr onclick="rowClick('Carmen')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
+<tr onclick="rowClick('Carmen')" class="odd:bg-white even:bg-gray-100 shadow-sm hover:bg-green-50 cursor-pointer">
   <td class="p-3">2</td>
   <td class="p-3">Carmen Ayu</td>
   <td class="p-3">carmen.ayu@vendor.co.id</td>
@@ -159,7 +159,7 @@ table.innerHTML = `
     <button class="bg-red-500 text-white px-2 py-1 rounded"><i class="fas fa-trash"></i></button>
   </td>
 </tr>
-<tr onclick="rowClick('Rizky')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
+<tr onclick="rowClick('Rizky')" class="odd:bg-white even:bg-gray-100 shadow-sm hover:bg-green-50 cursor-pointer">
   <td class="p-3">3</td>
   <td class="p-3">Rizky Darmawan</td>
   <td class="p-3">rizky.darmawan@vendor.co.id</td>
@@ -171,7 +171,7 @@ table.innerHTML = `
     <button class="bg-red-500 text-white px-2 py-1 rounded"><i class="fas fa-trash"></i></button>
   </td>
 </tr>
-<tr onclick="rowClick('Carmen')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
+<tr onclick="rowClick('Carmen')" class="odd:bg-white even:bg-gray-100 shadow-sm hover:bg-green-50 cursor-pointer">
   <td class="p-3">4</td>
   <td class="p-3">Carmen Ayu</td>
   <td class="p-3">carmen.ayu@vendor.co.id</td>
@@ -183,7 +183,7 @@ table.innerHTML = `
     <button class="bg-red-500 text-white px-2 py-1 rounded"><i class="fas fa-trash"></i></button>
   </td>
 </tr>
-<tr onclick="rowClick('Rizky')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
+<tr onclick="rowClick('Rizky')" class="odd:bg-white even:bg-gray-100 shadow-sm hover:bg-green-50 cursor-pointer">
   <td class="p-3">5</td>
   <td class="p-3">Rizky Darmawan</td>
   <td class="p-3">rizky.darmawan@vendor.co.id</td>
@@ -195,7 +195,7 @@ table.innerHTML = `
     <button class="bg-red-500 text-white px-2 py-1 rounded"><i class="fas fa-trash"></i></button>
   </td>
 </tr>
-<tr onclick="rowClick('Carmen')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
+<tr onclick="rowClick('Carmen')" class="odd:bg-white even:bg-gray-100 shadow-sm hover:bg-green-50 cursor-pointer">
   <td class="p-3">6</td>
   <td class="p-3">Carmen Ayu</td>
   <td class="p-3">carmen.ayu@vendor.co.id</td>
