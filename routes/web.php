@@ -35,3 +35,8 @@ Route::get('/user-hr/ajuan-data-karyawan', function () {
 Route::get('/user-hr/data-karyawan', function () {
     return view('hr.dataKaryawan');
 });
+
+Route::get('/super-admin', function () {
+    return view('superAdmin.dashboardAdmin');
+});
+
