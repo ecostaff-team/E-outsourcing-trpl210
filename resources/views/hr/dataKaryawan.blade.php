@@ -17,11 +17,16 @@
 
     <div class="flex">
         {{-- SIDEBAR --}}
-        @include('components.sidebar_admin_out')
+        <x-sidebar :menus="[
+            ['title' => 'Dashboard', 'icon' => 'fas fa-book'],
+            ['title' => 'Rekapan Detail', 'icon' => 'fas fa-user-group'],
+            ['title' => 'Ajuan Data Karyawan', 'icon' => 'fas fa-address-book'],
+            ['title' => 'Karyawan', 'icon' => 'fas fa-user-tie'],
+        ]" />
         <div class="flex-1 p-6 ml-0 min-w-0">
 
             <!-- HEADER CONTENT -->
-            @include('components.header_admin_out')
+            <x-header>HR</x-header>
             {{-- // BUAT ISI CONTENT DIBAWAH SINIIIIIII --}}
 
             <div class="bg-white p-8 rounded-lg shadow-lg mt-6 w-full">
