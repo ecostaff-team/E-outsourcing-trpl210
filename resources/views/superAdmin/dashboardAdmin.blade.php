@@ -15,7 +15,7 @@
 <body class="bg-gray-100" style="font-family: 'Poppins', sans-serif;">
 
 <!-- TOPBAR -->
-<div class="bg-gradient-to-r from-green-900 to-green-700 px-10 h-16 flex items-center justify-between text-white shadow">
+<div class="bg-gradient-to-red from-green-900 to-green-700 px-10 h-16 flex items-center justify-between text-white shadow">
   <div class="flex items-center gap-3">
     <div class="w-9 h-9 bg-white/20 rounded-lg flex items-center justify-center">🌿</div>
     <div>
@@ -80,9 +80,15 @@
 
   <!-- TABS -->
 <div class="bg-white px-4 md:px-10 border-gray-200 border-b border-t flex gap-6 text-sm overflow-x-auto">
-  <button class="py-3 border-b-2 border-green-600 text-green-700 font-semibold">Admin Outsourcing</button>
-  <button class="py-3 text-gray-500">HR Perusahaan</button>
-  <button class="py-3 text-gray-500">Kepala Departemen</button>
+  <button onclick="switchTab('admin')" id="tabAdmin" class="py-3 border-b-2 border-green-600 text-green-700 font-semibold">
+  Admin Outsourcing
+</button>
+  <button onclick="switchTab('hr')" id="tabHR" class="py-3 text-gray-500">
+  HR Perusahaan
+</button>
+  <button onclick="switchTab('kepala')" id="tabKepala" class="py-3 text-gray-500">
+  Kepala Departemen
+</button>
 </div>
 
 
@@ -160,10 +166,18 @@
         <label class="font-bold">Email <span class="text-red-500">*</span></label>
         <input type="email" placeholder="email@domain.co.id" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1">
       </div>
+      <div class="md:col-span-2">
+        <label class="font-bold">No Telepon <span class="text-red-500">*</span></label>
+        <input type="text" placeholder="Contoh: 081234567890" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1">
+      </div>
+      
 
       <div class="md:col-span-2">
         <label class="font-bold">Role <span class="text-red-500">*</span></label>
         <select class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1">
+          <option>--- Pilih Role ---</option>
+          <option>--- Pilih Role ---</option>
+          <option>--- Pilih Role ---</option>
           <option>--- Pilih Role ---</option>
         </select>
       </div>
@@ -207,179 +221,106 @@ btnTambah.forEach(btn => {
 
 
 
+
 <script>
+const adminList = [
+  {nama: "Rizky Darmawan", email: "rizky.darmawan@vendor.co.id", status: "Aktif", telp: "085762360846", tanggal: "10 Apr 2026"},
+  {nama: "Carmen Ayu", email: "carmen.ayu@vendor.co.id", status: "Tidak Aktif", telp: "089677228168", tanggal: "10 Apr 2026"},
+  {nama: "Dika Pratama", email: "dika@vendor.co.id", status: "Aktif", telp: "0811111111", tanggal: "11 Apr 2026"},
+  {nama: "Sinta Dewi", email: "sinta@vendor.co.id", status: "Aktif", telp: "0822222222", tanggal: "12 Apr 2026"},
+  {nama: "Agus Salim", email: "agus@vendor.co.id", status: "Tidak Aktif", telp: "0833333333", tanggal: "13 Apr 2026"},
+  {nama: "Beni Saputra", email: "beni@vendor.co.id", status: "Aktif", telp: "0844444444", tanggal: "14 Apr 2026"},
+  {nama: "Rina Putri", email: "rina@vendor.co.id", status: "Aktif", telp: "0855555555", tanggal: "15 Apr 2026"},
+  {nama: "Fajar Hadi", email: "fajar@vendor.co.id", status: "Tidak Aktif", telp: "0866666666", tanggal: "16 Apr 2026"},
+  {nama: "Lina Sari", email: "lina@vendor.co.id", status: "Aktif", telp: "0877777777", tanggal: "17 Apr 2026"},
+  {nama: "Yudi Hartono", email: "yudi@vendor.co.id", status: "Aktif", telp: "0888888888", tanggal: "18 Apr 2026"}
+];
+
+const hrList = [
+  {nama: "Andi Saputra", email: "andi.hr@company.co.id", status: "Aktif", telp: "08123456789", tanggal: "12 Apr 2026"},
+  {nama: "Dewi Lestari", email: "dewi.hr@company.co.id", status: "Aktif", telp: "0821111111", tanggal: "13 Apr 2026"},
+  {nama: "Rudi Hartono", email: "rudi.hr@company.co.id", status: "Tidak Aktif", telp: "0832222222", tanggal: "14 Apr 2026"},
+  {nama: "Sari Melati", email: "sari.hr@company.co.id", status: "Aktif", telp: "0843333333", tanggal: "15 Apr 2026"},
+  {nama: "Fahmi Akbar", email: "fahmi.hr@company.co.id", status: "Aktif", telp: "0854444444", tanggal: "16 Apr 2026"},
+  {nama: "Lina Kusuma", email: "lina.hr@company.co.id", status: "Tidak Aktif", telp: "0865555555", tanggal: "17 Apr 2026"},
+  {nama: "Yoga Pratama", email: "yoga.hr@company.co.id", status: "Aktif", telp: "0876666666", tanggal: "18 Apr 2026"},
+  {nama: "Nina Sari", email: "nina.hr@company.co.id", status: "Aktif", telp: "0887777777", tanggal: "19 Apr 2026"},
+  {nama: "Arif Setiawan", email: "arif.hr@company.co.id", status: "Aktif", telp: "0898888888", tanggal: "20 Apr 2026"},
+  {nama: "Putri Ayu", email: "putri.hr@company.co.id", status: "Tidak Aktif", telp: "0819999999", tanggal: "21 Apr 2026"}
+];
+
+  const kepalaList = [
+  {nama: "Budi Santoso", email: "budi@company.co.id", status: "Aktif", telp: "082233445566", tanggal: "15 Apr 2026"},
+  {nama: "Hendra Wijaya", email: "hendra@company.co.id", status: "Aktif", telp: "0811111111", tanggal: "16 Apr 2026"},
+  {nama: "Tono Saputra", email: "tono@company.co.id", status: "Tidak Aktif", telp: "0822222222", tanggal: "17 Apr 2026"},
+  {nama: "Agung Prasetyo", email: "agung@company.co.id", status: "Aktif", telp: "0833333333", tanggal: "18 Apr 2026"},
+  {nama: "Dedi Kurniawan", email: "dedi@company.co.id", status: "Aktif", telp: "0844444444", tanggal: "19 Apr 2026"},
+  {nama: "Rizal Maulana", email: "rizal@company.co.id", status: "Tidak Aktif", telp: "0855555555", tanggal: "20 Apr 2026"},
+  {nama: "Ilham Fauzi", email: "ilham@company.co.id", status: "Aktif", telp: "0866666666", tanggal: "21 Apr 2026"},
+  {nama: "Bagus Setiawan", email: "bagus@company.co.id", status: "Aktif", telp: "0877777777", tanggal: "22 Apr 2026"},
+  {nama: "Reza Firmansyah", email: "reza@company.co.id", status: "Aktif", telp: "0888888888", tanggal: "23 Apr 2026"},
+  {nama: "Dian Permata", email: "dian@company.co.id", status: "Tidak Aktif", telp: "0899999999", tanggal: "24 Apr 2026"}
+];
+
 const table = document.getElementById('userTable');
 
+function renderTable(data){
+  table.innerHTML = data.map((item, index) => `
+    <tr class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
+      <td class="p-3">${index + 1}</td>
+      <td class="p-3">${item.nama}</td>
+      <td class="p-3">${item.email}</td>
+      <td class="p-3">
+        <span class="${item.status === 'Aktif' ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'} px-2 py-1 rounded text-xs">
+          ${item.status}
+        </span>
+      </td>
+      <td class="p-3">${item.telp}</td>
+      <td class="p-3">${item.tanggal}</td>
+      <td class="p-3 text-center">
+        <button onclick="event.stopPropagation(); editUser('${item.nama}')" class="bg-yellow-400 px-2 py-1 rounded">
+          <i class="fas fa-pen"></i>
+        </button>
+        <button onclick="event.stopPropagation(); openHapus('${item.nama}')" class="bg-red-500 text-white px-2 py-1 rounded">
+          <i class="fas fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  `).join('');
+}
 
-table.innerHTML = `
-<tr onclick="rowClick('Rizky')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
-  <td class="p-3">1</td>
-  <td class="p-3">Rizky Darmawan</td>
-  <td class="p-3">rizky.darmawan@vendor.co.id</td>
-  <td class="p-3"><span class="bg-green-100 text-green-600 px-2 py-1 rounded text-xs">Aktif</span></td>
-  <td class="p-3">085762360846</td>
-  <td class="p-3">10 Apr 2026</td>
-  <td class="p-3 text-center">
-    <button onclick="event.stopPropagation(); editUser('Rizky Darmawan')" 
-class="bg-yellow-400 px-2 py-1 rounded">
-  <i class="fas fa-pen"></i>
-</button>
-<button onclick="event.stopPropagation(); openHapus('Rizky Darmawan')" class="bg-red-500 text-white px-2 py-1 rounded">
-  <i class="fas fa-trash"></i>
-</button>  </td>
-</tr>
-<tr onclick="rowClick('Carmen')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
-  <td class="p-3">2</td>
-  <td class="p-3">Carmen Ayu</td>
-  <td class="p-3">carmen.ayu@vendor.co.id</td>
-  <td class="p-3"><span class="bg-green-100 text-green-600 px-2 py-1 rounded text-xs">Aktif</span></td>
-  <td class="p-3">089677228168</td>
-  <td class="p-3">10 Apr 2026</td>
-  <td class="p-3 text-center">
-    <button onclick="event.stopPropagation(); editUser('Rizky Darmawan')" 
-class="bg-yellow-400 px-2 py-1 rounded">
-  <i class="fas fa-pen"></i>
-</button>
-<button onclick="event.stopPropagation(); openHapus('Carmen Ayu')" class="bg-red-500 text-white px-2 py-1 rounded">
-  <i class="fas fa-trash"></i>
-</button>  </td>
-</tr>
-<tr onclick="rowClick('Rizky')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
-  <td class="p-3">3</td>
-  <td class="p-3">Rizky Darmawan</td>
-  <td class="p-3">rizky.darmawan@vendor.co.id</td>
-  <td class="p-3"><span class="bg-green-100 text-green-600 px-2 py-1 rounded text-xs">Aktif</span></td>
-  <td class="p-3">085762360846</td>
-  <td class="p-3">10 Apr 2026</td>
-  <td class="p-3 text-center">
-    <button onclick="event.stopPropagation(); editUser('Rizky Darmawan')" 
-class="bg-yellow-400 px-2 py-1 rounded">
-  <i class="fas fa-pen"></i>
-</button>
-<button onclick="event.stopPropagation(); openHapus('Rizky Darmawan')" class="bg-red-500 text-white px-2 py-1 rounded">
-  <i class="fas fa-trash"></i>
-</button>  </td>
-</tr>
-<tr onclick="rowClick('Carmen')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
-  <td class="p-3">4</td>
-  <td class="p-3">Carmen Ayu</td>
-  <td class="p-3">carmen.ayu@vendor.co.id</td>
-  <td class="p-3"><span class="bg-green-100 text-green-600 px-2 py-1 rounded text-xs">Aktif</span></td>
-  <td class="p-3">089677228168</td>
-  <td class="p-3">10 Apr 2026</td>
-  <td class="p-3 text-center">
-    <button onclick="event.stopPropagation(); editUser('Rizky Darmawan')" 
-class="bg-yellow-400 px-2 py-1 rounded">
-  <i class="fas fa-pen"></i>
-</button>
-<button onclick="event.stopPropagation(); openHapus('Carmen Ayu')" class="bg-red-500 text-white px-2 py-1 rounded">
-  <i class="fas fa-trash"></i>
-</button>  </td>
-</tr>
-<tr onclick="rowClick('Rizky')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
-  <td class="p-3">5</td>
-  <td class="p-3">Rizky Darmawan</td>
-  <td class="p-3">rizky.darmawan@vendor.co.id</td>
-  <td class="p-3"><span class="bg-green-100 text-green-600 px-2 py-1 rounded text-xs">Aktif</span></td>
-  <td class="p-3">085762360846</td>
-  <td class="p-3">10 Apr 2026</td>
-  <td class="p-3 text-center">
-    <button onclick="event.stopPropagation(); editUser('Rizky Darmawan')" 
-class="bg-yellow-400 px-2 py-1 rounded">
-  <i class="fas fa-pen"></i>
-</button>
-<button onclick="event.stopPropagation(); openHapus('Rizky Darmawan')" class="bg-red-500 text-white px-2 py-1 rounded">
-  <i class="fas fa-trash"></i>
-</button>  </td>
-</tr>
-<tr onclick="rowClick('Carmen')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
-  <td class="p-3">6</td>
-  <td class="p-3">Carmen Ayu</td>
-  <td class="p-3">carmen.ayu@vendor.co.id</td>
-  <td class="p-3"><span class="bg-red-100 text-red-600 px-2 py-1 rounded text-xs">Tidak Aktif</span></td>
-  <td class="p-3">089677228168</td>
-  <td class="p-3">10 Apr 2026</td>
-  <td class="p-3 text-center">
-    <button onclick="event.stopPropagation(); editUser('Rizky Darmawan')" 
-class="bg-yellow-400 px-2 py-1 rounded">
-  <i class="fas fa-pen"></i>
-</button>
-<button onclick="event.stopPropagation(); openHapus('Carmen Ayu')" class="bg-red-500 text-white px-2 py-1 rounded">
-  <i class="fas fa-trash"></i>
-</button>  </td>
-</tr>
-<tr onclick="rowClick('Carmen')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
-  <td class="p-3">6</td>
-  <td class="p-3">Carmen Ayu</td>
-  <td class="p-3">carmen.ayu@vendor.co.id</td>
-  <td class="p-3"><span class="bg-red-100 text-red-600 px-2 py-1 rounded text-xs">Tidak Aktif</span></td>
-  <td class="p-3">089677228168</td>
-  <td class="p-3">10 Apr 2026</td>
-  <td class="p-3 text-center">
-    <button onclick="event.stopPropagation(); editUser('Rizky Darmawan')" 
-class="bg-yellow-400 px-2 py-1 rounded">
-  <i class="fas fa-pen"></i>
-</button>
-<button onclick="event.stopPropagation(); openHapus('Carmen Ayu')" class="bg-red-500 text-white px-2 py-1 rounded">
-  <i class="fas fa-trash"></i>
-</button>  </td>
-</tr>
-<tr onclick="rowClick('Carmen')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
-  <td class="p-3">6</td>
-  <td class="p-3">Carmen Ayu</td>
-  <td class="p-3">carmen.ayu@vendor.co.id</td>
-  <td class="p-3"><span class="bg-red-100 text-red-600 px-2 py-1 rounded text-xs">Tidak Aktif</span></td>
-  <td class="p-3">089677228168</td>
-  <td class="p-3">10 Apr 2026</td>
-  <td class="p-3 text-center">
-    <button onclick="event.stopPropagation(); editUser('Rizky Darmawan')" 
-class="bg-yellow-400 px-2 py-1 rounded">
-  <i class="fas fa-pen"></i>
-</button>
-<button onclick="event.stopPropagation(); openHapus('Rizky Darmawan')" class="bg-red-500 text-white px-2 py-1 rounded">
-  <i class="fas fa-trash"></i>
-</button>  </td>
-</tr>
-<tr onclick="rowClick('Carmen')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
-  <td class="p-3">6</td>
-  <td class="p-3">Carmen Ayu</td>
-  <td class="p-3">carmen.ayu@vendor.co.id</td>
-  <td class="p-3"><span class="bg-red-100 text-red-600 px-2 py-1 rounded text-xs">Tidak Aktif</span></td>
-  <td class="p-3">089677228168</td>
-  <td class="p-3">10 Apr 2026</td>
-  <td class="p-3 text-center">
-    <button onclick="event.stopPropagation(); editUser('Rizky Darmawan')" 
-class="bg-yellow-400 px-2 py-1 rounded">
-  <i class="fas fa-pen"></i>
-</button>
-<button onclick="event.stopPropagation(); openHapus('Carmen Ayu')" class="bg-red-500 text-white px-2 py-1 rounded">
-  <i class="fas fa-trash"></i>
-</button>  </td>
-</tr>
-<tr onclick="rowClick('Carmen')" class="bg-white shadow-sm hover:bg-green-50 cursor-pointer">
-  <td class="p-3">6</td>
-  <td class="p-3">Carmen Ayu</td>
-  <td class="p-3">carmen.ayu@vendor.co.id</td>
-  <td class="p-3"><span class="bg-red-100 text-red-600 px-2 py-1 rounded text-xs">Tidak Aktif</span></td>
-  <td class="p-3">089677228168</td>
-  <td class="p-3">10 Apr 2026</td>
-  <td class="p-3 text-center">
-    <button onclick="event.stopPropagation(); editUser('Rizky Darmawan')" 
-class="bg-yellow-400 px-2 py-1 rounded">
-  <i class="fas fa-pen"></i>
-</button>
-<button onclick="event.stopPropagation(); openHapus('Carmen Ayu')" class="bg-red-500 text-white px-2 py-1 rounded">
-  <i class="fas fa-trash"></i>
-</button>  </td>
-</tr>
-`;
+function switchTab(tab){
+  if(tab === 'admin'){
+    renderTable(adminList);
+  }
+  if(tab === 'hr'){
+    renderTable(hrList);
+  }
+  if(tab === 'kepala'){
+    renderTable(kepalaList);
+  }
 
-function rowClick(nama){
-alert('Klik user: ' + nama)
+  document.getElementById('tabAdmin').className = "py-3 text-gray-500";
+  document.getElementById('tabHR').className = "py-3 text-gray-500";
+  document.getElementById('tabKepala').className = "py-3 text-gray-500";
+
+  if(tab === 'admin'){
+    document.getElementById('tabAdmin').className = "py-3 border-b-2 border-green-600 text-green-700 font-semibold";
+  }
+  if(tab === 'hr'){
+    document.getElementById('tabHR').className = "py-3 border-b-2 border-green-600 text-green-700 font-semibold";
+  }
+  if(tab === 'kepala'){
+    document.getElementById('tabKepala').className = "py-3 border-b-2 border-green-600 text-green-700 font-semibold";
+  }
 }
 
 
 </script>
+
+
+
+
 <!-- MODAL HAPUS -->
 <div id="modalHapus" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50 px-4">
   <div class="bg-white w-full max-w-md rounded-2xl shadow-lg text-center p-6">
@@ -423,52 +364,49 @@ function deleteUser(name){
 </script>
 
 <div id="modalEdit" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50 px-4">
-  <div class="bg-white w-full max-w-2xl rounded-2xl overflow-hidden shadow-lg">
+  <div class="bg-white w-full max-w-xl rounded-xl overflow-y-auto shadow-lg">
 
     <div class="bg-green-700 text-white px-5 py-4 flex justify-between items-center">
       <h3 class="font-semibold text-lg">Edit Akun</h3>
       <button onclick="closeEdit()" class="text-white text-xl">✕</button>
     </div>
 
-    <div class="p-5 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+    <div class="p-10 grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
       <div>
-        <label>Nama Depan</label>
-        <input id="editNama" type="text" class="w-full border rounded-lg px-3 py-2 mt-1">
+        <label class="font-bold">Nama Depan <span class="text-red-500">*</span></label>
+        <input id="editNama" type="text" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1">
       </div>
 
       <div>
-        <label>Nama Belakang</label>
-        <input type="text" class="w-full border rounded-lg px-3 py-2 mt-1">
+        <label class="font-bold">Nama Belakang <span class="text-red-500">*</span></label>
+        <input type="text" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1">
       </div>
 
       <div class="md:col-span-2">
-        <label>Email</label>
-        <input type="email" class="w-full border rounded-lg px-3 py-2 mt-1">
+        <label class="font-bold">Email <span class="text-red-500">*</span></label>
+        <input type="email" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1">
       </div>
 
       <div class="md:col-span-2">
-        <label>Role</label>
-        <select class="w-full border rounded-lg px-3 py-2 mt-1">
-          <option>Admin Outsourcing</option>
-        </select>
+        <label class="font-bold">No Telepon <span class="text-red-500">*</span></label>
+        <input type="text" placeholder="Contoh: 081234567890" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1">
       </div>
 
-      <div class="md:col-span-2 text-center text-xs text-gray-400 mt-2">
-        KEAMANAN AKUN
+      
+      <div>
+        <label class="font-bold">Password <span class="text-red-500">*</span></label>
+        <input type="password" placeholder="Password baru" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1">
       </div>
 
       <div>
-        <input type="password" placeholder="Password baru" class="w-full border rounded-lg px-3 py-2 mt-1">
-      </div>
-
-      <div>
-        <input type="password" placeholder="Konfirmasi" class="w-full border rounded-lg px-3 py-2 mt-1">
+        <label class="font-bold">Konfirmasi Password <span class="text-red-500">*</span></label>
+        <input type="password" placeholder="Konfirmasi" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1">
       </div>
     </div>
 
-    <div class="flex flex-col md:flex-row justify-end gap-3 px-5 py-4 border-t">
-      <button onclick="closeEdit()" class="px-4 py-2 border rounded-lg w-full md:w-auto">Batal</button>
-      <button class="px-4 py-2 bg-green-700 text-white rounded-lg w-full md:w-auto">Simpan</button>
+    <div class="flex flex-col md:flex-row justify-end gap-3 px-5 py-4 border-t border-gray-200">
+      <button onclick="closeModal()" class="px-4 py-2 border border-gray-300 rounded-lg w-full md:w-auto hover:bg-w-800 hover:shadow-2xl transform hover:-translate-y-0.5 transition-all duration-200">Batal</button>
+      <button class="px-4 py-2 bg-green-700 text-white rounded-lg w-full md:w-auto shadow-xl hover:bg-green-800 hover:shadow-2xl transform hover:-translate-y-0.5 transition-all duration-200">Simpan</button>
     </div>
 
   </div>
@@ -487,6 +425,13 @@ function closeEdit(){
   modal.classList.add('hidden');
   modal.classList.remove('flex');
 }
+
+
 </script>
+
+<script>
+switchTab('admin');
+</script>
+
 </body>
 </html>
