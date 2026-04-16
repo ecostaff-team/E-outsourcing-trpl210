@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard adminOutsorcing</title>
+    <title>Dashboard HR</title>
 
     <link rel="icon" type="image/x-icon" href="/images/logo.png">
     @vite('resources/css/app.css')
@@ -17,12 +17,39 @@
 
     <div class="flex">
         {{-- SIDEBAR --}}
-        @include('components.sidebar_admin_out')
-        <div class="flex-1 p-6 ml-0">
+        <x-sidebar :menus="[
+            ['title' => 'Dashboard', 'icon' => 'fas fa-book'],
+            ['title' => 'Rekapan Detail', 'icon' => 'fas fa-user-group'],
+            ['title' => 'Ajuan Data Karyawan', 'icon' => 'fas fa-address-book'],
+            ['title' => 'Karyawan', 'icon' => 'fas fa-user-tie'],
+        ]" />
+        <div class="flex-1 p-6 ml-0 min-w-0">
 
             <!-- HEADER CONTENT -->
-            @include('components.header_admin_out')
+            <x-header>HR</x-header>
             {{-- // BUAT ISI CONTENT DIBAWAH SINIIIIIII --}}
+
+            <div class="bg-white p-8 rounded-lg shadow-lg mt-6 w-full">
+                <div class="flex flex-col md:flex-row md:justify-between gap-3">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="fa-solid fa-table text-xl md:text-2xl text-gray-900"></i>
+                        <h2 class="text-lg md:text-xl font-bold text-gray-900">Data Karyawan Outsourcing</h2>
+                    </div>
+
+                </div>
+
+                <div class="overflow-x-auto">
+                    <x-hr.tabel-karyawan></x-hr.tabel-karyawan>
+                </div>
+
+                <div class="flex justify-end mt-4 gap-1 text-sm">
+                    <button class="px-3 py-1 border rounded">Previous</button>
+                    <button class="px-3 py-1 bg-green-600 text-white rounded">1</button>
+                    <button class="px-3 py-1 border rounded">2</button>
+                    <button class="px-3 py-1 border rounded">3</button>
+                    <button class="px-3 py-1 border rounded">Next</button>
+                </div>
+            </div>
 
 
             {{-- SELESAI CONTENT --}}

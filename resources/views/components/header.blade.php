@@ -20,7 +20,7 @@
             <img src="/images/profile.jpg" class="w-10 h-10 rounded-full object-cover">
 
             <div class="hidden md:block">
-                <p class="text-sm font-semibold text-gray-800">Admin Outsourcing</p>
+                <p class="text-sm font-semibold text-gray-800">{{ $slot }}</p>
                 <p class="text-xs text-gray-500">Admin</p>
             </div>
 

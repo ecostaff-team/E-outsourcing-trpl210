@@ -18,22 +18,29 @@
     <div class="flex">
         {{-- SIDEBAR --}}
         <x-sidebar :menus="[
+<<<<<<< HEAD
             ['title' => 'Dashboard', 'icon' => 'fas fa-home'],
             ['title' => 'User', 'icon' => 'fas fa-users'],
             ['title' => 'karyawan', 'icon' => 'fas fa-cog'],
+=======
+            ['title' => 'Dashboard', 'icon' => 'fas fa-book'],
+            ['title' => 'Rekapan Detail', 'icon' => 'fas fa-user-group'],
+            ['title' => 'Ajuan Data Karyawan', 'icon' => 'fas fa-address-book'],
+            ['title' => 'Karyawan', 'icon' => 'fas fa-user-tie'],
+>>>>>>> abbaead582ce1919b1835f9292b5335de0255828
         ]" />
         <div class="flex-1 p-6 ml-0">
 
             <!-- HEADER CONTENT -->
-            @include('components.header_admin_out')
+            <x-header>HR</x-header>
             {{-- // BUAT ISI CONTENT DIBAWAH SINIIIIIII --}}
 
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 mt-6">
-                <x-hr.hr-stat-card title="Karyawan OS Aktif" value="5" subtext="dari 87 terdaftar" icon="fas fa-users"
-                    borderColor="border-green-500" textColor="text-green-500"></x-hr.hr-stat-card>
-                <x-hr.hr-stat-card title="Total Menit Lembur" value="870" subtext="Bulan Maret 2025" icon="fas fa-clock"
-                    borderColor="border-orange-400" textColor="text-orange-500"></x-hr.hr-stat-card>
+                <x-hr.hr-stat-card title="Karyawan OS Aktif" value="5" subtext="dari 87 terdaftar"
+                    icon="fas fa-users" borderColor="border-green-500" textColor="text-green-500"></x-hr.hr-stat-card>
+                <x-hr.hr-stat-card title="Total Menit Lembur" value="870" subtext="Bulan Maret 2025"
+                    icon="fas fa-clock" borderColor="border-orange-400" textColor="text-orange-500"></x-hr.hr-stat-card>
                 <x-hr.hr-stat-card title="Ajuan Rekap Pending" value="2" subtext="Menunggu persetujuan"
                     icon="fas fa-clipboard-list" borderColor="border-indigo-500"
                     textColor="text-indigo-600"></x-hr.hr-stat-card>
