@@ -16,7 +16,7 @@ Route::get('/admin-outsourcing/karyawan', function () {
     return view('adminOutsourcing.karyawan');
 });
 
-Route::get('/pengajuan-karyawan', function () {
+Route::get('/admin-outsourcing/pengajuan-karyawan', function () {
     return view('adminOutsourcing.pengajuanKaryawan');
 });
 
