@@ -17,7 +17,11 @@
 
     <div class="flex">
         {{-- SIDEBAR --}}
-        @include('components.sidebar_admin_out')
+        <x-sidebar :menus="[
+            ['title' => 'Dashboard', 'icon' => 'fas fa-home'],
+            ['title' => 'User', 'icon' => 'fas fa-users'],
+            ['title' => 'karyawan', 'icon' => 'fas fa-cog'],
+        ]" />
         <div class="flex-1 p-6 ml-0">
 
             <!-- HEADER CONTENT -->
