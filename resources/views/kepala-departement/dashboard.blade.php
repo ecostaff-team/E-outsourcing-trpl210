@@ -27,12 +27,16 @@
             <x-header>Kepala Departemen {{-- <-- Ganti aja ini kalo mau --}}</x-header>
             <div class="bg-white p-8 rounded-lg shadow-lg mt-6 w-full">
                 <div class="overflow-x-auto">
-                    <x-table :columns="[['label' => 'Nama', 'field' => 'nama'], ['label' => 'Email', 'field' => 'email']]"
+                    <x-table :columns="[
+                        ['label' => 'Nama', 'field' => 'nama'],
+                        ['label' => 'Nomor HP', 'field' => 'nomor_hp'],
+                        ['label' => 'Email', 'field' => 'email']
+                    ]"
 
                         :data="[
-                        ['nama' => 'Rangga', 'email' => 'rangga@mail.com'],
-                        ['nama' => 'Budi', 'email' => 'budi@mail.com'],
-                        ['nama' => 'Sinta', 'email' => 'sinta@mail.com'],
+                        ['nama' => 'Rangga', 'nomor_hp' => '08123456789', 'email' => 'rangga@mail.com'],
+                        ['nama' => 'Budi', 'nomor_hp' => '08123456788', 'email' => 'budi@mail.com'],
+                        ['nama' => 'Sinta', 'nomor_hp' => '08123456787', 'email' => 'sinta@mail.com'],
                     ]" />
                 </div>
             </div>
