@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <button
-                        class="bg-green-600 shadow-lg text-white hover:text-green-700 px-4 py-2 rounded-lg text-sm flex items-center gap-2 cursor-pointer transition-colors duration-200 hover:bg-white hover:border hover:border-green-600">
+                        class="bg-green-600 shadow-lg text-white hover:text-green-700 px-4 py-2 rounded-lg text-sm flex items-center gap-2 cursor-pointer transition-colors duration-200 hover:bg-white border-transparent border hover:border-green-600">
                         <i class="fas fa-file-excel"></i>
                         Export Excel
                     </button>
