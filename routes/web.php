@@ -43,3 +43,7 @@ Route::get('/super-admin', function () {
 Route::get('/kepala-departemen', function () {
     return view('kepala-departement.dashboard');
 });
+
+Route::get('/karyawan/skkkk/skkks/skkkk', function () {
+    return view('karyawan.dashboard');
+});
