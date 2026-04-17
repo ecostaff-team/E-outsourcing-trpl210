@@ -1,4 +1,4 @@
-<div class="overflow-x-auto">
+<div>
     <table class="w-full text-sm border-separate border-spacing-y-2">
         <thead class="bg-green-100 text-gray-600">
             <tr class="shadow-sm border border-gray-100">
