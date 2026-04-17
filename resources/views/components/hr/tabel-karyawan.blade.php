@@ -6,7 +6,7 @@
                 <th class="p-2 md:p-3 text-center text-xs md:text-sm whitespace-nowrap">NIP</th>
                 <th class="p-2 md:p-3 text-left text-xs md:text-sm whitespace-nowrap">Nama Karyawan</th>
                 <th class="p-2 md:p-3 text-left text-xs md:text-sm whitespace-nowrap">Email</th>
-                <th class="p-2 md:p-3 text-left text-xs md:text-sm min-w-[200px]">Alamat</th>
+                <th class="p-2 md:p-3 text-left text-xs md:text-sm min-w-50">Alamat</th>
                 <th class="p-2 md:p-3 text-center text-xs md:text-sm whitespace-nowrap">Tanggal Masuk</th>
                 <th class="p-2 md:p-3 text-center text-xs md:text-sm whitespace-nowrap">Tanggal Keluar</th>
                 <th class="p-2 md:p-3 text-center text-xs md:text-sm whitespace-nowrap">No Telp</th>

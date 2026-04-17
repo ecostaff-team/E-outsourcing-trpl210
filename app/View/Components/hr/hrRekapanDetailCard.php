@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class hr-rekapan-card extends Component
+class hrRekapanDetailCard extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class hr-rekapan-card extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.hr.hr-rekapan-card');
+        return view('components.hr.hr-rekapan-detail-card');
     }
 }

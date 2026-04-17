@@ -29,21 +29,21 @@
             <x-header>HR</x-header>
             {{-- // BUAT ISI CONTENT DIBAWAH SINIIIIIII --}}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6 mt-6">
-                <x-hr.hr-rekapan-card title="Total Hadir" value="78" subtext="80% hadir" icon="fas fa-user-check"
-                    border-color="hover:border-green-200" text-color="text-green-600" icon-bg="bg-green-100"
-                    icon-color="text-green-600" />
+                <x-hr.hr-rekapan-detail-card title="Total Hadir" value="78" subtext="80% hadir" icon="fas fa-user-check"
+                    borderColor="hover:border-green-200" textColor="text-green-600" iconBg="bg-green-100"
+                    iconColor="text-green-600" />
 
-                <x-hr.hr-rekapan-card title="Total Alpha" value="10" subtext="10 hari" icon="fas fa-user-times"
-                    border-color="hover:border-red-200" text-color="text-red-600" icon-bg="bg-red-100"
-                    icon-color="text-red-600" />
+                <x-hr.hr-rekapan-detail-card title="Total Alpha" value="10" subtext="10 hari" icon="fas fa-user-times"
+                    borderColor="hover:border-red-200" textColor="text-red-600" iconBg="bg-red-100"
+                    iconColor="text-red-600" />
 
-                <x-hr.hr-rekapan-card title="Sakit / Izin" value="10" subtext="10 hari" icon="fas fa-file-medical"
-                    border-color="hover:border-yellow-200" text-color="text-yellow-500" icon-bg="bg-yellow-100"
-                    icon-color="text-yellow-600" />
+                <x-hr.hr-rekapan-detail-card title="Sakit / Izin" value="10" subtext="10 hari" icon="fas fa-file-medical"
+                    borderColor="hover:border-yellow-200" textColor="text-yellow-500" iconBg="bg-yellow-100"
+                    iconColor="text-yellow-600" />
 
-                <x-hr.hr-rekapan-card title="Jml Karyawan" value="5" subtext="Karyawan Aktif" icon="fas fa-users"
-                    border-color="hover:border-indigo-200" text-color="text-indigo-600" icon-bg="bg-indigo-100"
-                    icon-color="text-indigo-600" />
+                <x-hr.hr-rekapan-detail-card title="Jml Karyawan" value="5" subtext="Karyawan Aktif" icon="fas fa-users"
+                    borderColor="hover:border-indigo-200" textColor="text-indigo-600" iconBg="bg-indigo-100"
+                    iconColor="text-indigo-600" />
             </div>
 
             <x-hr.filter-rekapan></x-hr.filter-rekapan>

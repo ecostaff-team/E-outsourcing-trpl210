@@ -66,7 +66,7 @@
                     <th class="px-1 py-3 border-b border-gray-200 text-center w-6">30</th>
                     <th class="px-1 py-3 border-b border-gray-200 text-center w-6">31</th>
 
-                    <th class="px-4 py-3 border-b border-gray-200 text-center border-l border-gray-200 bg-gray-50">H
+                    <th class="px-4 py-3 border-b border-gray-200 text-center border-l bg-gray-50">H
                     </th>
                     <th class="px-4 py-3 border-b border-gray-200 text-center bg-gray-50">A</th>
                     <th class="px-4 py-3 border-b border-gray-200 text-center bg-gray-50">S/I</th>
