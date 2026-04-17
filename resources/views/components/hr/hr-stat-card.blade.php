@@ -1,7 +1,7 @@
-@props(['title', 'value', 'subtext', 'icon', 'borderColor', 'textColor'])
+@props(['title', 'value', 'subtext', 'icon', 'borderColor', 'textColor', 'hoverColor'])
 
 <div
-    class="bg-white rounded-xl p-4 shadow-sm border-2 {{ $borderColor }} flex items-center gap-4 relative hover:shadow-md transition-shadow">
+    class="bg-white rounded-xl p-4 shadow-sm border-2 {{ $borderColor }} flex items-center gap-4 relative transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">
 
     <div
         class="w-14 h-14 bg-gray-100 rounded-xl shadow-inner border border-gray-200 flex items-center justify-center text-gray-700 text-2xl shrink-0">
