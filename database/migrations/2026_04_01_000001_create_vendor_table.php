@@ -10,9 +10,9 @@ return new class extends Migration
     {
         Schema::create('vendor', function (Blueprint $table) {
             $table->integer('id_vendor')->autoIncrement();
-            $table->string('nama_vendor', 255);
-            $table->enum('status', ['aktif', 'tidak aktif']);
-            $table->string('no_hp', 13);
+            $table->string('vendor_name', 255);
+            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->string('phone_number', 13);
             $table->string('email', 255);
             $table->string('alamat', 255);
             $table->timestamps();

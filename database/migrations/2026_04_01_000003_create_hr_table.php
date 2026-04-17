@@ -10,14 +10,12 @@ return new class extends Migration
     {
         Schema::create('hr', function (Blueprint $table) {
             $table->integer('id_hr')->autoIncrement();
-            $table->enum('status', ['Aktif', 'Tidak_aktif']);
-            $table->string('username', 100);
-            $table->string('password', 255);
-            $table->string('nama', 255);
-            $table->string('alamat', 255);
-            $table->string('no_hp', 13);
-            $table->string('email', 255);
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')
+            ->references('id')->on('users')
+            ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

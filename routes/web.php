@@ -37,5 +37,13 @@ Route::get('/user-hr/data-karyawan', function () {
 });
 
 Route::get('/super-admin', function () {
-    return view('superAdmin.dashboard');
+    return view('superAdmin.dashboardAdmin');
+});
+
+Route::get('/kepala-departemen', function () {
+    return view('kepala-departement.dashboard');
+});
+
+Route::get('/karyawan', function () {
+    return view('karyawan.dashboard');
 });
