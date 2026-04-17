@@ -1,7 +1,7 @@
 <div>
     <table class="w-full text-sm border-separate border-spacing-y-2">
         <thead class="bg-green-100 text-gray-600">
-            <tr class="shadow-sm border border-gray-100">
+            <tr class="shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-0.5 transition">
                 <th class="p-2 md:p-3 text-center text-xs md:text-sm w-12 whitespace-nowrap">No</th>
                 <th class="p-2 md:p-3 text-left text-xs md:text-sm whitespace-nowrap">NIP</th>
                 <th class="p-2 md:p-3 text-left text-xs md:text-sm uppercase whitespace-nowrap">Nama Karyawan</th>

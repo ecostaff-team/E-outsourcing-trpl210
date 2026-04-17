@@ -3,7 +3,7 @@
 
         <thead class="bg-green-100 text-gray-600">
             <tr
-                class=" shadow-sm hover:shadow-md hover:-translate-y-0.5 transition cursor-pointer border border-gray-100">
+                class="shadow-sm hover:shadow-md hover:-translate-y-0.5 transition cursor-pointer border border-gray-100">
                 <th class="p-2 md:p-3 text-center text-xs md:text-sm">No</th>
                 <th class="p-2 md:p-3 text-left text-xs md:text-sm">NIP</th>
                 <th class="p-2 md:p-3 text-left text-xs md:text-sm">Nama Karyawan</th>
