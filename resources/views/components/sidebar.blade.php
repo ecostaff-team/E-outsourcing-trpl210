@@ -46,8 +46,8 @@ md:translate-x-0 z-50 shadow-2xl">
                 class="bg-white/10 backdrop-blur-md p-2 rounded-xl shadow-[0_4px_20px_rgba(255,255,255,0.15)] hover:shadow-[0_8px_30px_rgba(255,255,255,0.35)] transition-all duration-300">
                 AdO </div> <!-- Info -->
             <div>
-                <p class="text-sm font-semibold">Admin Outsourcing</p>
-                <p class="text-xs text-white/70">Admin_Out@ecogreen.id</p>
+                <p class="text-sm font-semibold">{{ $slot }}</p>
+                <p class="text-xs text-white/70">{{ $slot . ' @ecogreen.id' }} </p>
             </div>
         </div>
     </div>

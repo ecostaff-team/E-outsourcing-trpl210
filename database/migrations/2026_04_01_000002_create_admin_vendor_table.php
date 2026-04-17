@@ -10,16 +10,17 @@ return new class extends Migration
     {
         Schema::create('admin_vendor', function (Blueprint $table) {
             $table->integer('id_admin_vendor')->autoIncrement();
-            $table->string('username', 100);
-            $table->string('password', 255);
-            $table->string('nama', 255);
-            $table->enum('status', ['Aktif', 'Tidak_aktif']);
             $table->integer('asal_vendor');
             $table->timestamps();
 
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')
+            ->references('id')->on('users')
+            ->onDelete('cascade')->onUpdate('cascade');
+
             $table->foreign('asal_vendor', 'berasal_dari_vendor')
-                  ->references('id_vendor')->on('vendor')
-                  ->onDelete('cascade')->onUpdate('cascade');
+                ->references('id_vendor')->on('vendor')
+                ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

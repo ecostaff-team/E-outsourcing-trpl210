@@ -15,6 +15,8 @@ return new class extends Migration
             $table->timestamp('tanggal_dibuat')->nullable();
             $table->enum('status', ['Lembur', 'Tidak_lembur']);
             $table->integer('id_karyawan');
+            $table->string('pemvalidasi', 255);
+            $table->string('keterangan', 255);
             $table->timestamps();
 
             $table->foreign('id_karyawan', 'fk_karyawan')
