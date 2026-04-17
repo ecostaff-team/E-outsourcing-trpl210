@@ -12,18 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('super_admin', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id_super_admin')->autoIncrement();
             $table->string('name')->unique();
             $table->string('password');
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')
+            ->references('id')->on('users')
+            ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('super_admins');
+        Schema::dropIfExists('super_admin');
     }
 };
