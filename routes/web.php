@@ -37,6 +37,5 @@ Route::get('/user-hr/data-karyawan', function () {
 });
 
 Route::get('/super-admin', function () {
-    return view('superAdmin.dashboardAdmin');
+    return view('superAdmin.dashboard');
 });
-
