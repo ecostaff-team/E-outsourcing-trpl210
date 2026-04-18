@@ -6,7 +6,9 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::livewire('/post/create', 'pages::post.create');
+Route::get('/post/create', function () {
+    return view('pages.post.create');
+});
 
 Route::get('/admin-outsourcing', function () {
     return view('adminOutsourcing.dashboard');
