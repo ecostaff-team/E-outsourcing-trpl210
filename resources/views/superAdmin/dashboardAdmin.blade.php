@@ -15,7 +15,7 @@
 <body class="bg-gray-100" style="font-family: 'Poppins', sans-serif;">
 
 <!-- TOPBAR -->
-<div class="bg-gradient-to-red from-green-900 to-green-700 px-10 h-16 flex items-center justify-between text-white shadow">
+<div class="bg-linear-to-r from-green-900 to-green-700 px-10 h-16 flex items-center justify-between text-white shadow">
   <div class="flex items-center gap-3">
     <div class="w-9 h-9 bg-white/20 rounded-lg flex items-center justify-center">🌿</div>
     <div>
@@ -384,12 +384,12 @@ function deleteUser(name){
 
       <div class="md:col-span-2">
         <label class="font-bold">Email <span class="text-red-500">*</span></label>
-        <input type="email" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1">
+        <input type="email" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1" id="editEmail">
       </div>
 
       <div class="md:col-span-2">
         <label class="font-bold">No Telepon <span class="text-red-500">*</span></label>
-        <input type="text" placeholder="Contoh: 081234567890" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1">
+        <input type="text" id="editNomor" placeholder="Contoh: 081234567890" class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1">
       </div>
 
       
@@ -414,6 +414,8 @@ function deleteUser(name){
 <script>
 function editUser(name){
   document.getElementById('editNama').value = name;
+  document.getElementById('editEmail').value = name.toLowerCase().replace(' ', '.') + '@vendor.co.id';
+
 
   const modal = document.getElementById('modalEdit');
   modal.classList.remove('hidden');
