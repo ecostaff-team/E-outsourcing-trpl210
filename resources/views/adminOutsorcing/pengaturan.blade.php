@@ -17,14 +17,14 @@
 
     <div class="flex">
         {{-- SIDEBAR --}}
-        <x-sidebar :menus="[
-            ['title' => 'Dashboard', 'icon' => 'fas fa-home'],
-            ['title' => 'User', 'icon' => 'fas fa-users'],
-            ['title' => 'Settings', 'icon' => 'fas fa-cog'],
-        ]" />
-
+        @include('components.sidebar_admin_out')
         <div class="flex-1 p-6 ml-0">
-            <x-header>admin Outsourcing {{-- <-- Ganti aja ini kalo mau --}}</x-header>
+
+            <!-- HEADER CONTENT -->
+            @include('components.header_admin_out')
+            {{-- // BUAT ISI CONTENT DIBAWAH SINIIIIIII --}}
+            mengganti password
+            {{-- SELESAI CONTENT --}}
         </div>
 
     </div>

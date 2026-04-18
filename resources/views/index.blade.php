@@ -7,7 +7,7 @@
     <title>Login eco-outsourcing</title>
 
     @vite('resources/css/app.css')
-
+    <link rel="icon" href="/images/logo.png" type="image/png" title="Atom">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
