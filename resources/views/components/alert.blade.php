@@ -1,6 +1,15 @@
-<div id="toast" class="fixed top-5 right-5 z-50 hidden">
-    <div class="bg-emerald-300 text-white px-6 py-3 rounded-lg shadow-lg flex items-center gap-3 animate-slide-in">
-        <span>✅ Data berhasil disimpan!</span>
-        <button onclick="closeToast()" class="text-white font-bold">✖</button>
-    </div>
-</div>
+
+
+{{-- Container toast dikelola oleh JS (alert.js) --}}
+<div id="toast-container" role="region" aria-live="polite" aria-label="Notifikasi"></div>
+
+{{-- Flash session support (Laravel) --}}
+@if(session('success'))
+    <div id="flash-message" data-message="{{ session('success') }}" data-type="success" hidden></div>
+@elseif(session('error'))
+    <div id="flash-message" data-message="{{ session('error') }}" data-type="error" hidden></div>
+@elseif(session('warning'))
+    <div id="flash-message" data-message="{{ session('warning') }}" data-type="warning" hidden></div>
+@elseif(session('info'))
+    <div id="flash-message" data-message="{{ session('info') }}" data-type="info" hidden></div>
+@endif
