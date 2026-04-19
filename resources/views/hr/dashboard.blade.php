@@ -30,7 +30,7 @@
             {{-- // BUAT ISI CONTENT DIBAWAH SINIIIIIII --}}
 
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-6 mt-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-6 mb-6 mt-6">
                 <x-hr.hr-stat-card title="Karyawan OS Aktif" value="5" subtext="dari 87 terdaftar"
                     icon="fas fa-users" borderColor="border-green-500" textColor="text-green-500"></x-hr.hr-stat-card>
                 <x-hr.hr-stat-card title="Total Menit Lembur" value="870" subtext="Bulan Maret 2025"
@@ -38,6 +38,9 @@
                 <x-hr.hr-stat-card title="Ajuan Rekap Pending" value="2" subtext="Menunggu persetujuan"
                     icon="fas fa-clipboard-list" borderColor="border-indigo-500"
                     textColor="text-indigo-600"></x-hr.hr-stat-card>
+                <x-hr.hr-stat-card title="Ajuan Karyawan Pending" value="5" subtext="Menunggu persetujuan"
+                    icon="fas fa-user-clock" borderColor="border-teal-500" textColor="text-teal-600">
+                </x-hr.hr-stat-card>
             </div>
 
 
@@ -65,7 +68,7 @@
                         </div>
                     </div>
                     <button
-                        class="bg-green-600 shadow-lg text-white hover:text-green-700 px-4 py-2 rounded-lg text-sm flex items-center gap-2 cursor-pointer transition-colors duration-200 hover:bg-white hover:border hover:border-green-600">
+                        class="bg-green-600 shadow-lg text-white hover:text-green-700 px-4 py-2 rounded-lg text-sm flex items-center gap-2 cursor-pointer transition-colors duration-200 hover:bg-white border-transparent border hover:border-green-600">
                         <i class="fas fa-file-excel"></i>
                         Export Excel
                     </button>
