@@ -40,15 +40,26 @@
                     Masuk
                 </h2>
 
-                <form method="POST" action="#">
+                <form method="POST" action="/login">
                     @csrf
+
+                    @if (session('error'))
+                        <div class="mb-4 text-center text-red-500 font-semibold bg-red-100 p-2 rounded-lg">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                    @if ($errors->any())
+                        <div class="mb-4 text-center text-red-500 font-semibold bg-red-100 p-2 rounded-lg">
+                            Email wajib menggunakan format @ (contoh: user@gmail.com)
+                        </div>
+                    @endif
 
                     <div class="mb-4">
                         <span class="absolute left-3 top-1/2 -translate-y-1/2 text-white/50"></span>
 
                         </span>
 
-                        <input type="text" placeholder="👤Enter username"
+                        <input type="text" placeholder="👤Enter username" name="email"
                             class="w-full pl-10 pr-4 py-2 mb-3 bg-white/80 text-black placeholder-black/70 rounded-lg
            outline-none transition
            focus:placeholder-black/90
@@ -57,7 +68,7 @@
                     </div>
 
                     <div class="mb-6">
-                        <input type="password" placeholder="🔑Enter password"
+                        <input type="password" placeholder="🔑Enter password" name="password"
                             class="w-full pl-10 pr-4 mb-6 py-2 bg-white/80 text-black placeholder-black/70 rounded-lg
         outline-none transition
         focus:placeholder-black/90
@@ -65,14 +76,14 @@
         focus:shadow-[0_0_12px_rgba(255,255,255,0.25)]" />
                     </div>
 
-                    <button
+                    <button type="submit"
                         class="w-full mb-3 bg-emerald-600 text-white/70 hover:text-white transition py-2 rounded-lg hover:bg-emerald-700 transition">
                         Masuk
                     </button>
-                    <button
+                    {{-- <button type="button"
                         class="w-full bg-transparent border border-white/50 text-white/70 hover:text-white transition py-2 rounded-lg hover:bg-white/10 transition">
                         Lupa Password
-                    </button>
+                    </button> --}}
 
                 </form>
             </div>
@@ -92,19 +103,30 @@
             </div>
 
             <!-- Form -->
-            <form method="POST" action="#">
+            {{-- <form method="POST" action="/login">
                 @csrf
+
+                @if (session('error'))
+                    <div class="mb-4 text-center text-red-500 font-semibold bg-red-100 p-2 rounded-lg text-sm">
+                        {{ session('error') }}
+                    </div>
+                @endif
+                @if ($errors->any())
+                    <div class="mb-4 text-center text-red-500 font-semibold bg-red-100 p-2 rounded-lg text-sm">
+                        Email wajib menggunakan format @
+                    </div>
+                @endif
 
                 <div class="mb-4">
                     <label class="block text-sm mb-1">Email</label>
-                    <input type="email"
+                    <input type="email" name="email"
                         class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
                         placeholder="Masukkan email">
                 </div>
 
                 <div class="mb-6">
                     <label class="block text-sm mb-1">Password</label>
-                    <input type="password"
+                    <input type="password" name="password"
                         class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
                         placeholder="Masukkan password">
                 </div>
@@ -113,7 +135,7 @@
                     Login
                 </button>
 
-            </form>
+            </form> --}}
 
         </div>
 

@@ -1,10 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
+/* LOGINNN */
+use App\Http\Controllers\LoginController;
+Route::get('/login', function () {
     return view('index');
 });
+
+Route::post('/login', [LoginController::class, 'login']);
+/* SELSAI LOGIN */
 
 Route::livewire('/post/create', 'pages::post.create');
 
@@ -47,3 +51,5 @@ Route::get('/kepala-departemen', function () {
 Route::get('/karyawan', function () {
     return view('karyawan.dashboard');
 });
+
+
