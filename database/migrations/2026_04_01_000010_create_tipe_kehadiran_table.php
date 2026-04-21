@@ -10,9 +10,7 @@ return new class extends Migration
     {
         Schema::create('tipe_kehadiran', function (Blueprint $table) {
             $table->integer('id_tipe_kehadiran')->autoIncrement();
-            $table->enum('status_kehadiran', ['hadir', 'tidak_hadir']);
-            $table->string('bukti', 255);
-            $table->enum('keterangan', ['masuk kerja', 'libur', 'mankir', 'sakit']);
+            $table->enum('status_kehadiran', ['hadir', 'sakit', 'izin', 'mankir', 'cuti', 'terlambat']);
             $table->timestamps();
         });
     }

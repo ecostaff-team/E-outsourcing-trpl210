@@ -10,35 +10,34 @@ class TipeKehadiranSeeder extends Seeder
     /**
      * Seed data Tipe Kehadiran.
      * Data master untuk jenis-jenis kehadiran karyawan.
-     * 
+     *
      * Mengikuti enum dari migration:
-     * - status_kehadiran: ['hadir', 'tidak_hadir']
-     * - keterangan: ['masuk kerja', 'libur', 'mankir', 'sakit']
+     * - status_kehadiran: ['hadir', 'sakit', 'izin', 'mankir', 'cuti', 'terlambat']
      */
     public function run(): void
     {
         TipeKehadiran::create([
             'status_kehadiran' => 'hadir',
-            'bukti' => '',
-            'keterangan' => 'masuk kerja',
         ]);
 
         TipeKehadiran::create([
-            'status_kehadiran' => 'tidak_hadir',
-            'bukti' => '',
-            'keterangan' => 'libur',
+            'status_kehadiran' => 'sakit',
         ]);
 
         TipeKehadiran::create([
-            'status_kehadiran' => 'tidak_hadir',
-            'bukti' => '',
-            'keterangan' => 'mankir',
+            'status_kehadiran' => 'mankir',
         ]);
 
         TipeKehadiran::create([
-            'status_kehadiran' => 'tidak_hadir',
-            'bukti' => '',
-            'keterangan' => 'sakit',
+            'status_kehadiran' => 'cuti',
+        ]);
+
+        TipeKehadiran::create([
+            'status_kehadiran' => 'izin',
+        ]);
+
+        TipeKehadiran::create([
+            'status_kehadiran' => 'terlambat',
         ]);
     }
 }

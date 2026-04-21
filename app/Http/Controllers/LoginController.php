@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+/* namespace App\Http\Controllers;
 use App\Service\AuthService;
 
 use Illuminate\Http\Request;
@@ -11,4 +11,4 @@ class LoginController extends Controller
     {
         return AuthService::login($request);
     }
-}
+} */

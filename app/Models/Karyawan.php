@@ -13,36 +13,23 @@ class Karyawan extends Authenticatable
     protected $primaryKey = 'id_karyawan';
 
     protected $fillable = [
-        'nama_lengkap',
-        'no_telp',
         'NIP',
-        'email',
-        'password',
         'alamat',
         'tanggal_masuk',
         'tanggal_keluar',
-        'username',
-        'status',
-        'id_admin_vendor',
-        'id_kepala_dept',
-    ];
-
-    protected $hidden = [
-        'password',
-    ];
-
-    protected $casts = [
-        'password' => 'hashed',
+        'admin_vendor_id',
+        'kepala_dept_id',
+        'user_id',
     ];
 
     public function adminVendor()
     {
-        return $this->belongsTo(AdminVendor::class, 'id_admin_vendor', 'id_admin_vendor');
+        return $this->belongsTo(AdminVendor::class, 'admin_vendor_id', 'id_admin_vendor');
     }
 
     public function kepalaDepartement()
     {
-        return $this->belongsTo(KepalaDepartement::class, 'id_kepala_dept', 'id_departement');
+        return $this->belongsTo(KepalaDepartement::class, 'kepala_dept_id', 'id_departement');
     }
 
     public function emburs()

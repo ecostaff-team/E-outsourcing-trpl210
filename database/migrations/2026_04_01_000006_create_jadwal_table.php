@@ -13,12 +13,12 @@ return new class extends Migration
             $table->enum('status', ['Aktif', 'Tidak_aktif']);
             $table->date('tanggal');
             $table->integer('dibuat_oleh');
-            $table->integer('id_shift');
+            $table->integer('shift_id');
             $table->timestamps();
 
-            $table->foreign('id_shift', 'jadwa_diatur_shift')
-                  ->references('id_shift')->on('shiift')
-                  ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('shift_id', 'jadwa_diatur_shift')
+                ->references('id_shift')->on('shiift')
+                ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

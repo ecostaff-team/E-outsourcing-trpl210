@@ -15,20 +15,24 @@ class Kehadiran extends Model
     protected $fillable = [
         'waktu_masuk',
         'waktu_keluar',
+        'waktu_telat',
         'tanggal',
         'lokasi_masuk',
         'lokasi_keluar',
-        'id_jadwal',
-        'id_tipe_kehadiran',
+        'bukti',
+        'keterangan',
+        'rekapan_kehadiran_id',
+        'jadwal_id',
+        'tipe_kehadiran_id',
     ];
 
     public function jadwal()
     {
-        return $this->belongsTo(Jadwal::class, 'id_jadwal', 'id_jadwal');
+        return $this->belongsTo(Jadwal::class, 'jadwal_id', 'id_jadwal');
     }
 
     public function tipeKehadiran()
     {
-        return $this->belongsTo(TipeKehadiran::class, 'id_tipe_kehadiran', 'id_tipe_kehadiran');
+        return $this->belongsTo(TipeKehadiran::class, 'tipe_kehadiran_id', 'id_tipe_kehadiran');
     }
 }

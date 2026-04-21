@@ -13,21 +13,8 @@ class KepalaDepartement extends Authenticatable
     protected $primaryKey = 'id_departement';
 
     protected $fillable = [
-        'nama',
-        'username',
         'nama_departement',
-        'status',
-        'email',
-        'alamat',
-        'password',
-    ];
-
-    protected $hidden = [
-        'password',
-    ];
-
-    protected $casts = [
-        'password' => 'hashed',
+        'user_id',
     ];
 
     public function karyawans()

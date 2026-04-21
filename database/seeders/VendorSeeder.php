@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Vendor;
 use Illuminate\Database\Seeder;
+use App\Models\Vendor;
 
 class VendorSeeder extends Seeder
 {
@@ -13,26 +13,26 @@ class VendorSeeder extends Seeder
      */
     public function run(): void
     {
-        Vendor::create([
-            'nama_vendor' => 'PT. EcoGreen Jaya',
-            'status' => 'aktif',
-            'no_hp' => '081234567890',
+        vendor::create([
+            'vendor_name' => 'PT. EcoGreen Jaya',
+            'status' => 'active',
+            'phone_number' => '081234567890',
             'email' => 'ecogreen@vendor.com',
             'alamat' => 'Jl. Industri No. 10, Jakarta Selatan',
         ]);
 
-        Vendor::create([
-            'nama_vendor' => 'CV. Bersih Nusantara',
-            'status' => 'aktif',
-            'no_hp' => '082345678901',
+        vendor::create([
+            'vendor_name' => 'CV. Bersih Nusantara',
+            'status' => 'active',
+            'phone_number' => '082345678901',
             'email' => 'bersihnusantara@vendor.com',
             'alamat' => 'Jl. Raya Bandung No. 25, Bandung',
         ]);
 
-        Vendor::create([
-            'nama_vendor' => 'PT. Maju Bersama',
-            'status' => 'tidak aktif',
-            'no_hp' => '083456789012',
+        vendor::create([
+            'vendor_name' => 'PT. Maju Bersama',
+            'status' => 'inactive',
+            'phone_number' => '083456789012',
             'email' => 'majubersama@vendor.com',
             'alamat' => 'Jl. Sudirman No. 100, Surabaya',
         ]);
