@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('phone_number')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->string('username');
+            $table->enum('role', ['super_admin', 'admin_vendor', 'hr', 'karyawan', 'kepala_departemen'])->default('karyawan');
+
             $table->rememberToken();
             $table->timestamps();
         });

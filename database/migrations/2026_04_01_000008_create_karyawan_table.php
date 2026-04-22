@@ -14,15 +14,20 @@ return new class extends Migration
             $table->string('alamat', 255);
             $table->date('tanggal_masuk')->nullable();
             $table->date('tanggal_keluar')->nullable();
-            $table->integer('id_admin_vendor');
-            $table->integer('id_kepala_dept');
+            $table->integer('admin_vendor_id');
+            $table->integer('kepala_dept_id');
             $table->timestamps();
 
-            $table->foreign('id_admin_vendor', 'fk_admin_vendor')
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+            ->references('id')->on('users')
+            ->onDelete('cascade')->onUpdate('cascade');
+
+            $table->foreign('admin_vendor_id', 'fk_admin_vendor')
                   ->references('id_admin_vendor')->on('admin_vendor')
                   ->onDelete('cascade')->onUpdate('cascade');
 
-            $table->foreign('id_kepala_dept', 'fk_kepala_departement')
+            $table->foreign('kepala_dept_id', 'fk_kepala_departement')
                   ->references('id_departement')->on('kepala_departement')
                   ->onDelete('cascade')->onUpdate('cascade');
         });

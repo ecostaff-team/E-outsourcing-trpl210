@@ -14,12 +14,12 @@ return new class extends Migration
             $table->timestamp('selesai_lembur')->nullable();
             $table->timestamp('tanggal_dibuat')->nullable();
             $table->enum('status', ['Lembur', 'Tidak_lembur']);
-            $table->integer('id_karyawan');
+            $table->integer('karyawan_id');
             $table->string('pemvalidasi', 255);
             $table->string('keterangan', 255);
             $table->timestamps();
 
-            $table->foreign('id_karyawan', 'fk_karyawan')
+            $table->foreign('karyawan_id', 'fk_karyawan')
                   ->references('id_karyawan')->on('karyawan')
                   ->onDelete('cascade')->onUpdate('cascade');
         });

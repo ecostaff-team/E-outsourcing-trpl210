@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class tabelRekapanDetailKaryawan extends Component
+class filterRekapan extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class tabelRekapanDetailKaryawan extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.hr.tabel-rekapan-detail-karyawan');
+        return view('components.hr.filter-rekapan');
     }
 }

@@ -23,13 +23,13 @@
             ['title' => 'Ajuan Data Karyawan', 'icon' => 'fas fa-address-book'],
             ['title' => 'Karyawan', 'icon' => 'fas fa-user-tie'],
         ]" />
-        <div class="flex-1 p-6 ml-0 min-w-0">
+        <div class="flex-1 p-4 md:p-6 ml-0 min-w-0 overflow-hidden">
 
             <!-- HEADER CONTENT -->
             <x-header>HR</x-header>
             {{-- // BUAT ISI CONTENT DIBAWAH SINIIIIIII --}}
 
-            <div class="bg-white p-8 rounded-lg shadow-lg mt-6 w-full">
+            <div class="bg-white p-4 md:p-8 rounded-lg shadow-lg mt-6 w-full">
                 <div class="flex flex-col md:flex-row md:justify-between gap-3">
                     <div class="flex items-center gap-3 mb-6">
                         <i class="fa-solid fa-table text-xl md:text-2xl text-gray-900"></i>
@@ -38,17 +38,11 @@
 
                 </div>
 
-                <div class="overflow-x-auto">
+                <div class="w-full overflow-x-auto pb-4">
                     <x-hr.tabel-karyawan></x-hr.tabel-karyawan>
                 </div>
 
-                <div class="flex justify-end mt-4 gap-1 text-sm">
-                    <button class="px-3 py-1 border rounded">Previous</button>
-                    <button class="px-3 py-1 bg-green-600 text-white rounded">1</button>
-                    <button class="px-3 py-1 border rounded">2</button>
-                    <button class="px-3 py-1 border rounded">3</button>
-                    <button class="px-3 py-1 border rounded">Next</button>
-                </div>
+                <x-hr.pagination></x-hr.pagination>
             </div>
 
 

@@ -14,8 +14,6 @@ class TipeKehadiran extends Model
 
     protected $fillable = [
         'status_kehadiran',
-        'bukti',
-        'keterangan',
     ];
 
     public function kehadirans()

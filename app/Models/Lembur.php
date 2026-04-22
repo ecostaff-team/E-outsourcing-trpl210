@@ -17,11 +17,13 @@ class Lembur extends Model
         'selesai_lembur',
         'tanggal_dibuat',
         'status',
-        'id_karyawan',
+        'karyawan_id',
+        'pemvalidasi',
+        'keterangan',
     ];
 
     public function karyawan()
     {
-        return $this->belongsTo(Karyawan::class, 'id_karyawan', 'id_karyawan');
+        return $this->belongsTo(Karyawan::class, 'karyawan_id', 'id_karyawan');
     }
 }
