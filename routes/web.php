@@ -23,4 +23,4 @@ Route::get('/superAdmin', function () {
 });
 Route::get('/karyawanOutsourcing', function () {
     return view('karyawanOutsourcing.dashboardKaryawan');
-});
+}); 
