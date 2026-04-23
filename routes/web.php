@@ -23,11 +23,10 @@ Route::get('/superAdmin', function () {
 });
 Route::get('/karyawanOutsourcing', function () {
     return view('karyawanOutsourcing.dashboardKaryawan');
-<<<<<<< HEAD
 });
+
 Route::get('/karyawanOutsourcing/jadwal-karyawan', function () {
     return view('karyawanOutsourcing.jadwalKaryawan');
 });
-=======
-}); 
->>>>>>> 82d2c24550c4daf5e49e94d50bce0a085c379854
+
+
