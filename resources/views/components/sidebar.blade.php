@@ -20,16 +20,15 @@ md:translate-x-0 z-50 shadow-2xl">
         <hr class="border-white/30 mx-4">
 
         <!-- MENU -->
-        <ul id="sidebar-menu">
+        <ul id="sidebar-menu" class="mt-8 ml-4">
             @foreach ($menus as $menu)
                 <li>
-                    <a href="#"
+                    <a href="{{ $menu['ref']}}"
                         class="flex items-center gap-3 text-lg font-medium px-4 py-2 rounded-l-xl
-                                   transition-all duration-300 hover:bg-white/20 hover:pl-6">
+                                transition-all duration-300 hover:bg-gradient-to-r hover:to-green-400 from-white/20 hover:pl-6">
                         <i class="{{ $menu['icon'] }}"></i>
                         {{ $menu['title'] }}
                     </a>
-
                 </li>
             @endforeach
         </ul>

@@ -18,10 +18,10 @@
     <div class="flex">
         {{-- SIDEBAR --}}
         <x-sidebar :menus="[
-            ['title' => 'Dashboard', 'icon' => 'fas fa-book'],
-            ['title' => 'Rekapan Detail', 'icon' => 'fas fa-user-group'],
-            ['title' => 'Ajuan Data Karyawan', 'icon' => 'fas fa-address-book'],
-            ['title' => 'Karyawan', 'icon' => 'fas fa-user-tie'],
+            ['title' => 'Dashboard', 'icon' => 'fas fa-book', 'ref' => '#'],
+            ['title' => 'Rekapan Detail', 'icon' => 'fas fa-user-group','ref' => '#'],
+            ['title' => 'Ajuan Data Karyawan', 'icon' => 'fas fa-address-book','ref' => '#'],
+            ['title' => 'Karyawan', 'icon' => 'fas fa-user-tie','ref' => '#'],
         ]" />
         <div class="flex-1 p-4 md:p-6 ml-0 min-w-0 overflow-hidden">
 

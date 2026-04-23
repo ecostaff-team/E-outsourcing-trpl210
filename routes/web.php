@@ -1,21 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-/* LOGINNN */
-//use App\Livewire\Auth\Login;
-
-//Route::post('/login', Login::class)->name('login');
-/* SELSAI LOGIN */
-
-//Route::livewire('/post/create', 'pages::post.create');
-
-// Route::get('/', Login::class)->name('login');
 
 use App\Http\Controllers\AuthController;
 
 Route::get('/', [AuthController::class, 'login'])->name('login');
 
-
+Route::get('/kepala-departemen/dashboard', function () {
+    return view('livewire.dashboard');
+});
 
 Route::get('/admin-outsourcing', function () {
     return view('adminOutsourcing.dashboard');
@@ -51,6 +44,10 @@ Route::get('/super-admin', function () {
 
 Route::get('/kepala-departemen', function () {
     return view('kepala-departement.dashboard');
+});
+
+Route::get('/kepala-departemen/karyawan', function () {
+    return view('kepala-departement.karyawan');
 });
 
 Route::get('/karyawan', function () {
