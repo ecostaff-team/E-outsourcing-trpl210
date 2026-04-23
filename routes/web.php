@@ -21,3 +21,6 @@ Route::get('/pengajuan-karyawan', function () {
 Route::get('/superAdmin', function () {
     return view('superAdmin.dashboardAdmin');
 });
+Route::get('/karyawanOutsourcing', function () {
+    return view('karyawanOutsourcing.dashboardKaryawan');
+});
