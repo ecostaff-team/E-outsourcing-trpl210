@@ -123,7 +123,7 @@
 
 
                     <!-- CONTENT -->
-                    <div class="flex-1 p-6">
+                    <div class="flex-1 p-4 md:p-6 max-w-7xl mx-auto">
 
 
                         <!-- HEADER -->
@@ -235,7 +235,7 @@
                         </div>
 
 
-                        <div class="grid md:grid-cols-2 gap-4 mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
 
                             <div class="bg-white p-4 rounded-xl border-l-4 border-red-500">
 
@@ -267,7 +267,7 @@
                                 Form Absensi
                             </h2>
 
-                            <div class="flex gap-3 mb-4">
+                            <div class="flex flex-col md:flex-row gap-3 mb-4">
 
                                 <button onclick="absenMasuk()" class="flex-1 bg-emerald-600 text-white py-2 rounded-lg">
                                     Absen Masuk
@@ -292,350 +292,354 @@
                                     Lokasi GPS
                                 </label>
 
-                                <div id="map" class="w-full h-56 bg-gray-200 rounded-lg">
-                                </div>
-
+                                <div id="map" class="w-full h-48 md:h-56 rounded-lg"></div>
                             </div>
-
-
-                            <button onclick="simpanAbsensi()"
-                                class="w-full bg-emerald-600 text-white py-3 rounded-lg font-semibold">
-                                Simpan Absensi
-                            </button>
-
-                            <div class="bg-white rounded-xl shadow p-6 mt-6">
-                                <div class="flex justify-between items-center mb-4">
-                                    <h2 class="font-semibold">
-                                        Rekap Kehadiran Pribadi
-                                    </h2>
-
-                                    <select class="border rounded-lg px-3 py-1 text-sm">
-                                        <option>2026</option>
-                                        <option>2025</option>
-                                    </select>
-                                </div>
-
-                                <canvas id="grafikAbsensi" height="100"></canvas>
-                            </div>
-
-
-
 
                         </div>
 
+
+                        <button onclick="simpanAbsensi()"
+                            class="w-full bg-emerald-600 text-white py-3 rounded-lg font-semibold">
+                            Simpan Absensi
+                        </button>
+
+                        <div class="bg-white rounded-xl shadow p-6 mt-6">
+
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-2 mb-4">
+                                <h2 class="font-semibold text-sm md:text-base">
+                                    Rekap Kehadiran Pribadi
+                                </h2>
+
+                                <select class="border rounded-lg px-3 py-1 text-sm w-full md:w-auto">
+                                    <option>2026</option>
+                                    <option>2025</option>
+                                </select>
+                            </div>
+
+                            <div class="w-full overflow-x-auto">
+                                <div class="min-w-[500px] md:min-w-full h-[250px] md:h-[300px]">
+                                    <canvas id="grafikAbsensi"></canvas>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
                     </div>
 
+                </div>
 
 
 
-                    <script>
-                        let sudahMasuk = false
-                        let sudahKeluar = false
-                        let tipeAbsensi = null
-                        let jadwalDipilih = null
-                        let lokasi = null
 
-                        // 🔥 MAP CONFIG
-                        const kantor = {
-                            lat: 1.134658,
-                            lng: 104.053451
+                <script>
+                    let sudahMasuk = false
+                    let sudahKeluar = false
+                    let tipeAbsensi = null
+                    let jadwalDipilih = null
+                    let lokasi = null
+
+                    // 🔥 MAP CONFIG
+                    const kantor = {
+                        lat: 1.134658,
+                        lng: 104.053451
+                    }
+
+                    const radiusKantor = 100
+
+                    let map
+                    let markerUser
+                    let circle
+
+                    function pilihJadwal(nama, masuk, keluar) {
+
+                        jadwalDipilih = {
+                            nama,
+                            masuk,
+                            keluar
                         }
 
-                        const radiusKantor = 100
+                        // reset semua
+                        document.querySelectorAll("#jadwalContainer div")
+                            .forEach(el => el.classList.remove("border-emerald-500", "border-2"))
 
-                        let map
-                        let markerUser
-                        let circle
+                        event.currentTarget.classList.add("border-emerald-500", "border-2")
 
-                        function pilihJadwal(nama, masuk, keluar) {
+                    }
 
-                            jadwalDipilih = {
-                                nama,
-                                masuk,
-                                keluar
+
+                    function absenMasuk() {
+
+                        if (!jadwalDipilih) {
+                            alert("Pilih jadwal dulu")
+                            return
+                        }
+
+                        tipeAbsensi = "masuk"
+
+                        document.getElementById("statusMasuk")
+                            .innerHTML = "⏳ Mengambil Lokasi..."
+
+                        getLokasi()
+
+                    }
+
+                    function absenKeluar() {
+
+                        if (!jadwalDipilih) {
+                            alert("Pilih jadwal dulu")
+                            return
+                        }
+
+                        tipeAbsensi = "keluar"
+
+                        document.getElementById("statusKeluar")
+                            .innerHTML = "⏳ Mengambil Lokasi..."
+
+                        getLokasi()
+
+                    }
+
+
+                    function getLokasi() {
+
+                        // Random lokasi sekitar kantor (dummy)
+                        const dalamRadius = Math.random() > 0.5
+
+                        if (dalamRadius) {
+
+                            // Dalam radius (berhasil)
+                            lokasi = {
+                                lat: kantor.lat,
+                                lng: kantor.lng
                             }
 
-                            // reset semua
-                            document.querySelectorAll("#jadwalContainer div")
-                                .forEach(el => el.classList.remove("border-emerald-500", "border-2"))
-
-                            event.currentTarget.classList.add("border-emerald-500", "border-2")
-
-                        }
-
-
-                        function absenMasuk() {
-
-                            if (!jadwalDipilih) {
-                                alert("Pilih jadwal dulu")
-                                return
-                            }
-
-                            tipeAbsensi = "masuk"
-
-                            document.getElementById("statusMasuk")
-                                .innerHTML = "⏳ Mengambil Lokasi..."
-
-                            getLokasi()
-
-                        }
-
-                        function absenKeluar() {
-
-                            if (!jadwalDipilih) {
-                                alert("Pilih jadwal dulu")
-                                return
-                            }
-
-                            tipeAbsensi = "keluar"
-
-                            document.getElementById("statusKeluar")
-                                .innerHTML = "⏳ Mengambil Lokasi..."
-
-                            getLokasi()
-
-                        }
-
-
-                        function getLokasi() {
-
-                            // Random lokasi sekitar kantor (dummy)
-                            const dalamRadius = Math.random() > 0.5
-
-                            if (dalamRadius) {
-
-                                // Dalam radius (berhasil)
-                                lokasi = {
-                                    lat: kantor.lat,
-                                    lng: kantor.lng
-                                }
-
-                            } else {
-
-                                // Diluar radius (gagal)
-                                lokasi = {
-                                    lat: kantor.lat + 0.002,
-                                    lng: kantor.lng + 0.002
-                                }
-
-                            }
-
-
-                            // Marker User
-                            if (markerUser) {
-                                map.removeLayer(markerUser)
-                            }
-
-                            markerUser = L.marker([lokasi.lat, lokasi.lng])
-                                .addTo(map)
-                                .bindPopup("Lokasi Dummy")
-                                .openPopup()
-
-                            map.setView([lokasi.lat, lokasi.lng], 17)
-
-                        }
-
-                        function simpanAbsensi() {
-
-                            if (!lokasi) {
-                                alert("Lokasi belum diambil")
-                                return
-                            }
-
-                            cekRadius()
-
-                        }
-
-
-                        function updateJam() {
-
-                            const now = new Date()
-
-                            document.getElementById("waktu").value =
-                                now.toLocaleTimeString()
-
-                        }
-
-                        updateJam()
-                        setInterval(updateJam, 1000)
-
-
-
-
-
-                        function initMap() {
-
-                            map = L.map('map').setView([1.134658, 104.053451], 17)
-
-                            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                maxZoom: 19
-                            }).addTo(map)
-
-
-                            // Marker Kantor
-                            L.marker([kantor.lat, kantor.lng])
-                                .addTo(map)
-                                .bindPopup("Lokasi Kantor")
-                                .openPopup()
-
-
-                            // Radius Kantor
-                            circle = L.circle([kantor.lat, kantor.lng], {
-                                color: 'green',
-                                fillColor: '#22c55e',
-                                fillOpacity: 0.2,
-                                radius: radiusKantor
-                            }).addTo(map)
-
-                        }
-
-                        function cekRadius() {
-
-                            const jarak = map.distance(
-                                [lokasi.lat, lokasi.lng],
-                                [kantor.lat, kantor.lng]
-                            )
-
-                            console.log("Jarak:", jarak)
-
-                            if (jarak <= radiusKantor) {
-
-                                if (tipeAbsensi == "masuk") {
-
-                                    sudahMasuk = true
-
-                                    document.getElementById("statusMasuk")
-                                        .innerHTML = "✅ Sudah Absen Masuk"
-
-                                }
-
-                                if (tipeAbsensi == "keluar") {
-
-                                    sudahKeluar = true
-
-                                    document.getElementById("statusKeluar")
-                                        .innerHTML = "✅ Sudah Absen Keluar"
-
-                                    alert("Absen Keluar Berhasil")
-
-                                }
-
-                            } else {
-
-                                alert("❌ Anda di luar area kantor")
-
-                                if (tipeAbsensi == "masuk") {
-
-                                    document.getElementById("statusMasuk")
-                                        .innerHTML = "❌ Diluar Area Kantor"
-
-                                }
-
-                                if (tipeAbsensi == "keluar") {
-
-                                    document.getElementById("statusKeluar")
-                                        .innerHTML = "❌ Diluar Area Kantor"
-
-                                }
-
+                        } else {
+
+                            // Diluar radius (gagal)
+                            lokasi = {
+                                lat: kantor.lat + 0.002,
+                                lng: kantor.lng + 0.002
                             }
 
                         }
-                        window.addEventListener("load", function() {
 
-                            setTimeout(() => {
 
-                                initMap()
-                                loadGrafik()
+                        // Marker User
+                        if (markerUser) {
+                            map.removeLayer(markerUser)
+                        }
 
-                            }, 300)
+                        markerUser = L.marker([lokasi.lat, lokasi.lng])
+                            .addTo(map)
+                            .bindPopup("Lokasi Dummy")
+                            .openPopup()
 
-                        })
+                        map.setView([lokasi.lat, lokasi.lng], 17)
 
-                        function updateTanggal() {
+                    }
 
-                            const now = new Date()
+                    function simpanAbsensi() {
 
-                            const tanggal =
-                                now.toLocaleDateString('id-ID', {
-                                    year: 'numeric',
-                                    month: 'long',
-                                    day: 'numeric'
-                                })
+                        if (!lokasi) {
+                            alert("Lokasi belum diambil")
+                            return
+                        }
 
-                            document.getElementById("tanggalMasuk")
-                                .innerHTML = "ABSEN MASUK — " + tanggal
+                        cekRadius()
 
-                            document.getElementById("tanggalKeluar")
-                                .innerHTML = "ABSEN KELUAR — " + tanggal
+                    }
+
+
+                    function updateJam() {
+
+                        const now = new Date()
+
+                        document.getElementById("waktu").value =
+                            now.toLocaleTimeString()
+
+                    }
+
+                    updateJam()
+                    setInterval(updateJam, 1000)
+
+
+
+
+
+                    function initMap() {
+
+                        map = L.map('map').setView([1.134658, 104.053451], 17)
+
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            maxZoom: 19
+                        }).addTo(map)
+
+
+                        // Marker Kantor
+                        L.marker([kantor.lat, kantor.lng])
+                            .addTo(map)
+                            .bindPopup("Lokasi Kantor")
+                            .openPopup()
+
+
+                        // Radius Kantor
+                        circle = L.circle([kantor.lat, kantor.lng], {
+                            color: 'green',
+                            fillColor: '#22c55e',
+                            fillOpacity: 0.2,
+                            radius: radiusKantor
+                        }).addTo(map)
+
+                    }
+
+                    function cekRadius() {
+
+                        const jarak = map.distance(
+                            [lokasi.lat, lokasi.lng],
+                            [kantor.lat, kantor.lng]
+                        )
+
+                        console.log("Jarak:", jarak)
+
+                        if (jarak <= radiusKantor) {
+
+                            if (tipeAbsensi == "masuk") {
+
+                                sudahMasuk = true
+
+                                document.getElementById("statusMasuk")
+                                    .innerHTML = "✅ Sudah Absen Masuk"
+
+                            }
+
+                            if (tipeAbsensi == "keluar") {
+
+                                sudahKeluar = true
+
+                                document.getElementById("statusKeluar")
+                                    .innerHTML = "✅ Sudah Absen Keluar"
+
+                                alert("Absen Keluar Berhasil")
+
+                            }
+
+                        } else {
+
+                            alert("❌ Anda di luar area kantor")
+
+                            if (tipeAbsensi == "masuk") {
+
+                                document.getElementById("statusMasuk")
+                                    .innerHTML = "❌ Diluar Area Kantor"
+
+                            }
+
+                            if (tipeAbsensi == "keluar") {
+
+                                document.getElementById("statusKeluar")
+                                    .innerHTML = "❌ Diluar Area Kantor"
+
+                            }
 
                         }
 
-                        updateTanggal()
-                    </script>
-                    <script>
-                        let chartInstance = null
+                    }
+                    window.addEventListener("load", function() {
 
-                        function loadGrafik() {
+                        setTimeout(() => {
 
-                            const ctx = document.getElementById('grafikAbsensi').getContext('2d')
+                            initMap()
+                            loadGrafik()
 
-                            if (chartInstance) {
-                                chartInstance.destroy()
-                            }
+                        }, 300)
 
-                            const bulan = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"]
+                    })
 
-                            const hadir = [20, 18, 22, 19, 21, 20, 23, 22, 21, 19, 20, 22]
-                            const alpha = [2, 3, 1, 2, 1, 2, 0, 1, 1, 2, 1, 1]
-                            const izin = [1, 2, 2, 1, 2, 1, 1, 2, 1, 1, 2, 1]
-                            const lembur = [5, 4, 6, 3, 5, 4, 6, 5, 4, 3, 4, 5]
+                    function updateTanggal() {
 
-                            chartInstance = new Chart(ctx, {
-                                type: 'bar',
-                                data: {
-                                    labels: bulan,
-                                    datasets: [{
-                                            label: 'Hadir',
-                                            data: hadir,
-                                            backgroundColor: '#22c55e'
-                                        },
-                                        {
-                                            label: 'Alpha',
-                                            data: alpha,
-                                            backgroundColor: '#ef4444'
-                                        },
-                                        {
-                                            label: 'Izin/Sakit',
-                                            data: izin,
-                                            backgroundColor: '#facc15'
-                                        },
-                                        {
-                                            label: 'Lembur',
-                                            data: lembur,
-                                            backgroundColor: '#a855f7'
-                                        }
-                                    ]
-                                },
-                                options: {
-                                    responsive: true,
-                                    plugins: {
-                                        legend: {
-                                            position: 'top'
-                                        }
+                        const now = new Date()
+
+                        const tanggal =
+                            now.toLocaleDateString('id-ID', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                            })
+
+                        document.getElementById("tanggalMasuk")
+                            .innerHTML = "ABSEN MASUK — " + tanggal
+
+                        document.getElementById("tanggalKeluar")
+                            .innerHTML = "ABSEN KELUAR — " + tanggal
+
+                    }
+
+                    updateTanggal()
+                </script>
+                <script>
+                    let chartInstance = null
+
+                    function loadGrafik() {
+
+                        const ctx = document.getElementById('grafikAbsensi').getContext('2d')
+
+                        if (chartInstance) {
+                            chartInstance.destroy()
+                        }
+
+                        const bulan = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"]
+
+                        const hadir = [20, 18, 22, 19, 21, 20, 23, 22, 21, 19, 20, 22]
+                        const alpha = [2, 3, 1, 2, 1, 2, 0, 1, 1, 2, 1, 1]
+                        const izin = [1, 2, 2, 1, 2, 1, 1, 2, 1, 1, 2, 1]
+                        const lembur = [5, 4, 6, 3, 5, 4, 6, 5, 4, 3, 4, 5]
+
+                        chartInstance = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: bulan,
+                                datasets: [{
+                                        label: 'Hadir',
+                                        data: hadir,
+                                        backgroundColor: '#22c55e'
                                     },
-                                    scales: {
-                                        x: {
-                                            stacked: false
-                                        },
-                                        y: {
-                                            beginAtZero: true
-                                        }
+                                    {
+                                        label: 'Alpha',
+                                        data: alpha,
+                                        backgroundColor: '#ef4444'
+                                    },
+                                    {
+                                        label: 'Izin/Sakit',
+                                        data: izin,
+                                        backgroundColor: '#facc15'
+                                    },
+                                    {
+                                        label: 'Lembur',
+                                        data: lembur,
+                                        backgroundColor: '#a855f7'
+                                    }
+                                ]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: {
+                                        position: 'top'
+                                    }
+                                },
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
                                     }
                                 }
-                            })
-                        }
-                    </script>
+                            }
+                        })
+                    }
+                </script>
             </body>
 
             </html>

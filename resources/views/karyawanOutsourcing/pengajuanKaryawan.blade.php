@@ -246,7 +246,7 @@
                                     </div>
                                     <div>
                                         <label class="inp-label">Email <span class="req">*</span></label>
-                                        <input id="email0" type="email" value="ranggaracing@gmail.com" readonly class="inp">
+                                        <input id="email0" type="email" value="rangga@gmail.com" readonly class="inp">
                                     </div>
                                     <div>
                                         <label class="inp-label">Tanggal Lembur <span class="req">*</span></label>
@@ -322,7 +322,7 @@
                                     </div>
                                     <div>
                                         <label class="inp-label">Email <span class="req">*</span></label>
-                                        <input id="email1" type="email" value="ranggaracing@gmail.com" readonly class="inp">
+                                        <input id="email1" type="email" value="rangga@gmail.com" readonly class="inp">
                                     </div>
                                     <div>
                                         <label class="inp-label">Tanggal Lembur <span class="req">*</span></label>

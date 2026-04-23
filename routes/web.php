@@ -27,3 +27,9 @@ Route::get('/karyawanOutsourcing', function () {
 Route::get('/karyawanOutsourcing/pengajuanKaryawan', function () {
     return view('karyawanOutsourcing.pengajuanKaryawan');
 });
+
+Route::get('/karyawanOutsourcing/jadwal-karyawan', function () {
+    return view('karyawanOutsourcing.jadwalKaryawan');
+});
+
+
