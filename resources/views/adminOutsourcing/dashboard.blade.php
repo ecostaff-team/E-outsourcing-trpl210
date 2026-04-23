@@ -9,6 +9,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
 </head>
 
 <body class="bg-gray-100">
@@ -50,12 +51,12 @@
                 </div>
 
                 <div class="bg-white border border-gray-200 rounded-xl p-4 flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-lg bg-yellow-100 flex items-center justify-center text-yellow-600 flex-shrink-0">
+                    <div class="w-10 h-10 rounded-lg bg-yellow-100 flex items-center justify-center text-yellow-500 flex-shrink-0">
                         <i class="fa-solid fa-file-medical"></i>
                     </div>
                     <div class="flex-1 text-center">
                         <div class="text-xs text-gray-500 uppercase tracking-wide font-medium">Sakit / Izin</div>
-                        <div class="text-2xl font-extrabold text-yellow-600 leading-tight">10</div>
+                        <div class="text-2xl font-extrabold text-yellow-500 leading-tight">10</div>
                         <div class="text-xs text-gray-400">10 hari</div>
                     </div>
                 </div>
@@ -154,6 +155,57 @@
                         <button class="flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white font-semibold text-sm px-4 py-2 rounded-lg transition">
                             <i class="fa-solid fa-check"></i> Setujui Rekap
                         </button>
+                    </div>
+                </div>
+
+                {{-- Rentang Tanggal --}}
+                <div class="flex flex-col sm:flex-row gap-2 mb-4 mt-2">
+                    <div class="relative w-64">
+
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="far fa-calendar text-gray-500"></i>
+                        </div>
+
+                        <select
+                            class="w-full border rounded-lg pl-9 pr-3 py-2 text-sm text-gray-700 focus:ring-2 focus:ring-green-500 outline-none appearance-none bg-white cursor-pointer shadow-sm">
+                            <option>Pilih Rentang Tanggal</option>
+                            <option>Hari Ini</option>
+                            <option>3 Hari Terakhir</option>
+                            <option>7 Hari Terakhir</option>
+                            <option>Bulan Ini</option>
+                            <option>Bulan Lalu</option>
+                        </select>
+
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <i class="fas fa-chevron-down text-gray-500 text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- CHART --}}
+                <div class="mt-6 pt-5 border-t border-gray-100">
+                    <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-chart-column text-green-700 text-sm"></i>
+                            <span class="font-bold text-gray-800 text-sm">Rekap Kehadiran Bulanan</span>
+                        </div>
+                        <div class="flex items-center gap-4 text-xs text-gray-500">
+                            <span class="flex items-center gap-1.5">
+                                <span class="inline-block w-2.5 h-2.5 rounded-sm bg-green-600"></span> Hadir
+                            </span>
+                            <span class="flex items-center gap-1.5">
+                                <span class="inline-block w-2.5 h-2.5 rounded-sm bg-red-600"></span> Alpha
+                            </span>
+                            <span class="flex items-center gap-1.5">
+                                <span class="inline-block w-2.5 h-2.5 rounded-sm bg-yellow-500"></span> Sakit/Izin
+                            </span>
+                            <span class="flex items-center gap-1.5">
+                                <span class="inline-block w-2.5 h-2.5 rounded-sm bg-purple-500"></span> Lembur
+                            </span>
+                        </div>
+                    </div>
+                    <div class="relative w-full" style="height:220px">
+                        <canvas id="chartRekap"></canvas>
                     </div>
                 </div>
 
@@ -298,6 +350,82 @@
         }
 
         renderTable(); // jalankan saat halaman load
+    </script>
+
+    <script>
+        const monthlyData = {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+            H: [45, 42, 45, 38, 47, 44, 46, 43, 45, 40, 42, 44],
+            A: [7, 5, 7, 6, 4, 5, 3, 6, 5, 8, 6, 4],
+            SI: [6, 8, 6, 7, 5, 7, 6, 5, 7, 6, 7, 8],
+            L: [8, 6, 9, 5, 7, 8, 6, 9, 7, 5, 8, 7],
+        };
+
+        let chartInstance = null;
+
+        function renderChart() {
+            if (chartInstance) chartInstance.destroy();
+            chartInstance = new Chart(document.getElementById('chartRekap'), {
+                type: 'bar',
+                data: {
+                    labels: monthlyData.labels,
+                    datasets: [{
+                            label: 'Hadir',
+                            data: monthlyData.H,
+                            backgroundColor: '#00A63E',
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Alpha',
+                            data: monthlyData.A,
+                            backgroundColor: '#EF4444',
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Sakit/Izin',
+                            data: monthlyData.SI,
+                            backgroundColor: '#EAB308',
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Lembur',
+                            data: monthlyData.L,
+                            backgroundColor: '#9333EA',
+                            borderRadius: 4
+                        },
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 10
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        const _orig = renderTable;
+        renderTable = () => {
+            _orig();
+            renderChart();
+        };
+        renderTable();
     </script>
 
 </body>

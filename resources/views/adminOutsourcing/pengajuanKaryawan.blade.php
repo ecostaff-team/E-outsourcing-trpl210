@@ -32,8 +32,8 @@
             {{-- HEADER --}}
             <x-header>Admin Outsourcing</x-header>
 
-            <div class="flex justify-center items-center min-h-screen bg-gray-100 p-4">
-                <div class="bg-white shadow-lg w-full max-w p-8">
+            <div class="flex justify-center items-center bg-gray-100 p-4">
+                <div class="bg-white shadow-lg w-full p-8">
                     <h2 class="text-2xl font-bold text-center text-gray-900 mb-8">Form Pengajuan Karyawan</h2>
 
                     <form action="#" method="POST" class="space-y-5">

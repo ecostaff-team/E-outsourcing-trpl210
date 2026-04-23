@@ -13,13 +13,13 @@ class Vendor extends Model
     protected $primaryKey = 'id_vendor';
 
     protected $fillable = [
-        'nama_vendor',
+        'vendor_name',
         'status',
-        'no_hp',
+        'phone_number',
         'email',
         'alamat',
     ];
-
+    
     public function adminVendors()
     {
         return $this->hasMany(AdminVendor::class, 'asal_vendor', 'id_vendor');

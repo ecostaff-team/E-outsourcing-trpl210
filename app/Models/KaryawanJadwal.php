@@ -13,17 +13,17 @@ class KaryawanJadwal extends Model
     protected $primaryKey = 'id_relasi';
 
     protected $fillable = [
-        'id_karyawan',
-        'id_jadwal',
+        'karyawan_id',
+        'jadwal_id',
     ];
 
     public function karyawan()
     {
-        return $this->belongsTo(Karyawan::class, 'id_karyawan', 'id_karyawan');
+        return $this->belongsTo(Karyawan::class, 'karyawan_id', 'id_karyawan');
     }
 
     public function jadwal()
     {
-        return $this->belongsTo(Jadwal::class, 'id_jadwal', 'id_jadwal');
+        return $this->belongsTo(Jadwal::class, 'jadwal_id', 'id_jadwal');
     }
 }

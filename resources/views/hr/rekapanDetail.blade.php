@@ -23,50 +23,36 @@
             ['title' => 'Ajuan Data Karyawan', 'icon' => 'fas fa-address-book'],
             ['title' => 'Karyawan', 'icon' => 'fas fa-user-tie'],
         ]" />
-        <div class="flex-1 p-6 ml-0">
+        <div class="flex-1 p-6 ml-0 min-w-0">
 
             <!-- HEADER CONTENT -->
             <x-header>HR</x-header>
             {{-- // BUAT ISI CONTENT DIBAWAH SINIIIIIII --}}
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6 mt-6">
+                <x-hr.hr-rekapan-detail-card title="Total Hadir" value="78" subtext="80% hadir" icon="fas fa-user-check"
+                    borderColor="hover:border-green-200" textColor="text-green-600" iconBg="bg-green-100"
+                    iconColor="text-green-600" />
 
+                <x-hr.hr-rekapan-detail-card title="Total Alpha" value="10" subtext="10 hari" icon="fas fa-user-times"
+                    borderColor="hover:border-red-200" textColor="text-red-600" iconBg="bg-red-100"
+                    iconColor="text-red-600" />
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 mt-6">
-                <x-hr.hr-stat-card title="Karyawan OS Aktif" value="5" subtext="dari 87 terdaftar"
-                    icon="fas fa-users" borderColor="border-green-500" textColor="text-green-500"></x-hr.hr-stat-card>
-                <x-hr.hr-stat-card title="Total Menit Lembur" value="870" subtext="Bulan Maret 2025"
-                    icon="fas fa-clock" borderColor="border-orange-400" textColor="text-orange-500"></x-hr.hr-stat-card>
-                <x-hr.hr-stat-card title="Ajuan Rekap Pending" value="2" subtext="Menunggu persetujuan"
-                    icon="fas fa-clipboard-list" borderColor="border-indigo-500"
-                    textColor="text-indigo-600"></x-hr.hr-stat-card>
+                <x-hr.hr-rekapan-detail-card title="Sakit / Izin" value="10" subtext="10 hari" icon="fas fa-file-medical"
+                    borderColor="hover:border-yellow-200" textColor="text-yellow-500" iconBg="bg-yellow-100"
+                    iconColor="text-yellow-600" />
+
+                <x-hr.hr-rekapan-detail-card title="Jml Karyawan" value="5" subtext="Karyawan Aktif" icon="fas fa-users"
+                    borderColor="hover:border-indigo-200" textColor="text-indigo-600" iconBg="bg-indigo-100"
+                    iconColor="text-indigo-600" />
             </div>
 
+            <x-hr.filter-rekapan></x-hr.filter-rekapan>
 
-            <div class="bg-white p-8 rounded-lg shadow-lg mt-6">
-                <div class="flex flex-col md:flex-row md:justify-between gap-3">
-                    <div class="flex items-center gap-3 mb-6">
-                        <i class="far fa-calendar text-2xl md:text-1xl text-gray-900"></i>
-                        <h2 class="text-lg md:text-xl font-bold text-gray-900">Rekapan Detail Karyawan per Bulan</h2>
-                    </div>
-
-                </div>
-
-                <div class="overflow-x-auto">
-                    <x-hr.tabel-rekapan-detail-karyawan></x-hr.tabel-rekapan-detail-karyawan>
-                </div>
-
-                <div class="flex justify-end mt-4 gap-1 text-sm">
-                    <button class="px-3 py-1 border rounded">Previous</button>
-                    <button class="px-3 py-1 bg-green-600 text-white rounded">1</button>
-                    <button class="px-3 py-1 border rounded">2</button>
-                    <button class="px-3 py-1 border rounded">3</button>
-                    <button class="px-3 py-1 border rounded">Next</button>
-                </div>
-            </div>
+            <x-hr.tabel-rekapan></x-hr.tabel-rekapan>
 
 
             {{-- SELESAI CONTENT --}}
         </div>
-
     </div>
 
 </body>

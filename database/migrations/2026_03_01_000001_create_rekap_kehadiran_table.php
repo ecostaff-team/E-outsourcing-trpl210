@@ -26,8 +26,6 @@ return new class extends Migration
             $table->date('tanggal_validasi')->nullable();
             $table->enum('status_validasi', ['Valid', 'Tidak_Valid']);
             $table->date('tanggal_rekap')->nullable();
-            $table->integer('id_karyawan');
-            $table->integer('id_kehadiran');
         });
     }
 

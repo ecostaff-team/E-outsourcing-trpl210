@@ -1,12 +1,12 @@
-<div class="overflow-x-auto">
+<div>
     <table class="w-full text-sm border-separate border-spacing-y-2">
         <thead class="bg-green-100 text-gray-600">
-            <tr class="shadow-sm border border-gray-100">
+            <tr class="shadow-sm hover:shadow-md hover:-translate-y-0.5 transition border border-gray-100">
                 <th class="p-2 md:p-3 text-center text-xs md:text-sm whitespace-nowrap">No</th>
                 <th class="p-2 md:p-3 text-center text-xs md:text-sm whitespace-nowrap">NIP</th>
                 <th class="p-2 md:p-3 text-left text-xs md:text-sm whitespace-nowrap">Nama Karyawan</th>
                 <th class="p-2 md:p-3 text-left text-xs md:text-sm whitespace-nowrap">Email</th>
-                <th class="p-2 md:p-3 text-left text-xs md:text-sm min-w-[200px]">Alamat</th>
+                <th class="p-2 md:p-3 text-left text-xs md:text-sm min-w-50">Alamat</th>
                 <th class="p-2 md:p-3 text-center text-xs md:text-sm whitespace-nowrap">Tanggal Masuk</th>
                 <th class="p-2 md:p-3 text-center text-xs md:text-sm whitespace-nowrap">Tanggal Keluar</th>
                 <th class="p-2 md:p-3 text-center text-xs md:text-sm whitespace-nowrap">No Telp</th>

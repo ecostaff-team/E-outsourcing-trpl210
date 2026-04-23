@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\KepalaDepartement;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class KepalaDepartementSeeder extends Seeder
@@ -13,34 +14,20 @@ class KepalaDepartementSeeder extends Seeder
      */
     public function run(): void
     {
+        $userKepalaDepartement = User::where('role', 'kepala_departemen')->take(3)->get();
         KepalaDepartement::create([
-            'nama' => 'Ahmad Wijaya',
-            'username' => 'kepala_it',
             'nama_departement' => 'IT',
-            'status' => 'Aktif',
-            'email' => 'ahmad@ecogreen.com',
-            'alamat' => 'Jl. Teknologi No. 5, Jakarta',
-            'password' => 'password123',
+            'user_id' => $userKepalaDepartement[0]->id
         ]);
 
         KepalaDepartement::create([
-            'nama' => 'Diana Putri',
-            'username' => 'kepala_hr',
             'nama_departement' => 'Human Resources',
-            'status' => 'Aktif',
-            'email' => 'diana@ecogreen.com',
-            'alamat' => 'Jl. SDM No. 12, Jakarta',
-            'password' => 'password123',
+            'user_id' => $userKepalaDepartement[1]->id
         ]);
 
         KepalaDepartement::create([
-            'nama' => 'Riko Firmansyah',
-            'username' => 'kepala_ops',
             'nama_departement' => 'Operasional',
-            'status' => 'Aktif',
-            'email' => 'riko@ecogreen.com',
-            'alamat' => 'Jl. Operasi No. 8, Jakarta',
-            'password' => 'password123',
+            'user_id' => $userKepalaDepartement[2]->id
         ]);
     }
 }

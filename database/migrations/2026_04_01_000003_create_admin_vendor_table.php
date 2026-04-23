@@ -10,15 +10,20 @@ return new class extends Migration
     {
         Schema::create('admin_vendor', function (Blueprint $table) {
             $table->integer('id_admin_vendor')->autoIncrement();
-            $table->integer('asal_vendor');
+            $table->integer('vendor_id');
             $table->timestamps();
 
-            $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')
+            $table->integer('hr_id');
+            $table->foreign('hr_id')
+            ->references('id_hr')->on('hr')
+            ->onDelete('cascade')->onUpdate('cascade');
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
             ->references('id')->on('users')
             ->onDelete('cascade')->onUpdate('cascade');
 
-            $table->foreign('asal_vendor', 'berasal_dari_vendor')
+            $table->foreign('vendor_id', 'berasal_dari_vendor')
                 ->references('id_vendor')->on('vendor')
                 ->onDelete('cascade')->onUpdate('cascade');
         });
