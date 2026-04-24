@@ -29,6 +29,8 @@
             <x-header>HR</x-header>
             {{-- // BUAT ISI CONTENT DIBAWAH SINIIIIIII --}}
 
+            <x-hr.filter-data-karyawan></x-hr.filter-data-karyawan>
+
             <div class="bg-white p-4 md:p-8 rounded-lg shadow-lg mt-6 w-full">
                 <div class="flex flex-col md:flex-row md:justify-between gap-3">
                     <div class="flex items-center gap-3 mb-6">
