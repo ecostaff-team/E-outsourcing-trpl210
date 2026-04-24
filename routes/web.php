@@ -54,4 +54,11 @@ Route::get('/karyawan', function () {
     return view('karyawan.dashboard');
 });
 
+Route::get('/cuti', function () {
+    return view('kepala-departement.cutiizin');
+});
+
+Route::get('/pengaturan', function () {
+    return view('kepala-departement.pengaturan');
+});
 
