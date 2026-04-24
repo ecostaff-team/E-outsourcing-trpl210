@@ -64,17 +64,17 @@
                     <h2 class="text-xl font-semibold text-black-700">Data Karyawan</h2>
                 </div>
 
-                    <!-- SEARCH + ICON -->
-                    <div class="flex items-center gap-2 mb-4">
+                <!-- SEARCH + ICON -->
+                <div class="flex items-center gap-2 mb-4">
 
-                        <!-- SEARCH -->
-                        <div class="relative">
-                            <input type="text" id="searchInput" placeholder="Cari nama karyawan"
-                                class="border rounded-lg pl-10 pr-4 py-1 w-64 focus:outline-none focus:ring-2 focus:ring-green-500">
-                            <span class="absolute left-3 top-1.5 text-gray-400">🔍</span>
-                        </div>
-
+                    <!-- SEARCH -->
+                    <div class="relative">
+                        <input type="text" id="searchInput" placeholder="Cari nama karyawan"
+                            class="border rounded-lg pl-10 pr-4 py-1 w-64 focus:outline-none focus:ring-2 focus:ring-green-500">
+                        <span class="absolute left-3 top-1.5 text-gray-400">🔍</span>
                     </div>
+
+                </div>
 
 
                 {{-- Tabel --}}
@@ -125,6 +125,18 @@
 
                         </tbody>
                     </table>
+                </div>
+
+                <div class="flex flex-wrap justify-end mt-4 gap-1 text-sm">
+                    <button
+                        class="px-3 py-1 transition-colors hover:bg-blue-500 hover:text-white border hover:border-transparent rounded cursor-pointer">Previous</button>
+                    <button class="px-3 py-1 bg-green-600 text-white rounded">1</button>
+                    <button
+                        class="px-3 py-1 transition-colors hover:bg-green-600 hover:text-white border hover:border-transparent rounded cursor-pointer">2</button>
+                    <button
+                        class="px-3 py-1 transition-colors hover:bg-green-600 hover:text-white border hover:border-transparent rounded cursor-pointer">3</button>
+                    <button
+                        class="px-3 py-1 transition-colors hover:bg-blue-500 hover:text-white border hover:border-transparent rounded cursor-pointer">Next</button>
                 </div>
 
                 {{-- MODAL DETAIL (Read) --}}
