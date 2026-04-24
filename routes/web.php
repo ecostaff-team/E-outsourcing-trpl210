@@ -24,12 +24,14 @@ Route::get('/superAdmin', function () {
 Route::get('/karyawanOutsourcing', function () {
     return view('karyawanOutsourcing.dashboardKaryawan');
 });
-Route::get('/karyawanOutsourcing/pengajuanKaryawan', function () {
-    return view('karyawanOutsourcing.pengajuanKaryawan');
+Route::get('/karyawanOutsourcing/pengajuanLembur', function () {
+    return view('karyawanOutsourcing.pengajuanLembur');
 });
 
 Route::get('/karyawanOutsourcing/jadwal-karyawan', function () {
     return view('karyawanOutsourcing.jadwalKaryawan');
 });
 
-
+Route::get('/karyawanOutsourcing/perizinan', function () {
+    return view('karyawanOutsourcing.perizinan');
+});
