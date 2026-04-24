@@ -1,21 +1,30 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\AuthController;
 
+
+/* Route untuk logic */
 Route::get('/', [AuthController::class, 'login'])->name('login');
 
-Route::get('/kepala-departemen/dashboard', function () {
-    return view('livewire.dashboard');
+
+/* Route Kepala departement */
+Route::get('/kepala-departement/dashboard', function () {
+    return view('kepala-departement.dashboard');
 });
+
+Route::get('/kepala-departemen/karyawan', function () {
+    return view('kepala-departement.karyawan');
+});
+
+Route::get('/kepala-departemen/shift', function () {
+    return view('kepala-departement.shift');
+});
+
+/* Kepala departement seelesai */
 
 Route::get('/admin-outsourcing', function () {
     return view('adminOutsourcing.dashboard');
-});
-
-Route::get('/admin-outsourcing/karyawan', function () {
-    return view('adminOutsourcing.karyawan');
 });
 
 Route::get('/pengajuan-karyawan', function () {
@@ -42,16 +51,6 @@ Route::get('/super-admin', function () {
     return view('superAdmin.dashboardAdmin');
 });
 
-Route::get('/kepala-departemen', function () {
-    return view('kepala-departement.dashboard');
-});
 
-Route::get('/kepala-departemen/karyawan', function () {
-    return view('kepala-departement.karyawan');
-});
-
-Route::get('/karyawan', function () {
-    return view('karyawan.dashboard');
-});
 
 

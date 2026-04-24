@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
-<body x-data="dashboard()" x-data="{ open: false }" class="bg-gray-100">
+<body  x-data="{ ...dashboard(), open: false }" class="bg-gray-100">
+
 
     <div class="flex">
         {{-- SIDEBAR --}}
@@ -33,21 +34,195 @@
             {{-- NONTIFIKASI, CETAK SEBAGAI EXCEL, MODAL MENAMBAHKAN JADWAL --}}
             <div class='flex justify-between border-b pb-4'>
                 <div class="flex justify-center items-center py-2">
-                    <h1 class="text-xl font-bold text-emerald-700 md:text-md inline-block font-semibold">Penjadwalan
+                    <h1 class="text-xl text-emerald-700 md:text-md inline-block font-semibold">Penjadwalan
                         Mingguan Karyawan</h1>
                 </div>
                 <div class='flex gap-2'>
-                    <button
-                        class="px-5 py-2.5 bg-emerald-400 hover:bg-primary-700 text-white/90 font-medium rounded-xl shadow-md hover:shadow-lg hover:bg-emerald-500 hover:text-white active:scale-95 transition-all duration-200 ease-in-out">
-                        <p class="text-bold text-md">notif</p>
-                    </button>
+                    <div x-data="{ open: false }">
+
+                        <button @click="open = true" class="px-5 py-2.5 bg-emerald-400 text-white rounded-xl">
+                            notif
+                        </button>
+
+                        <div x-show="open" class="fixed inset-0 flex items-center justify-center bg-black/50">
+
+                            <div id="small-modal" tabindex="-1"
+                                class="fixed flex items-center justify-center right-0 z-50 w-full p-4 overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                <div class="relative w-full max-w-md max-h-full">
+                                    <!-- Modal content -->
+                                    <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
+                                        <!-- Modal header -->
+                                        <div
+                                            class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
+                                            <h3 class="text-xl font-medium text-gray-900 dark:text-white">
+                                                Small modal
+                                            </h3>
+                                            <button @click="open = false"
+    class="text-gray-400 hover:bg-gray-200 rounded-lg w-8 h-8 flex items-center justify-center">
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="p-4 md:p-5 space-y-4">
+                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                With less than a month to go before the European Union enacts new
+                                                consumer privacy laws for its
+                                                citizens, companies around the world are updating their terms of service
+                                                agreements to comply.
+                                            </p>
+                                            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                                                The European Union’s General Data Protection Regulation (G.D.P.R.) goes
+                                                into effect on May 25
+                                                and is meant to ensure a common set of data rights in the European
+                                                Union. It requires
+                                                organizations to notify users as soon as possible of high-risk data
+                                                breaches that could
+                                                personally affect them.
+                                            </p>
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div
+                                            class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                            <button data-modal-hide="small-modal" type="button"
+                                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I
+                                                accept</button>
+                                            <button data-modal-hide="small-modal" type="button"
+                                                class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Decline</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
                     <button
                         class="px-5 py-2.5 bg-emerald-400 hover:bg-primary-700 text-white/90 font-medium rounded-xl shadow-md hover:shadow-lg hover:bg-emerald-500 hover:text-white active:scale-95 transition-all duration-200 ease-in-out">
                         <p class="text-bold text-md">cetak</p>
                     </button>
-                    <button
-                        class="px-5 py-2.5 bg-emerald-400 hover:bg-primary-700 text-white/90 font-medium rounded-xl shadow-md hover:shadow-lg hover:bg-emerald-500 hover:text-white active:scale-95 transition-all duration-200 ease-in-out">
-                        <p class="text-bold text-md">menambahkan jadwal</p>
+                    <div x-data="{ open: false, closing: false }">
+
+                        <!-- Button -->
+                        <button @click="open = true"
+                            class="px-5 py-2.5 bg-emerald-400 hover:bg-primary-700 text-white/90 font-medium rounded-xl shadow-md hover:shadow-lg hover:bg-emerald-500 hover:text-white active:scale-95 transition-all duration-200 ease-in-out"">
+                            ✨ Tambah Jadwal
+                        </button>
+
+                        <!-- Overlay -->
+                        <div x-show="open" x-transition.opacity
+                            class="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
+
+                            <!-- Modal -->
+                            <div @click.outside="open = false" x-show="open"
+                                class="relative w-full max-w-xl bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl p-6 border border-white/30 overflow-visible"
+                                x-transition:enter="transition ease-out duration-300"
+                                x-transition:enter-start="opacity-0 scale-90 translate-y-6"
+                                x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+                                x-transition:leave="transition ease-in duration-200"
+                                x-transition:leave-start="opacity-100 scale-100"
+                                x-transition:leave-end="opacity-0 scale-90">
+
+                                <!-- Tutorial -->
+                                <div
+                                    class="mb-4 p-3 rounded-xl bg-blue-50 border border-blue-200 text-sm text-blue-700">
+                                    🧭 <b>Cara menambahkan jadwal:</b><br>
+                                    1. Cari karyawan 🔍<br>
+                                    2. Pilih shift 🌗<br>
+                                    3. Pilih tanggal di kalender 📅<br>
+                                    4. Klik simpan 💾
+                                </div>
+
+                                <!-- Header -->
+                                <div class="flex justify-between items-center mb-6">
+                                    <h2 class="text-xl font-bold text-gray-800">📅 Tambah Jadwal</h2>
+
+                                    <!-- Close button with rotation -->
+                                    <button
+                                        @click="closing = true; setTimeout(() => { open = false; closing = false }, 300)"
+                                        class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-100 transition">
+                                        <span :class="closing ? 'rotate-180 scale-125' : ''"
+                                            class="inline-block transition-transform duration-300">
+                                            ✖
+                                        </span>
+                                    </button>
+                                </div>
+
+                                <!-- Form -->
+                                <form class="space-y-5">
+
+                                    <!-- Datepicker FIX -->
+                                    <div x-data="datepicker()" class="relative">
+                                        <label class="text-sm font-medium text-gray-600">Tanggal</label>
+
+                                        <input type="text" x-model="formattedDate" @click="toggle()" readonly
+                                            placeholder="📅 Pilih tanggal"
+                                            class="w-full mt-1 px-3 py-2.5 rounded-xl border cursor-pointer">
+
+                                        <!-- Kalender (tidak kepotong lagi) -->
+                                        <div x-show="show" x-transition
+                                            class="absolute left-0 top-full mt-2 w-full bg-white rounded-2xl shadow-xl p-4 border z-999">
+
+                                            <div class="flex justify-between items-center mb-3">
+                                                <button @click="prevMonth()">‹</button>
+                                                <span class="font-semibold" x-text="monthYear"></span>
+                                                <button @click="nextMonth()">›</button>
+                                            </div>
+
+                                            <div class="grid grid-cols-7 gap-1 text-xs text-center text-gray-500 mb-1">
+                                                <template x-for="d in ['M','S','S','R','K','J','S']">
+                                                    <div x-text="d"></div>
+                                                </template>
+                                            </div>
+
+                                            <div class="grid grid-cols-7 gap-1 text-center text-sm">
+                                                <template x-for="blank in blanks">
+                                                    <div></div>
+                                                </template>
+
+                                                <template x-for="day in days">
+                                                    <div @click="selectDate(day)"
+                                                        class="p-2 rounded-xl cursor-pointer hover:bg-blue-100 hover:scale-110 transition"
+                                                        :class="isToday(day) ? 'bg-blue-500 text-white' : ''"
+                                                        x-text="day"></div>
+                                                </template>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Search -->
+                                    <div>
+                                        <label class="text-sm font-medium text-gray-600">Karyawan</label>
+                                        <input type="text" placeholder="🔍 Cari nama..."
+                                            class="w-full mt-1 px-3 py-2.5 rounded-xl border focus:ring-2 focus:ring-blue-400">
+                                    </div>
+
+                                    <!-- Shift -->
+                                    <div>
+                                        <label class="text-sm font-medium text-gray-600">Shift</label>
+                                        <select
+                                            class="w-full mt-1 px-3 py-2.5 rounded-xl border focus:ring-2 focus:ring-indigo-400">
+                                            <option>Pilih Shift</option>
+                                            <option>🌅 Pagi</option>
+                                            <option>🌇 Sore</option>
+                                            <option>🌙 Malam</option>
+                                            <option>🏖️ Libur</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Action -->
+                                    <div class="flex justify-end gap-2 pt-4">
+                                        <button type="button" @click="open=false"
+                                            class="px-4 py-2 rounded-xl bg-gray-100 hover:bg-gray-200">
+                                            Batal
+                                        </button>
+                                        <button type="submit"
+                                            class="px-5 py-2 rounded-xl bg-linear-to-r from-green-500 to-emerald-600 text-white hover:scale-105 transition">
+                                            💾 Simpan
+                                        </button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -65,7 +240,7 @@
                     <p class="mt-2 text-sm text-gray-600">
                         Total karyawan aktif dalam sistem.
                     </p>
-                    <div class="flex items-end justify-between items-center">
+                    <div class="flex justify-between items-center">
                         <div class="mt-4 text-2xl font-bold text-gray-800">128</div>
                         <div class="mt-4 ml-2 flex flex-col justify-end items-end">
                             <span class="text-sm text-gray-600">terakhir update hari ini</span>
@@ -86,7 +261,7 @@
                     <p class="mt-2 text-sm text-gray-600">
                         Jumlah kehadiran karyawan hari ini.
                     </p>
-                    <div class="flex items-end justify-between items-center">
+                    <div class="flex justify-between items-center">
                         <div class="mt-4 text-2xl font-bold text-gray-800">97</div>
                         <div class="mt-4 ml-2 flex flex-col justify-end items-end">
                             <span class="text-sm text-gray-600">terakhir update 1 hari </span>
@@ -107,13 +282,14 @@
                     <p class="mt-2 text-sm text-gray-600">
                         Karyawan yang datang terlambat.
                     </p>
-                    <div class="flex items-end justify-between items-center">
+                    <div class="flex  justify-between items-center">
                         <div class="mt-4 text-2xl font-bold text-gray-800">12</div>
-                        <div class="mt-4 ml-2 flex flex-col justify-end items-end">
+                        <div class="mt-4 ml-2 flex flex-col justify-end items-end ">
                             <span class="text-sm text-gray-600">terakhir update 2 hari </span>
                             <button
                                 class="text-sm text-blue-600 hover:text-blue-800 hover:cursor-pointer active:scale-95 transition-all duration-200 ease-in-out text-right">detail</button>
                         </div>
+
                     </div>
                 </div>
 
@@ -128,7 +304,7 @@
                     <p class="mt-2 text-sm text-gray-600">
                         Jumlah karyawan tidak hadir.
                     </p>
-                    <div class="flex items-end justify-between items-center">
+                    <div class="flex justify-between items-center">
                         <div class="mt-4 text-2xl font-bold text-gray-800">19</div>
                         <div class="mt-4 ml-2 flex flex-col justify-end items-end">
                             <span class="text-sm text-gray-600">terakhir update 344 hari </span>
@@ -185,7 +361,7 @@
                         Tambahkan Jadwal
                     </button>
                 </div>
-                <div class="grid grid-cols-8 border rounded-xl overflow-hidden text-sm overflow-x-auto min-w-[900px]">
+                <div class="grid grid-cols-8 border rounded-xl overflow-hidden text-sm overflow-x-auto min-w-900px">
                     <!-- Header -->
                     <div class="bg-gray-50 p-3 font-semibold text-gray-600">KARYAWAN</div>
 
@@ -233,7 +409,7 @@
                                             :class="shiftClass(shift)">
 
                                             <div class="font-semibold capitalize" x-text="shift"></div>
-                                            <div class="text-[10px]">
+                                            <div class="text-[10px] m-2">
                                                 <template x-if="shift === 'pagi'">06:00 - 14:00</template>
                                                 <template x-if="shift === 'siang'">14:00 - 22:00</template>
                                                 <template x-if="shift === 'malam'">22:00 - 06:00</template>
@@ -251,6 +427,9 @@
             </div>
         </div>
     </div>
+
+
+
     <script>
         function dashboard() {
             return {
@@ -354,6 +533,62 @@
                 }
 
 
+            }
+        }
+
+        /* BAGIAN UNTUK MODAL MENAMBAHKAN JADWAL */
+        function datepicker() {
+            return {
+                show: false,
+                date: new Date(),
+                selectedDate: null,
+
+                toggle() {
+                    this.show = !this.show
+                },
+
+                get monthYear() {
+                    return this.date.toLocaleString('id-ID', {
+                        month: 'long',
+                        year: 'numeric'
+                    })
+                },
+
+                get days() {
+                    let y = this.date.getFullYear()
+                    let m = this.date.getMonth()
+                    return new Date(y, m + 1, 0).getDate()
+                },
+
+                get blanks() {
+                    let first = new Date(this.date.getFullYear(), this.date.getMonth(), 1).getDay()
+                    return Array(first).fill('')
+                },
+
+                prevMonth() {
+                    this.date.setMonth(this.date.getMonth() - 1)
+                },
+                nextMonth() {
+                    this.date.setMonth(this.date.getMonth() + 1)
+                },
+
+                selectDate(day) {
+                    this.selectedDate = new Date(this.date.getFullYear(), this.date.getMonth(), day)
+                    this.show = false
+                },
+
+                isToday(day) {
+                    let t = new Date()
+                    return day === t.getDate() &&
+                        this.date.getMonth() === t.getMonth() &&
+                        this.date.getFullYear() === t.getFullYear()
+                },
+
+                get formattedDate() {
+                    return this.selectedDate ?
+                        this.selectedDate.toLocaleDateString('id-ID') :
+                        ''
+                }
             }
         }
     </script>
