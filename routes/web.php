@@ -53,4 +53,11 @@ Route::get('/super-admin', function () {
 
 
 
+Route::get('/cuti', function () {
+    return view('kepala-departement.cutiizin');
+});
+
+Route::get('/pengaturan', function () {
+    return view('kepala-departement.pengaturan');
+});
 

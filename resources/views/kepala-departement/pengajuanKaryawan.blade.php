@@ -24,7 +24,7 @@
         ]">kepala-departemen</x-sidebar>
 
         <div class="flex-1 p-6 ml-0">
-            <x-header>Kepala Departemen {{-- <-- Ganti aja ini kalo mau --}}</x-header>
+            <x-header>Kepala Departemen</x-header>
             {{ $slot }}
             <div class="bg-white p-8 rounded-lg shadow-lg mt-6 w-full">
                 <div class="overflow-x-auto">
