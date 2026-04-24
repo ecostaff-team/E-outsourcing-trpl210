@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jadwal Karyawan - EcoGreen</title>
+    <title>Jadwal Kerjaku - EcoGreen</title>
 
     <link rel="icon" type="image/x-icon" href="/images/logo.png">
 
@@ -26,7 +26,7 @@
                 <div class="text-center px-4 py-6">
                     <h2 class="text-2xl font-bold">EcoGreen</h2>
                     <h3 class="text-lg font-semibold">E-Outsourcing</h3>
-                    <p class="text-sm text-white/60">Karyawan Ecogreen</p>
+                    <p class="text-sm text-white/60">Portal Karyawan</p>
                 </div>
 
                 <hr class="border-white/30 mx-4">
@@ -41,7 +41,7 @@
                     <li>
                         <a href="#" class="flex items-center gap-3 text-lg font-medium px-4 py-2 rounded-l-xl bg-white/20 shadow-inner">
                             <i class="fa-solid fa-calendar"></i>
-                            Jadwal
+                            Jadwalku
                         </a>
                     </li>
                     <li>
@@ -67,7 +67,7 @@
                     </div>
                     <div>
                         <p class="text-sm font-semibold">Rangga Racing</p>
-                        <p class="text-xs text-white/70">rangga@email.com</p>
+                        <p class="text-xs text-white/70">Security Staff</p>
                     </div>
                 </div>
             </div>
@@ -93,14 +93,14 @@
                     <div @click="openProfile = !openProfile" class="flex items-center gap-1 bg-white px-2 py-1 rounded-xl shadow cursor-pointer hover:shadow-lg transition md:px-4 md:py-2 md:gap-3">
                         <img src="/images/profile.jpg" class="w-10 h-10 rounded-full object-cover" alt="">
                         <div class="hidden md:block">
-                            <p class="text-sm font-semibold text-gray-800">Admin Outsourcing</p>
-                            <p class="text-xs text-gray-500">Admin</p>
+                            <p class="text-sm font-semibold text-gray-800">Rangga Racing</p>
+                            <p class="text-xs text-gray-500">Staff Outsourcing</p>
                         </div>
                         <i class="fa-solid fa-chevron-down text-gray-400 text-xs transition md:text-sm" :class="openProfile ? 'rotate-180' : ''"></i>
                     </div>
 
                     <div x-show="openProfile" @click.outside="openProfile = false" x-transition class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg overflow-hidden z-50">
-                        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">👤 Profile</a>
+                        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">👤 Profile Saya</a>
                         <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">🔒 Ganti Password</a>
                         <hr>
                         <a href="#" class="block px-4 py-2 text-sm text-red-500 hover:bg-red-50">🚪 Logout</a>
@@ -110,30 +110,24 @@
 
             <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 class="text-xl font-bold text-gray-800 md:text-2xl">Jadwal Shift Karyawan 🗓️</h1>
-                    <p class="text-gray-500 text-sm">Kelola dan pantau jadwal kerja karyawan bulan ini.</p>
+                    <h1 class="text-xl font-bold text-gray-800 md:text-2xl">Jadwal Kerjaku 🗓️</h1>
+                    <p class="text-gray-500 text-sm">Lihat detail waktu shift kerjamu untuk bulan ini.</p>
                 </div>
-                <button class="bg-[#3C8B5E] text-white px-4 py-2 rounded-lg font-medium shadow hover:bg-emerald-700 transition">
-                    <i class="fa-solid fa-plus mr-2"></i>Tambah Jadwal
+                <button class="bg-white border-2 border-[#3C8B5E] text-[#3C8B5E] px-4 py-2 rounded-lg font-medium shadow-sm hover:bg-emerald-50 transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-download"></i> Download PDF
                 </button>
             </div>
 
-            <div class="bg-white rounded-xl shadow p-4 md:p-6 overflow-hidden">
+            <div class="bg-white rounded-xl shadow p-4 md:p-6 overflow-hidden border-t-4 border-[#3C8B5E]">
 
-                <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4 border-b pb-4">
-                    <div class="flex items-center gap-4">
-                        <button class="p-2 border rounded-lg hover:bg-gray-100 transition"><i class="fa-solid fa-chevron-left text-gray-600"></i></button>
-                        <h2 class="text-xl font-bold text-gray-800 w-32 text-center">April 2026</h2>
-                        <button class="p-2 border rounded-lg hover:bg-gray-100 transition"><i class="fa-solid fa-chevron-right text-gray-600"></i></button>
+                <div class="flex justify-between items-center mb-6 border-b pb-4">
+                    <div class="flex items-center gap-2 md:gap-4">
+                        <button class="p-1 md:p-2 border rounded-lg hover:bg-gray-100 transition"><i class="fa-solid fa-chevron-left text-gray-600"></i></button>
+                        <h2 class="text-lg md:text-xl font-bold text-gray-800 w-28 md:w-32 text-center">April 2026</h2>
+                        <button class="p-1 md:p-2 border rounded-lg hover:bg-gray-100 transition"><i class="fa-solid fa-chevron-right text-gray-600"></i></button>
                     </div>
 
-                    <div class="flex gap-2">
-                        <select class="border rounded-lg px-3 py-2 text-sm bg-gray-50 outline-none focus:ring-2 focus:ring-emerald-500">
-                            <option>Semua Lokasi</option>
-                            <option>PT. Maju Bersama</option>
-                            <option>PT. Cipta Karya</option>
-                        </select>
-                    </div>
+                    <button class="text-sm font-medium text-emerald-600 hover:underline">Ke Hari Ini</button>
                 </div>
 
                 <div class="overflow-x-auto">
@@ -151,58 +145,39 @@
 
                         <div class="grid grid-cols-7 gap-2">
 
-                            <div class="border rounded-lg min-h-[100px] p-2 bg-gray-50 border-gray-100">
+                            <div class="border rounded-lg min-h-[100px] p-2 bg-gray-50 border-gray-100 opacity-50 flex flex-col">
                                 <p class="text-right text-sm text-gray-400 font-medium mb-1">30</p>
                             </div>
-                            <div class="border rounded-lg min-h-[100px] p-2 bg-gray-50 border-gray-100">
+                            <div class="border rounded-lg min-h-[100px] p-2 bg-gray-50 border-gray-100 opacity-50 flex flex-col">
                                 <p class="text-right text-sm text-gray-400 font-medium mb-1">31</p>
                             </div>
 
-                            <div class="border border-gray-200 rounded-lg min-h-[100px] p-2 bg-white hover:border-emerald-500 transition cursor-pointer group">
-                                <p class="text-right text-sm text-gray-700 font-bold mb-1">1</p>
-                                <div class="bg-emerald-100 text-emerald-700 text-[11px] font-semibold p-1 rounded text-center truncate mb-1">
-                                    🌞 Pagi (08-17)
+                            <div class="border-2 border-emerald-400 rounded-lg min-h-[100px] p-2 bg-emerald-50 shadow-sm relative group cursor-pointer flex flex-col">
+                                <div class="absolute -top-2 -right-2 bg-emerald-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow">Hari Ini</div>
+                                <p class="text-right text-sm text-emerald-700 font-bold mb-1">1</p>
+                                <div class="bg-emerald-200 text-emerald-800 text-[11px] font-bold p-1.5 rounded text-center truncate mt-auto mb-1">
+                                    <i class="fa-solid fa-sun mr-1"></i> Pagi (08:00 - 17:00)
                                 </div>
-                                <div class="text-[10px] text-gray-500 truncate text-center">
-                                    <i class="fa-solid fa-location-dot"></i> PT. Maju
-                                </div>
-                            </div>
-
-                            <div class="border border-gray-200 rounded-lg min-h-[100px] p-2 bg-white hover:border-blue-500 transition cursor-pointer group">
-                                <p class="text-right text-sm text-gray-700 font-bold mb-1">2</p>
-                                <div class="bg-blue-100 text-blue-700 text-[11px] font-semibold p-1 rounded text-center truncate mb-1">
-                                    🌙 Malam (20-05)
-                                </div>
-                                <div class="text-[10px] text-gray-500 truncate text-center">
-                                    <i class="fa-solid fa-location-dot"></i> PT. Cipta
-                                </div>
-                            </div>
-
-                            <div class="border border-red-200 rounded-lg min-h-[100px] p-2 bg-red-50 hover:border-red-400 transition cursor-pointer">
-                                <p class="text-right text-sm text-red-600 font-bold mb-1">3</p>
-                                <div class="bg-red-200 text-red-800 text-[11px] font-semibold p-1 rounded text-center truncate">
-                                    🛋️ OFF
-                                </div>
-                            </div>
-
-                            <div class="border border-gray-200 rounded-lg min-h-[100px] p-2 bg-white hover:border-gray-400 transition cursor-pointer">
-                                <p class="text-right text-sm text-gray-700 font-bold mb-1">4</p>
-                            </div>
-
-                            <div class="border border-gray-200 rounded-lg min-h-[100px] p-2 bg-white hover:border-gray-400 transition cursor-pointer">
-                                <p class="text-right text-sm text-gray-700 font-bold mb-1">5</p>
                             </div>
 
                             <script>
-                                // Ini hanya trik untuk mempercepat tampilan dummy kalender (Hari ke-6 sampai 30)
-                                for(let i=6; i<=30; i++) {
+                                const shifts = [
+                                    { shift: '<i class="fa-solid fa-sun mr-1"></i> Pagi (08:00 - 17:00)', bg: "bg-emerald-100", text: "text-emerald-700", border: "hover:border-emerald-400" },
+                                    { shift: '<i class="fa-solid fa-moon mr-1"></i> Malam (20:00 - 05:00)', bg: "bg-blue-100", text: "text-blue-700", border: "hover:border-blue-400" },
+                                    { shift: '<i class="fa-solid fa-mug-hot mr-1"></i> LIBUR / OFF', bg: "bg-red-100", text: "text-red-700", border: "hover:border-red-400" }
+                                ];
+
+                                // Simulasi jadwal
+                                const pola = [0, 1, 1, 2, 2, 0, 0, 0, 1, 1, 2, 2, 0, 0, 0, 1, 1, 2, 2, 0, 0, 0, 1, 1, 2, 2, 0, 0, 0];
+
+                                for(let i=2; i<=30; i++) {
+                                    let s = shifts[pola[i-2]];
                                     document.write(`
-                                    <div class="border border-gray-200 rounded-lg min-h-[100px] p-2 bg-white hover:border-emerald-500 transition cursor-pointer">
+                                    <div class="border border-gray-200 rounded-lg min-h-[100px] p-2 bg-white transition cursor-pointer flex flex-col ${s.border}">
                                         <p class="text-right text-sm text-gray-700 font-bold mb-1">${i}</p>
-                                        ${i % 7 === 3 ? `<div class="bg-red-200 text-red-800 text-[11px] font-semibold p-1 rounded text-center truncate">🛋️ OFF</div>` :
-                                          i % 2 === 0 ? `<div class="bg-emerald-100 text-emerald-700 text-[11px] font-semibold p-1 rounded text-center truncate mb-1">🌞 Pagi (08-17)</div><div class="text-[10px] text-gray-500 truncate text-center"><i class="fa-solid fa-location-dot"></i> PT. Maju</div>` :
-                                          `<div class="bg-blue-100 text-blue-700 text-[11px] font-semibold p-1 rounded text-center truncate mb-1">🌙 Malam (20-05)</div><div class="text-[10px] text-gray-500 truncate text-center"><i class="fa-solid fa-location-dot"></i> PT. Cipta</div>`
-                                        }
+                                        <div class="${s.bg} ${s.text} text-[11px] font-bold p-1.5 rounded text-center truncate mt-auto mb-1">
+                                            ${s.shift}
+                                        </div>
                                     </div>
                                     `);
                                 }
@@ -212,18 +187,18 @@
                     </div>
                 </div>
 
-                <div class="mt-6 flex flex-wrap gap-4 border-t pt-4">
+                <div class="mt-6 flex flex-wrap gap-6 border-t pt-4">
                     <div class="flex items-center gap-2">
-                        <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-                        <span class="text-sm text-gray-600">Shift Pagi</span>
+                        <i class="fa-solid fa-sun text-emerald-500"></i>
+                        <span class="text-sm font-medium text-gray-600">Shift Pagi</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <span class="w-3 h-3 rounded-full bg-blue-500"></span>
-                        <span class="text-sm text-gray-600">Shift Malam</span>
+                        <i class="fa-solid fa-moon text-blue-500"></i>
+                        <span class="text-sm font-medium text-gray-600">Shift Malam</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <span class="w-3 h-3 rounded-full bg-red-500"></span>
-                        <span class="text-sm text-gray-600">Libur / OFF</span>
+                        <i class="fa-solid fa-mug-hot text-red-500"></i>
+                        <span class="text-sm font-medium text-gray-600">Libur / OFF</span>
                     </div>
                 </div>
 
