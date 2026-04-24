@@ -22,9 +22,10 @@
 
         {{-- SIDEBAR --}}
         <x-sidebar :menus="[
-            ['title' => 'Dashboard', 'icon' => 'fas fa-book'],
-            ['title' => 'Pengajuan Karyawan', 'icon' => 'fas fa-user-group'],
-        ]" />
+    ['title' => 'Dashboard', 'icon' => 'fas fa-home'],
+    ['title' => 'Pengajuan Karyawan', 'icon' => 'fas fa-users'],
+    ['title' => 'Kelola Karyawan', 'icon' => 'fas fa-user-cog'],
+        ]">Admin Outsourcing</x-sidebar>
 
         {{-- MAIN CONTENT --}}
         <div class="flex-1 p-6">
@@ -32,11 +33,11 @@
             {{-- HEADER --}}
             <x-header>Admin Outsourcing</x-header>
 
-            <div class="flex justify-center items-center bg-gray-100 p-4">
-                <div class="bg-white shadow-lg w-full p-8">
-                    <h2 class="text-2xl font-bold text-center text-gray-900 mb-8">Form Pengajuan Karyawan</h2>
+            <div class="min-h-screen bg-gray-100 p-4">
+                <div class="bg-white shadow-lg w-full p-6 rounded-lg max-w-5xl mx-auto">
+                    <h2 class="text-xl font-bold text-center text-gray-900 mb-6">Form Pengajuan Karyawan</h2>
 
-                    <form action="#" method="POST" class="space-y-5">
+                    <form action="#" method="POST" class="grid grid-cols-1 md:grid-cols-1 gap-4">
                         <div>
                             <label for="nip" class="block text-sm font-bold text-gray-900 mb-2">
                                 NIP <span class="text-red-500">*</span>

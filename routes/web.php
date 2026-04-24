@@ -29,6 +29,10 @@ Route::get('/admin-outsourcing/pengajuan-karyawan', function () {
     return view('adminOutsourcing.pengajuanKaryawan');
 });
 
+Route::get('/admin-outsourcing/kelola-karyawan', function () {
+    return view('adminOutsourcing.kelola-karyawan');
+});
+
 Route::get('/user-hr', function () {
     return view('hr.dashboard');
 });
