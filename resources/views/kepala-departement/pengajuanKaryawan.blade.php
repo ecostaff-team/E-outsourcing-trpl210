@@ -18,25 +18,16 @@
     <div class="flex">
         {{-- SIDEBAR --}}
         <x-sidebar :menus="[
-            ['title' => 'Dashboard', 'icon' => 'fas fa-home'],
-            ['title' => 'User', 'icon' => 'fas fa-users'],
-            ['title' => 'Settings', 'icon' => 'fas fa-cog'],
+            ['title' => 'Penjadwalan', 'icon' => 'fas fa-home', 'ref' => '/kepala-departemen/dashboard'],
+            ['title' => 'Karyawan', 'icon' => 'fas fa-users', 'ref' => '/kepala-departemen/karyawan'],
+            ['title' => 'Pengajuan', 'icon' => 'fas fa-users', 'ref' => '/kepala-departemen/pengajuan'],
+            ['title' => 'Laporan', 'icon' => 'fas fa-cog', 'ref' => '/kepala-departemen/laporan'],
+            ['title' => 'Shift', 'icon' => 'fas fa-cog', 'ref' => '/kepala-departemen/shift'],
+            ['title' => 'Pengaturan', 'icon' => 'fas fa-cog', 'ref' => '/kepala-departemen/pengaturan'],
         ]">kepala-departemen</x-sidebar>
 
         <div class="flex-1 p-6 ml-0">
             <x-header>Kepala Departemen</x-header>
-            {{ $slot }}
-            <div class="bg-white p-8 rounded-lg shadow-lg mt-6 w-full">
-                <div class="overflow-x-auto">
-                    <x-table :colum ns="[['label' => 'Nama', 'field' => 'nama'], ['label' => 'Nomor HP', 'field' => 'nomor_hp'], ['label' => 'Email', 'field' => 'email']]"
-
-                        :data="[
-                        ['nama' => 'Rangga', 'nomor_hp' => '08123456789', 'email' => 'rangga@mail.com'],
-                        ['nama' => 'Budi', 'nomor_hp' => '08123456788', 'email' => 'budi@mail.com'],
-                        ['nama' => 'Sinta', 'nomor_hp' => '08123456787', 'email' => 'sinta@mail.com'],
-                    ]" />
-                </div>
-            </div>
 
         </div>
     </div>

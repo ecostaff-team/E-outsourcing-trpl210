@@ -21,6 +21,18 @@ Route::get('/kepala-departemen/shift', function () {
     return view('kepala-departement.shift');
 });
 
+Route::get('/kepala-departemen/laporan', function () {
+    return view('kepala-departement.cutiizin');
+});
+
+Route::get('/kepala-departemen/pengajuan', function () {
+    return view('kepala-departement.pengajuanKaryawan');
+});
+
+Route::get('/kepala-departemen/pengaturan', function () {
+    return view('kepala-departement.pengaturan');
+});
+
 /* Kepala departement seelesai */
 
 Route::get('/admin-outsourcing', function () {

@@ -23,9 +23,12 @@
 
     <!-- SIDEBAR -->
     <x-sidebar :menus="[
-        ['title' => 'Dashboard', 'icon' => 'fas fa-home', 'ref' => '/'],
-        ['title' => 'Cuti & Izin', 'icon' => 'fas fa-calendar-check', 'ref' => '/cuti'],
-        ['title' => 'Settings', 'icon' => 'fas fa-cog', 'ref' => '#'],
+        ['title' => 'Penjadwalan', 'icon' => 'fas fa-home', 'ref' => '/kepala-departemen/dashboard'],
+            ['title' => 'Karyawan', 'icon' => 'fas fa-users', 'ref' => '/kepala-departemen/karyawan'],
+            ['title' => 'Pengajuan', 'icon' => 'fas fa-users', 'ref' => '/kepala-departemen/pengajuan'],
+            ['title' => 'Laporan', 'icon' => 'fas fa-cog', 'ref' => '/kepala-departemen/laporan'],
+            ['title' => 'Shift', 'icon' => 'fas fa-cog', 'ref' => '/kepala-departemen/shift'],
+            ['title' => 'Pengaturan', 'icon' => 'fas fa-cog', 'ref' => '/kepala-departemen/pengaturan'],
     ]">kepala-departemen</x-sidebar>
 
     <div class="flex-1 p-6">
@@ -54,15 +57,15 @@
     </div>
 
     <!-- INPUT -->
-    <input 
-        type="date" 
+    <input
+        type="date"
         x-model="filterDate"
-        class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/70 backdrop-blur border border-gray-300 text-sm shadow-sm 
-               focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none transition 
+        class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/70 backdrop-blur border border-gray-300 text-sm shadow-sm
+               focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none transition
                hover:border-gray-400 cursor-pointer">
 
     <!-- CLEAR BUTTON -->
-    <button 
+    <button
         x-show="filterDate"
         @click="filterDate = ''"
         class="absolute inset-y-0 right-3 flex items-center text-gray-400 hover:text-red-500 transition">
