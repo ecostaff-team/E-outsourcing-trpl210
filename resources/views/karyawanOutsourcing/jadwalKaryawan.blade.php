@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal Kerjaku - EcoGreen</title>
+
+    <link rel="icon" type="image/x-icon" href="/images/logo.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body x-data="{ open: false }" class="bg-gray-100">
+
+    <div class="flex min-h-screen">
+
+        <aside :class="open ? 'translate-x-0' : '-translate-x-full'"
+            class="fixed md:sticky md:top-0 top-0 left-0 h-screen w-[60%] sm:w-[50%] md:w-[19%] bg-[#3C8B5E] text-white flex flex-col justify-between transition-transform duration-300 ease-in-out md:translate-x-0 z-50 shadow-2xl">
+
+            <div>
+                <div class="text-center px-4 py-6">
+                    <h2 class="text-2xl font-bold">EcoGreen</h2>
+                    <h3 class="text-lg font-semibold">E-Outsourcing</h3>
+                    <p class="text-sm text-white/60">Portal Karyawan</p>
+                </div>
+
+                <hr class="border-white/30 mx-4">
+
+                <ul class="mt-6 space-y-2 pl-2">
+                    <li>
+                        <a href="#" class="flex items-center gap-3 text-lg font-medium px-4 py-2 rounded-l-xl transition-all duration-300 hover:bg-white/20 hover:pl-6">
+                            <i class="fa-solid fa-clock"></i>
+                            Absensi
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center gap-3 text-lg font-medium px-4 py-2 rounded-l-xl bg-white/20 shadow-inner">
+                            <i class="fa-solid fa-calendar"></i>
+                            Jadwalku
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center gap-3 text-lg font-medium px-4 py-2 rounded-l-xl transition-all duration-300 hover:bg-white/20 hover:pl-6">
+                            <i class="fa-solid fa-stopwatch"></i>
+                            Pengajuan Lembur
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center gap-3 text-lg font-medium px-4 py-2 rounded-l-xl transition-all duration-300 hover:bg-white/20 hover:pl-6">
+                            <i class="fa-solid fa-notes-medical"></i>
+                            Perizinan Sakit
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="px-4 pb-6">
+                <hr class="border-white/30 mb-4">
+                <div class="flex items-center gap-3 bg-white/20 p-3 rounded-xl backdrop-blur-md">
+                    <div class="bg-white/10 p-2 rounded-xl">
+                        R
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold">Rangga Racing</p>
+                        <p class="text-xs text-white/70">Security Staff</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div x-show="open" @click="open = false" class="fixed inset-0 bg-black/40 backdrop-blur-sm md:hidden z-40"></div>
+
+        <div class="flex-1 p-4 md:p-6 overflow-x-hidden">
+
+            <div class="flex items-center justify-between mb-6">
+                <button @click="open = !open" class="top-4 left-4 md:hidden bg-white p-2 rounded-lg shadow transition hover:scale-110 active:scale-95">
+                    ☰
+                </button>
+
+                <div class="text-center">
+                    <h3 class="text-emerald-900 font-bold text-lg md:text-2xl">
+                        <img src="/images/logo.png" class="w-8 inline-block ml-2" alt="">
+                        EcoGreen
+                    </h3>
+                </div>
+
+                <div x-data="{ openProfile: false }" class="relative">
+                    <div @click="openProfile = !openProfile" class="flex items-center gap-1 bg-white px-2 py-1 rounded-xl shadow cursor-pointer hover:shadow-lg transition md:px-4 md:py-2 md:gap-3">
+                        <img src="/images/profile.jpg" class="w-10 h-10 rounded-full object-cover" alt="">
+                        <div class="hidden md:block">
+                            <p class="text-sm font-semibold text-gray-800">Rangga Racing</p>
+                            <p class="text-xs text-gray-500">Staff Outsourcing</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-down text-gray-400 text-xs transition md:text-sm" :class="openProfile ? 'rotate-180' : ''"></i>
+                    </div>
+
+                    <div x-show="openProfile" @click.outside="openProfile = false" x-transition class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg overflow-hidden z-50">
+                        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">👤 Profile Saya</a>
+                        <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">🔒 Ganti Password</a>
+                        <hr>
+                        <a href="#" class="block px-4 py-2 text-sm text-red-500 hover:bg-red-50">🚪 Logout</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h1 class="text-xl font-bold text-gray-800 md:text-2xl">Jadwal Kerjaku 🗓️</h1>
+                    <p class="text-gray-500 text-sm">Lihat detail waktu shift kerjamu untuk bulan ini.</p>
+                </div>
+                <button class="bg-white border-2 border-[#3C8B5E] text-[#3C8B5E] px-4 py-2 rounded-lg font-medium shadow-sm hover:bg-emerald-50 transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-download"></i> Download PDF
+                </button>
+            </div>
+
+            <div class="bg-white rounded-xl shadow p-4 md:p-6 overflow-hidden border-t-4 border-[#3C8B5E]">
+
+                <div class="flex justify-between items-center mb-6 border-b pb-4">
+                    <div class="flex items-center gap-2 md:gap-4">
+                        <button class="p-1 md:p-2 border rounded-lg hover:bg-gray-100 transition"><i class="fa-solid fa-chevron-left text-gray-600"></i></button>
+                        <h2 class="text-lg md:text-xl font-bold text-gray-800 w-28 md:w-32 text-center">April 2026</h2>
+                        <button class="p-1 md:p-2 border rounded-lg hover:bg-gray-100 transition"><i class="fa-solid fa-chevron-right text-gray-600"></i></button>
+                    </div>
+
+                    <button class="text-sm font-medium text-emerald-600 hover:underline">Ke Hari Ini</button>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <div class="min-w-[700px]">
+
+                        <div class="grid grid-cols-7 gap-2 mb-2 text-center">
+                            <div class="font-bold text-sm text-gray-500 py-2">Senin</div>
+                            <div class="font-bold text-sm text-gray-500 py-2">Selasa</div>
+                            <div class="font-bold text-sm text-gray-500 py-2">Rabu</div>
+                            <div class="font-bold text-sm text-gray-500 py-2">Kamis</div>
+                            <div class="font-bold text-sm text-gray-500 py-2">Jumat</div>
+                            <div class="font-bold text-sm text-red-500 py-2">Sabtu</div>
+                            <div class="font-bold text-sm text-red-500 py-2">Minggu</div>
+                        </div>
+
+                        <div class="grid grid-cols-7 gap-2">
+
+                            <div class="border rounded-lg min-h-[100px] p-2 bg-gray-50 border-gray-100 opacity-50 flex flex-col">
+                                <p class="text-right text-sm text-gray-400 font-medium mb-1">30</p>
+                            </div>
+                            <div class="border rounded-lg min-h-[100px] p-2 bg-gray-50 border-gray-100 opacity-50 flex flex-col">
+                                <p class="text-right text-sm text-gray-400 font-medium mb-1">31</p>
+                            </div>
+
+                            <div class="border-2 border-emerald-400 rounded-lg min-h-[100px] p-2 bg-emerald-50 shadow-sm relative group cursor-pointer flex flex-col">
+                                <div class="absolute -top-2 -right-2 bg-emerald-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow">Hari Ini</div>
+                                <p class="text-right text-sm text-emerald-700 font-bold mb-1">1</p>
+                                <div class="bg-emerald-200 text-emerald-800 text-[11px] font-bold p-1.5 rounded text-center truncate mt-auto mb-1">
+                                    <i class="fa-solid fa-sun mr-1"></i> Pagi (08:00 - 17:00)
+                                </div>
+                            </div>
+
+                            <script>
+                                const shifts = [
+                                    { shift: '<i class="fa-solid fa-sun mr-1"></i> Pagi (08:00 - 17:00)', bg: "bg-emerald-100", text: "text-emerald-700", border: "hover:border-emerald-400" },
+                                    { shift: '<i class="fa-solid fa-moon mr-1"></i> Malam (20:00 - 05:00)', bg: "bg-blue-100", text: "text-blue-700", border: "hover:border-blue-400" },
+                                    { shift: '<i class="fa-solid fa-mug-hot mr-1"></i> LIBUR / OFF', bg: "bg-red-100", text: "text-red-700", border: "hover:border-red-400" }
+                                ];
+
+                                // Simulasi jadwal
+                                const pola = [0, 1, 1, 2, 2, 0, 0, 0, 1, 1, 2, 2, 0, 0, 0, 1, 1, 2, 2, 0, 0, 0, 1, 1, 2, 2, 0, 0, 0];
+
+                                for(let i=2; i<=30; i++) {
+                                    let s = shifts[pola[i-2]];
+                                    document.write(`
+                                    <div class="border border-gray-200 rounded-lg min-h-[100px] p-2 bg-white transition cursor-pointer flex flex-col ${s.border}">
+                                        <p class="text-right text-sm text-gray-700 font-bold mb-1">${i}</p>
+                                        <div class="${s.bg} ${s.text} text-[11px] font-bold p-1.5 rounded text-center truncate mt-auto mb-1">
+                                            ${s.shift}
+                                        </div>
+                                    </div>
+                                    `);
+                                }
+                            </script>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex flex-wrap gap-6 border-t pt-4">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-sun text-emerald-500"></i>
+                        <span class="text-sm font-medium text-gray-600">Shift Pagi</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-moon text-blue-500"></i>
+                        <span class="text-sm font-medium text-gray-600">Shift Malam</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-mug-hot text-red-500"></i>
+                        <span class="text-sm font-medium text-gray-600">Libur / OFF</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

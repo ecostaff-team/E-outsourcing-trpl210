@@ -85,3 +85,22 @@ Route::get('/super-admin/dashboard', function () {
     return view('superAdmin.dashboardAdmin');
 });
 
+/* super admin selesai */
+
+/* ======================================================== */
+
+/* Karyawan Outsourcing */
+
+Route::get('/karyawanOutsourcing/dahsboard', function () {
+    return view('karyawanOutsourcing.dashboardKaryawan');
+});
+
+Route::get('/karyawanOutsourcing/pengajuanKaryawan', function () {
+    return view('karyawanOutsourcing.pengajuanKaryawan');
+});
+
+Route::get('/karyawanOutsourcing/jadwal-karyawan', function () {
+    return view('karyawanOutsourcing.jadwalKaryawan');
+});
+
+
