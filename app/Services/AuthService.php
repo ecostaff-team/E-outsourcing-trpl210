@@ -29,9 +29,9 @@ class AuthService
     public function getRedirectByRole(string $role): string
     {
         return match ($role) {
-            'admin_vendor' => '/adminOutsourcing/dashboard',
+            'admin_vendor' => '/admin-outsourcing/dashboard',
             'hr' => '/hr/dashboard',
-            'super_admin' => '/super-admin',
+            'super_admin' => '/super-admin/dashboard',
             'kepala_departemen' => '/kepala-departement/dashboard',
             default => '/dashboard'
         };
