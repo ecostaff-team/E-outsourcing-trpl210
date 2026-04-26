@@ -77,9 +77,9 @@
     <div class="flex min-h-screen">
 
         <x-sidebar :menus="[
-        ['title' => 'Dashboard', 'icon' => 'fas fa-home'],
-        ['title' => 'Pengajuan Karyawan', 'icon' => 'fas fa-users'],
-        ['title' => 'Kelola Karyawan', 'icon' => 'fas fa-user-cog'],
+        ['title' => 'Dashboard', 'icon' => 'fas fa-home', 'ref' => '/admin-outsourcing/dashboard'],
+        ['title' => 'Pengajuan Karyawan', 'icon' => 'fas fa-users', 'ref' => '/admin-outsourcing/pengajuan-karyawan'],
+        ['title' => 'Kelola Karyawan', 'icon' => 'fas fa-user-cog', 'ref' => '/admin-outsourcing/kelola-karyawan'],
     ]">Admin Outsourcing</x-sidebar>
 
         <div class="flex-1 p-6 min-w-0 flex flex-col overflow-hidden">
