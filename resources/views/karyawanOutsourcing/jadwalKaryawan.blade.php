@@ -19,59 +19,12 @@
 
     <div class="flex min-h-screen">
 
-        <aside :class="open ? 'translate-x-0' : '-translate-x-full'"
-            class="fixed md:sticky md:top-0 top-0 left-0 h-screen w-[60%] sm:w-[50%] md:w-[19%] bg-[#3C8B5E] text-white flex flex-col justify-between transition-transform duration-300 ease-in-out md:translate-x-0 z-50 shadow-2xl">
-
-            <div>
-                <div class="text-center px-4 py-6">
-                    <h2 class="text-2xl font-bold">EcoGreen</h2>
-                    <h3 class="text-lg font-semibold">E-Outsourcing</h3>
-                    <p class="text-sm text-white/60">Portal Karyawan</p>
-                </div>
-
-                <hr class="border-white/30 mx-4">
-
-                <ul class="mt-6 space-y-2 pl-2">
-                    <li>
-                        <a href="#" class="flex items-center gap-3 text-lg font-medium px-4 py-2 rounded-l-xl transition-all duration-300 hover:bg-white/20 hover:pl-6">
-                            <i class="fa-solid fa-clock"></i>
-                            Absensi
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center gap-3 text-lg font-medium px-4 py-2 rounded-l-xl bg-white/20 shadow-inner">
-                            <i class="fa-solid fa-calendar"></i>
-                            Jadwalku
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center gap-3 text-lg font-medium px-4 py-2 rounded-l-xl transition-all duration-300 hover:bg-white/20 hover:pl-6">
-                            <i class="fa-solid fa-stopwatch"></i>
-                            Pengajuan Lembur
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center gap-3 text-lg font-medium px-4 py-2 rounded-l-xl transition-all duration-300 hover:bg-white/20 hover:pl-6">
-                            <i class="fa-solid fa-notes-medical"></i>
-                            Perizinan Sakit
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="px-4 pb-6">
-                <hr class="border-white/30 mb-4">
-                <div class="flex items-center gap-3 bg-white/20 p-3 rounded-xl backdrop-blur-md">
-                    <div class="bg-white/10 p-2 rounded-xl">
-                        R
-                    </div>
-                    <div>
-                        <p class="text-sm font-semibold">Rangga Racing</p>
-                        <p class="text-xs text-white/70">Security Staff</p>
-                    </div>
-                </div>
-            </div>
-        </aside>
+        <x-sidebar :menus="[
+            ['title' => 'Absensi', 'icon' => 'fas fa-home', 'ref' => '/karyawanOutsourcing/dahsboard'],
+            ['title' => 'Jadwalku', 'icon' => 'fas fa-users', 'ref' => '/karyawanOutsourcing/jadwal-karyawan'],
+            ['title' => 'Pengajuan Lembur', 'icon' => 'fas fa-users', 'ref' => '/karyawanOutsourcing/pengajuanKaryawan'],
+            ['title' => 'Perizinan Sakit', 'icon' => 'fas fa-cog', 'ref' => '#'],
+        ]">kepala-departemen</x-sidebar>
 
         <div x-show="open" @click="open = false" class="fixed inset-0 bg-black/40 backdrop-blur-sm md:hidden z-40"></div>
 
@@ -131,7 +84,7 @@
                 </div>
 
                 <div class="overflow-x-auto">
-                    <div class="min-w-[700px]">
+                    <div class="min-w-700px">
 
                         <div class="grid grid-cols-7 gap-2 mb-2 text-center">
                             <div class="font-bold text-sm text-gray-500 py-2">Senin</div>
@@ -145,14 +98,14 @@
 
                         <div class="grid grid-cols-7 gap-2">
 
-                            <div class="border rounded-lg min-h-[100px] p-2 bg-gray-50 border-gray-100 opacity-50 flex flex-col">
+                            <div class="border rounded-lg min-h-100px p-2 bg-gray-50 border-gray-100 opacity-50 flex flex-col">
                                 <p class="text-right text-sm text-gray-400 font-medium mb-1">30</p>
                             </div>
-                            <div class="border rounded-lg min-h-[100px] p-2 bg-gray-50 border-gray-100 opacity-50 flex flex-col">
+                            <div class="border rounded-lg min-h-100px p-2 bg-gray-50 border-gray-100 opacity-50 flex flex-col">
                                 <p class="text-right text-sm text-gray-400 font-medium mb-1">31</p>
                             </div>
 
-                            <div class="border-2 border-emerald-400 rounded-lg min-h-[100px] p-2 bg-emerald-50 shadow-sm relative group cursor-pointer flex flex-col">
+                            <div class="border-2 border-emerald-400 rounded-lg min-h-100px p-2 bg-emerald-50 shadow-sm relative group cursor-pointer flex flex-col">
                                 <div class="absolute -top-2 -right-2 bg-emerald-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow">Hari Ini</div>
                                 <p class="text-right text-sm text-emerald-700 font-bold mb-1">1</p>
                                 <div class="bg-emerald-200 text-emerald-800 text-[11px] font-bold p-1.5 rounded text-center truncate mt-auto mb-1">
