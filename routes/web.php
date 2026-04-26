@@ -35,41 +35,53 @@ Route::get('/kepala-departemen/pengaturan', function () {
 
 /* Kepala departement seelesai */
 
-Route::get('/admin-outsourcing', function () {
+
+/* ============================================================== */
+
+
+/* Admin OutSourcing */
+
+Route::get('/admin-outsourcing/dashboard', function () {
     return view('adminOutsourcing.dashboard');
 });
 
-Route::get('/pengajuan-karyawan', function () {
+Route::get('/admin-outsourcing/pengajuan-karyawan', function () {
     return view('adminOutsourcing.pengajuanKaryawan');
 });
 
-Route::get('/user-hr', function () {
+Route::get('/admin-outsourcing/kelola-karyawan', function () {
+    return view('adminOutsourcing.kelola-karyawan');
+});
+
+/* Admin OutSourcing */
+
+/* ============================================================ */
+
+/* USER HR */
+
+Route::get('/hr/dashboard', function () {
     return view('hr.dashboard');
 });
 
-Route::get('/user-hr/rekapan-detail', function () {
+Route::get('/hr/rekapan-detail', function () {
     return view('hr.rekapanDetail');
 });
 
-Route::get('/user-hr/ajuan-data-karyawan', function () {
+Route::get('/hr/ajuan-data-karyawan', function () {
     return view('hr.ajuanDataKaryawan');
 });
 
-Route::get('/user-hr/data-karyawan', function () {
+Route::get('/hr/data-karyawan', function () {
     return view('hr.dataKaryawan');
 });
 
-Route::get('/super-admin', function () {
+/* USER HR SELESAI*/
+
+/* ======================================================================== */
+
+/* Super Admin */
+
+Route::get('/super-admin/dashboard', function () {
     return view('superAdmin.dashboardAdmin');
-});
-
-
-
-Route::get('/cuti', function () {
-    return view('kepala-departement.cutiizin');
-});
-
-Route::get('/pengaturan', function () {
-    return view('kepala-departement.pengaturan');
 });
 

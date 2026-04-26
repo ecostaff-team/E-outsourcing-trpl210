@@ -80,23 +80,23 @@ class UserSeeder extends Seeder
         /* ADMINN VENDOR START */
 
         DB::table('users')->insert([
-            'full_name' => 'Zahra Faradila',
-            'username' => 'Zahra',
-            'email' => 'zahra@gmail.com',
+            'full_name' => 'Zahrah Faradila',
+            'username' => 'Zahrah',
+            'email' => 'zahrah@gmail.com',
             'phone_number' => '081275796452' ,
             'status' => 'active',
             'role' => 'admin_vendor',
-            'password' => Hash::make('userZahra'),
+            'password' => Hash::make('userZahrah'),
         ]);
 
         DB::table('users')->insert([
-            'full_name' => 'Zahra Faradila2',
-            'username' => 'Zahra2',
-            'email' => '2zahra@gmail.com',
+            'full_name' => 'Zahrah Faradila2',
+            'username' => 'Zahrah2',
+            'email' => '2zahrah@gmail.com',
             'phone_number' => '081275796452' ,
             'status' => 'active',
             'role' => 'admin_vendor',
-            'password' => Hash::make('userZahra2'),
+            'password' => Hash::make('userZahrah2'),
         ]);
 
         /* ADMIN VENDOR END */
