@@ -11,8 +11,8 @@
         <div class="flex flex-wrap items-center gap-2">
             <span
                 class="px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full flex items-center gap-1"><span
-                    class="w-2 h-2 rounded-full bg-green-500"></span> CV Tenaga Prima</span>
-            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-semibold rounded-full">Maret 2026</span>
+                    class="w-2 h-2 rounded-full bg-green-500"></span> Semua Vendor</span>
+            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-semibold rounded-full">Maret 2026 (Sekarang)</span>
             <span
                 class="px-3 py-1 bg-yellow-50 text-yellow-700 text-xs font-semibold rounded-full flex items-center gap-1"><i
                     class="fas fa-hourglass-half"></i> Menunggu Persetujuan</span>
@@ -84,8 +84,8 @@
                                 class="w-8 h-8 rounded-full text-white flex items-center justify-center font-bold bg-green-600 shrink-0">
                                 IS</div>
                             <div>
-                                <div class="font-bold text-gray-800">Irwan Santoso</div>
-                                <div class="text-[10px] text-gray-400">#TP001</div>
+                                <div class="font-bold text-gray-800">Rizky Darmawan</div>
+                                <div class="text-[10px] text-gray-400">PT. Chemistry Jaya</div>
                             </div>
                         </div>
                     </td>
@@ -188,8 +188,8 @@
                                 class="w-8 h-8 rounded-full text-white flex items-center justify-center font-bold bg-emerald-600 shrink-0">
                                 JP</div>
                             <div>
-                                <div class="font-bold text-gray-800">Juliana Putri</div>
-                                <div class="text-[10px] text-gray-400">#TP002</div>
+                                <div class="font-bold text-gray-800">Siti Aminah</div>
+                                <div class="text-[10px] text-gray-400">PT. TechSolution</div>
                             </div>
                         </div>
                     </td>
@@ -289,8 +289,8 @@
                                 class="w-8 h-8 rounded-full text-white flex items-center justify-center font-bold bg-blue-500 shrink-0">
                                 KW</div>
                             <div>
-                                <div class="font-bold text-gray-800">Karno Wibowo</div>
-                                <div class="text-[10px] text-gray-400">#TP003</div>
+                                <div class="font-bold text-gray-800">Budi Santoso</div>
+                                <div class="text-[10px] text-gray-400">PT. GlobalMaju</div>
                             </div>
                         </div>
                     </td>
