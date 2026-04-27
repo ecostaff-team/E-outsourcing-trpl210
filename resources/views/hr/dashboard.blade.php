@@ -19,9 +19,9 @@
         {{-- SIDEBAR --}}
         <x-sidebar :menus="[
             ['title' => 'Dashboard', 'icon' => 'fas fa-book', 'ref' => '/hr/dashboard'],
-            ['title' => 'Rekapan Detail', 'icon' => 'fas fa-user-group','ref' => '/hr/rekapan-detail'],
-            ['title' => 'Ajuan Data Karyawan', 'icon' => 'fas fa-address-book','ref' => '/hr/ajuan-data-karyawan'],
-            ['title' => 'Karyawan', 'icon' => 'fas fa-user-tie','ref' => '/hr/data-karyawan'],
+            ['title' => 'Rekapan Detail', 'icon' => 'fas fa-user-group', 'ref' => '/hr/rekapan-detail'],
+            ['title' => 'Ajuan Data Karyawan', 'icon' => 'fas fa-address-book', 'ref' => '/hr/ajuan-data-karyawan'],
+            ['title' => 'Karyawan', 'icon' => 'fas fa-user-tie', 'ref' => '/hr/data-karyawan'],
         ]" />
         <div class="flex-1 p-4 md:p-6 ml-0 min-w-0 overflow-hidden">
 
@@ -31,14 +31,14 @@
 
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-6 mb-6 mt-6">
-                <x-hr.hr-stat-card title="Karyawan OS Aktif" value="5" subtext="dari 87 terdaftar"
+                <x-hr.hr-stat-card title="Total Karyawan Outsourcing Aktif" value="18" subtext="dari 24 terdaftar"
                     icon="fas fa-users" borderColor="border-green-500" textColor="text-green-500"></x-hr.hr-stat-card>
-                <x-hr.hr-stat-card title="Total Menit Lembur" value="870" subtext="Bulan Maret 2025"
+                <x-hr.hr-stat-card title="Total Lembur Pending" value="2" subtext="Menunggu Persetujuan"
                     icon="fas fa-clock" borderColor="border-orange-400" textColor="text-orange-500"></x-hr.hr-stat-card>
                 <x-hr.hr-stat-card title="Ajuan Rekap Pending" value="2" subtext="Menunggu persetujuan"
                     icon="fas fa-clipboard-list" borderColor="border-indigo-500"
                     textColor="text-indigo-600"></x-hr.hr-stat-card>
-                <x-hr.hr-stat-card title="Ajuan Karyawan Pending" value="5" subtext="Menunggu persetujuan"
+                <x-hr.hr-stat-card title="Ajuan Karyawan Pending" value="7" subtext="Menunggu persetujuan"
                     icon="fas fa-user-clock" borderColor="border-teal-500" textColor="text-teal-600">
                 </x-hr.hr-stat-card>
             </div>
@@ -46,25 +46,20 @@
 
             <div class="bg-white p-4 md:p-8 rounded-lg shadow-lg mt-6">
                 <div class="flex flex-col md:flex-row md:justify-between gap-4 sm:gap-3 mb-4">
-                    <div class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
-                        <div class="relative w-full sm:w-64">
+                    <div class="flex flex-col sm:flex-row items-center gap-2 w-full sm:w-auto">
+                        <div class="relative w-full sm:w-auto">
+                            <input type="date" id="start_date" name="start_date"
+                                class="w-full sm:w-40 border rounded-lg px-3 py-2 text-sm text-gray-700 transition-all focus:ring-2 focus:ring-green-500 outline-none bg-white shadow-sm cursor-pointer"
+                                title="Tanggal Mulai">
+                        </div>
 
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <i class="far fa-calendar text-gray-500"></i>
-                            </div>
+                        <span class="text-gray-500 text-sm font-medium hidden sm:block">ke</span>
+                        <span class="text-gray-500 text-sm font-medium sm:hidden">sampai dengan</span>
 
-                            <select
-                                class="w-full border rounded-lg pl-9 pr-3 py-2 text-sm text-gray-700 transition-all focus:ring-2 focus:ring-green-500 outline-none appearance-none bg-white active:bg-gray-200 cursor-pointer shadow-sm">
-                                <option>Pilih Rentang Tanggal</option>
-                                <option>Minggu ini</option>
-                                <option>5 Apr 2026 - 12 Apr 2026</option>
-                                <option>29 Mar 2026 - 4 Apr 2026</option>
-                            </select>
-
-                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                                <i class="fas fa-chevron-down text-gray-500 text-xs"></i>
-                            </div>
-
+                        <div class="relative w-full sm:w-auto">
+                            <input type="date" id="end_date" name="end_date"
+                                class="w-full sm:w-40 border rounded-lg px-3 py-2 text-sm text-gray-700 transition-all focus:ring-2 focus:ring-green-500 outline-none bg-white shadow-sm cursor-pointer"
+                                title="Tanggal Akhir">
                         </div>
                     </div>
                     <button
