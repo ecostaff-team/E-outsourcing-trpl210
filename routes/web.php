@@ -85,13 +85,17 @@ Route::get('/super-admin/dashboard', function () {
     return view('superAdmin.dashboardAdmin');
 });
 
+Route::get('/super-admin/pengaturan', function () {
+    return view('superAdmin.pengaturanAdmin');
+});
+
 /* super admin selesai */
 
 /* ======================================================== */
 
 /* Karyawan Outsourcing */
 
-Route::get('/karyawanOutsourcing/dahsboard', function () {
+Route::get('/karyawanOutsourcing/dashboard', function () {
     return view('karyawanOutsourcing.dashboardKaryawan');
 });
 
