@@ -96,12 +96,12 @@
             ['title' => 'Jadwalku', 'icon' => 'fas fa-users', 'ref' => '/karyawanOutsourcing/jadwal-karyawan'],
             ['title' => 'Pengajuan Lembur', 'icon' => 'fas fa-users', 'ref' => '/karyawanOutsourcing/pengajuanKaryawan'],
             ['title' => 'Perizinan Sakit', 'icon' => 'fas fa-cog', 'ref' => '#'],
-        ]">kepala-departemen</x-sidebar>
+        ]">Karyawan Outsourcing</x-sidebar>
 
         <!-- OVERLAY -->
         <div x-show="open" @click="open = false"
             class="fixed inset-0 bg-black/40 backdrop-blur-sm md:hidden z-40"></div>
-
+            
         <!-- MAIN CONTENT -->
         <div class="flex-1 p-6">
 

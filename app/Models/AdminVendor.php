@@ -17,21 +17,19 @@ class AdminVendor extends Model
         'vendor_id',
     ];
 
-
-
     public function vendor()
     {
-        return $this->belongsTo(Vendor::class, 'vendor_id', 'id_admin_vendor');
+        return $this->belongsTo(Vendor::class, 'vendor_id', 'id_vendor');
     }
 
     public function karyawans()
     {
-        return $this->hasMany(Karyawan::class, 'id_admin_vendor', 'id_karyawan');
+        return $this->hasMany(Karyawan::class, 'admin_vendor_id', 'id_admin_vendor');
     }
 
     public function hrAdminVendors()
     {
-        return $this->hasMany(HrAdminVendor::class, 'id_admin_vendor', 'id_admin_vendor');
+        return $this->belongsTo(HrAdminVendor::class, 'admin_vendor_id', 'id_admin_vendor');
     }
 
     public function user()
