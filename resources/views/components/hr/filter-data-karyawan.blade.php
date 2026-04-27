@@ -14,35 +14,55 @@
                     <tr>
                         <th class="px-4 py-3 font-semibold text-gray-700 w-12 text-center">Pilih</th>
                         <th class="px-4 py-3 font-semibold text-gray-700">Nama Vendor</th>
-                        <th class="px-4 py-3 font-semibold text-gray-700">Kode Vendor</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100 bg-white">
                     <tr class="hover:bg-green-50 transition cursor-pointer">
                         <td class="px-4 py-3 text-center">
-                            <input type="radio" name="vendor_id" value="1" class="w-4 h-4 text-green-600 focus:ring-green-500 cursor-pointer">
+                            <input type="radio" name="vendor_id" value="1"
+                                class="w-4 h-4 text-green-600 focus:ring-green-500 cursor-pointer">
                         </td>
-                        <td class="px-4 py-3 font-medium text-gray-800">CV Tenaga Prima</td>
-                        <td class="px-4 py-3">VND-001</td>
+                        <td class="px-4 py-3 font-medium text-gray-800">PT. Chemistry Jaya</td>
+
                     </tr>
                     <tr class="hover:bg-green-50 transition cursor-pointer">
                         <td class="px-4 py-3 text-center">
-                            <input type="radio" name="vendor_id" value="2" class="w-4 h-4 text-green-600 focus:ring-green-500 cursor-pointer">
+                            <input type="radio" name="vendor_id" value="2"
+                                class="w-4 h-4 text-green-600 focus:ring-green-500 cursor-pointer">
                         </td>
-                        <td class="px-4 py-3 font-medium text-gray-800">PT Maju Jaya</td>
-                        <td class="px-4 py-3">VND-002</td>
+                        <td class="px-4 py-3 font-medium text-gray-800">PT. TechSolution</td>
+
+                    </tr>
+                    <tr class="hover:bg-green-50 transition cursor-pointer">
+                        <td class="px-4 py-3 text-center">
+                            <input type="radio" name="vendor_id" value="2"
+                                class="w-4 h-4 text-green-600 focus:ring-green-500 cursor-pointer">
+                        </td>
+                        <td class="px-4 py-3 font-medium text-gray-800">PT. GlobalMaju</td>
+
+                    </tr>
+                    <tr class="hover:bg-green-50 transition cursor-pointer">
+                        <td class="px-4 py-3 text-center">
+                            <input type="radio" name="vendor_id" value="2"
+                                class="w-4 h-4 text-green-600 focus:ring-green-500 cursor-pointer">
+                        </td>
+                        <td class="px-4 py-3 font-medium text-gray-800">PT. CreativeDev</td>
+
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <div class="flex items-center gap-4 shrink-0 w-full lg:w-auto justify-between lg:justify-end mt-2 lg:mt-0 text-xs text-gray-500">
+        <div
+            class="flex items-center gap-4 shrink-0 w-full lg:w-auto justify-between lg:justify-end mt-2 lg:mt-0 text-xs text-gray-500">
             <span>Menampilkan 1-2 dari 25 vendor</span>
             <div class="flex gap-1">
-                <div class="bg-green-700 text-white w-7 h-7 flex items-center justify-center rounded-lg shadow-sm font-medium cursor-pointer">
+                <div
+                    class="bg-green-700 text-white w-7 h-7 flex items-center justify-center rounded-lg shadow-sm font-medium cursor-pointer">
                     1
                 </div>
-                <div class="bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 w-7 h-7 flex items-center justify-center rounded-lg shadow-sm font-medium cursor-pointer transition">
+                <div
+                    class="bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 w-7 h-7 flex items-center justify-center rounded-lg shadow-sm font-medium cursor-pointer transition">
                     2
                 </div>
             </div>

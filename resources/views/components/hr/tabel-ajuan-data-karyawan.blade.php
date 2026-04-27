@@ -11,12 +11,12 @@
         </thead>
 
         <tbody>
-            <tr onclick="openModal('240029222', 'Fairuz Kamala', 'fairuz.k@ecogreen.id', '081233445566', 'Jl. Sudirman No. 10', 'PT. EcoGreen')"
+            <tr onclick="openModal('240029222', 'Fairuz Kamala', 'fairuz.k@chemistry.id', '081233445566', 'Jl. Sudirman No. 10', 'PT. Chemistry Jaya')"
                 class="odd:bg-white even:bg-gray-100 shadow-sm hover:bg-green-50 cursor-pointer transition-colors">
                 <td class="p-3 text-center font-medium">1</td>
                 <td class="p-3 text-left font-mono whitespace-nowrap">240029222</td>
                 <td class="p-3 text-left whitespace-nowrap">Fairuz Kamala</td>
-                <td class="p-3 text-left whitespace-nowrap">PT. EcoGreen</td>
+                <td class="p-3 text-left whitespace-nowrap">PT. Chemistry Jaya</td>
                 <td class="p-3 text-center whitespace-nowrap">
                     <button onclick="event.stopPropagation(); inlineApprove('240029222')"
                         class="bg-green-500 hover:bg-green-600 transition text-white px-2 py-1 rounded shadow-sm">

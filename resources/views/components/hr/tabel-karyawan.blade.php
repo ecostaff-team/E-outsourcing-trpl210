@@ -22,7 +22,7 @@
                     <td class="p-3 text-center">1</td>
                     <td class="p-3 text-center whitespace-nowrap">240028930</td>
                     <td class="p-3 text-left whitespace-nowrap">Rizky Darmawan</td>
-                    <td class="p-3 text-left whitespace-nowrap">PT. EcoGreen</td>
+                    <td class="p-3 text-left whitespace-nowrap">PT. Chemistry Jaya</td>
                     <td class="p-3 text-left">rizky@email.com</td>
                     <td class="p-3 text-left">Jl. SukaBumi no. 15</td>
                     <td class="p-3 text-center whitespace-nowrap">10 Apr 2026</td>
@@ -34,7 +34,7 @@
                     <td class="p-3 text-center whitespace-nowrap">
                         <div class="flex justify-center items-center gap-2">
                             <button
-                                onclick="event.stopPropagation(); openEditModal('240028930', 'Rizky Darmawan', 'PT. EcoGreen', 'rizky@email.com', 'Jl. SukaBumi no. 15', '081729848046')"
+                                onclick="event.stopPropagation(); openEditModal('240028930', 'Rizky Darmawan', 'PT. Chemistry Jaya', 'rizky@email.com', 'Jl. SukaBumi no. 15', '081729848046')"
                                 class="bg-yellow-500 hover:bg-yellow-600 transition text-black px-2 py-1 rounded shadow-sm"><i
                                     class="fas fa-pen"></i></button>
                             <button onclick="event.stopPropagation(); confirmDelete('240028930', 'Rizky Darmawan')"
@@ -122,6 +122,110 @@
                         </div>
                     </td>
                 </tr>
+
+                <tr class="odd:bg-white even:bg-gray-100 shadow-sm hover:bg-green-50 transition cursor-pointer">
+                    <td class="p-3 text-center">5</td>
+                    <td class="p-3 text-center whitespace-nowrap">240028934</td>
+                    <td class="p-3 text-left whitespace-nowrap">Rian Mahfud</td>
+                    <td class="p-3 text-left whitespace-nowrap">PT. TechSolution</td>
+                    <td class="p-3 text-left">rian.mahfud@email.com</td>
+                    <td class="p-3 text-left">Jl. Kenangan Delima No. 49</td>
+                    <td class="p-3 text-center whitespace-nowrap">12 Apr 2026</td>
+                    <td class="p-3 text-center whitespace-nowrap">-</td>
+                    <td class="p-3 text-center whitespace-nowrap">089876547667</td>
+                    <td class="p-3 text-center whitespace-nowrap">
+                        <span class="bg-green-100 text-green-600 px-2 py-1 rounded text-xs font-semibold">Aktif</span>
+                    </td>
+                    <td class="p-3 text-center whitespace-nowrap">
+                        <div class="flex justify-center items-center gap-2">
+                            <button
+                                onclick="event.stopPropagation(); openEditModal('240028934', 'Rian Mahfud', 'PT. Nusantara Abadi', 'rian.mahfud@email.com', 'Jl. Kenangan Delima No. 49', '089876547667')"
+                                class="bg-yellow-500 hover:bg-yellow-600 transition text-black px-2 py-1 rounded shadow-sm"><i
+                                    class="fas fa-pen"></i></button>
+                            <button onclick="event.stopPropagation(); confirmDelete('240028934', 'Rian Mahfud')"
+                                class="bg-red-500 hover:bg-red-600 transition text-white px-2 py-1 rounded shadow-sm"><i
+                                    class="fas fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr class="odd:bg-white even:bg-gray-100 shadow-sm hover:bg-green-50 transition cursor-pointer">
+                    <td class="p-3 text-center">6</td>
+                    <td class="p-3 text-center whitespace-nowrap">240028935</td>
+                    <td class="p-3 text-left whitespace-nowrap">Kartika Putri</td>
+                    <td class="p-3 text-left whitespace-nowrap">PT. GlobalMaju</td>
+                    <td class="p-3 text-left">kartika.p@email.com</td>
+                    <td class="p-3 text-left">Komp. Permata Hijau Blok B/1</td>
+                    <td class="p-3 text-center whitespace-nowrap">20 Jan 2025</td>
+                    <td class="p-3 text-center whitespace-nowrap">-</td>
+                    <td class="p-3 text-center whitespace-nowrap">081334455667</td>
+                    <td class="p-3 text-center whitespace-nowrap">
+                        <span class="bg-green-100 text-green-600 px-2 py-1 rounded text-xs font-semibold">Aktif</span>
+                    </td>
+                    <td class="p-3 text-center whitespace-nowrap">
+                        <div class="flex justify-center items-center gap-2">
+                            <button
+                                onclick="event.stopPropagation(); openEditModal('240028935', 'Kartika Putri', 'PT. GlobalMaju', 'kartika.p@email.com', 'Komp. Permata Hijau Blok B/1', '081334455667')"
+                                class="bg-yellow-500 hover:bg-yellow-600 transition text-black px-2 py-1 rounded shadow-sm"><i
+                                    class="fas fa-pen"></i></button>
+                            <button onclick="event.stopPropagation(); confirmDelete('240028935', 'Kartika Putri')"
+                                class="bg-red-500 hover:bg-red-600 transition text-white px-2 py-1 rounded shadow-sm"><i
+                                    class="fas fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr class="odd:bg-white even:bg-gray-100 shadow-sm hover:bg-green-50 transition cursor-pointer text-gray-500">
+                    <td class="p-3 text-center">7</td>
+                    <td class="p-3 text-center whitespace-nowrap">240028936</td>
+                    <td class="p-3 text-left whitespace-nowrap">Doni Setiawan</td>
+                    <td class="p-3 text-left whitespace-nowrap">PT. TechSolution</td>
+                    <td class="p-3 text-left">doni.set@email.com</td>
+                    <td class="p-3 text-left">Jl. Merdeka Raya No. 10</td>
+                    <td class="p-3 text-center whitespace-nowrap">05 Mei 2024</td>
+                    <td class="p-3 text-center whitespace-nowrap">25 Jan 2026</td>
+                    <td class="p-3 text-center whitespace-nowrap">087788990011</td>
+                    <td class="p-3 text-center whitespace-nowrap">
+                        <span class="bg-red-100 text-red-600 px-2 py-1 rounded text-xs font-semibold">Non-Aktif</span>
+                    </td>
+                    <td class="p-3 text-center whitespace-nowrap">
+                        <div class="flex justify-center items-center gap-2">
+                            <button
+                                onclick="event.stopPropagation(); openEditModal('240028936', 'Doni Setiawan', 'PT. TechSolution', 'doni.set@email.com', 'Jl. Merdeka Raya No. 10', '087788990011')"
+                                class="bg-yellow-500 hover:bg-yellow-600 transition text-black px-2 py-1 rounded shadow-sm"><i
+                                    class="fas fa-pen"></i></button>
+                            <button
+                                class="bg-gray-400 hover:bg-gray-500 transition text-white px-2 py-1 rounded shadow-sm cursor-not-allowed"
+                                disabled><i class="fas fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr class="odd:bg-white even:bg-gray-100 shadow-sm hover:bg-green-50 transition cursor-pointer">
+                    <td class="p-3 text-center">8</td>
+                    <td class="p-3 text-center whitespace-nowrap">240028937</td>
+                    <td class="p-3 text-left whitespace-nowrap">Fajar Hidayat</td>
+                    <td class="p-3 text-left whitespace-nowrap">PT. Chemistry Jaya</td>
+                    <td class="p-3 text-left">fajar.hid@email.com</td>
+                    <td class="p-3 text-left">Jl. Anggrek Selatan No. 3</td>
+                    <td class="p-3 text-center whitespace-nowrap">20 Apr 2026</td>
+                    <td class="p-3 text-center whitespace-nowrap">-</td>
+                    <td class="p-3 text-center whitespace-nowrap">082211334455</td>
+                    <td class="p-3 text-center whitespace-nowrap">
+                        <span class="bg-green-100 text-green-600 px-2 py-1 rounded text-xs font-semibold">Aktif</span>
+                    </td>
+                    <td class="p-3 text-center whitespace-nowrap">
+                        <div class="flex justify-center items-center gap-2">
+                            <button
+                                onclick="event.stopPropagation(); openEditModal('240028937', 'Fajar Hidayat', 'PT. Chemistry Jaya', 'fajar.hid@email.com', 'Jl. Anggrek Selatan No. 3', '082211334455')"
+                                class="bg-yellow-500 hover:bg-yellow-600 transition text-black px-2 py-1 rounded shadow-sm"><i
+                                    class="fas fa-pen"></i></button>
+                            <button onclick="event.stopPropagation(); confirmDelete('240028937', 'Fajar Hidayat')"
+                                class="bg-red-500 hover:bg-red-600 transition text-white px-2 py-1 rounded shadow-sm"><i
+                                    class="fas fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -169,7 +273,9 @@
 
     function confirmDelete(nip, nama) {
         // Menampilkan popup konfirmasi bawaan browser
-        let isConfirmed = confirm(`Apakah Anda yakin ingin menghapus data karyawan: ${nama} (${nip})? \nData yang dihapus tidak dapat dikembalikan.`);
+        let isConfirmed = confirm(
+            `Apakah Anda yakin ingin menghapus data karyawan: ${nama} (${nip})? \nData yang dihapus tidak dapat dikembalikan.`
+        );
 
         if (isConfirmed) {
             // Tampilkan alert JS plain jika user menekan 'OK'
