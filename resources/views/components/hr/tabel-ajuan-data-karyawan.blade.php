@@ -132,9 +132,16 @@
 </div>
 
 <script>
+    // Variabel Element Modal
+    const detailModal = document.getElementById('detailModal');
+    const detailModalBox = document.getElementById('detailModalContent');
+    const rejectModal = document.getElementById('rejectModal');
+    const rejectModalBox = document.getElementById('rejectModalContent');
+
+    // ==========================================
     // FUNGSI UNTUK MODAL DETAIL KARYAWAN
+    // ==========================================
     function openModal(nip, nama, email, telp, alamat, asal) {
-        // Mapping data ke elemen ID yang ada di modal detail
         document.getElementById('modalNip').innerText = nip;
         document.getElementById('modalNama').innerText = nama;
         document.getElementById('modalEmail').innerText = email;
@@ -142,68 +149,75 @@
         document.getElementById('modalAlamat').innerText = alamat;
         document.getElementById('modalAsal').innerText = asal;
 
-        const modal = document.getElementById('detailModal');
-        modal.classList.remove('hidden');
-
-        // Animasi fade in
-        modal.style.opacity = "0";
+        detailModal.classList.remove('hidden');
         setTimeout(() => {
-            modal.style.opacity = "1";
-            modal.style.transition = "opacity 0.2s ease-in-out";
+            detailModal.classList.remove('opacity-0');
+            detailModalBox.classList.remove('scale-95');
+            detailModalBox.classList.add('scale-100');
         }, 10);
     }
 
     function closeModal() {
-        const modal = document.getElementById('detailModal');
-        modal.classList.add('hidden');
+        detailModal.classList.add('opacity-0');
+        detailModalBox.classList.remove('scale-100');
+        detailModalBox.classList.add('scale-95');
+
+        setTimeout(() => {
+            detailModal.classList.add('hidden');
+        }, 200);
     }
 
-    // Tutup saat klik di luar box modal
-    window.onclick = function(event) {
-        const detailModal = document.getElementById('detailModal');
-        const rejectModal = document.getElementById('rejectModal');
-
-        if (event.target == detailModal) {
-            closeModal();
-        } else if (event.target == rejectModal) {
-            closeRejectModal();
-        }
-    }
-
-
+    // ==========================================
     // FUNGSI AKSI (SETUJU / TOLAK)
-
-    // Aksi Setuju lewat Modal Detail
+    // ==========================================
     function approveAction() {
         let nip = document.getElementById('modalNip').innerText;
         alert(`Karyawan outsourcing ${nip} disetujui`);
         closeModal();
     }
 
-    // Aksi Setuju langsung dari Tabel (Inline)
     function inlineApprove(nip) {
         alert(`Karyawan outsourcing ${nip} disetujui`);
     }
 
-    // Aksi Tolak lewat Modal Detail (Membuka Modal Tolak)
     function openRejectModal() {
-        document.getElementById('detailModal').classList.add('hidden');
-        document.getElementById('rejectModal').classList.remove('hidden');
+        // Tutup detail modal dengan animasi
+        closeModal();
+
+        // Buka reject modal setelah detail modal selesai tertutup (200ms)
+        setTimeout(() => {
+            rejectModal.classList.remove('hidden');
+            setTimeout(() => {
+                rejectModal.classList.remove('opacity-0');
+                rejectModalBox.classList.remove('scale-95');
+                rejectModalBox.classList.add('scale-100');
+            }, 10);
+        }, 200);
     }
 
-    // Aksi Tolak langsung dari Tabel (Inline)
     function inlineReject(nip) {
-        // Simpan NIP ke elemen modal hidden agar bisa diambil oleh tombol kirim
         document.getElementById('modalNip').innerText = nip;
-        document.getElementById('rejectModal').classList.remove('hidden');
+
+        // Buka reject modal dari inline table
+        rejectModal.classList.remove('hidden');
+        setTimeout(() => {
+            rejectModal.classList.remove('opacity-0');
+            rejectModalBox.classList.remove('scale-95');
+            rejectModalBox.classList.add('scale-100');
+        }, 10);
     }
 
     function closeRejectModal() {
-        document.getElementById('rejectModal').classList.add('hidden');
-        document.getElementById('alasanPenolakan').value = '';
+        rejectModal.classList.add('opacity-0');
+        rejectModalBox.classList.remove('scale-100');
+        rejectModalBox.classList.add('scale-95');
+
+        setTimeout(() => {
+            rejectModal.classList.add('hidden');
+            document.getElementById('alasanPenolakan').value = ''; // Reset input
+        }, 200);
     }
 
-    // Fungsi Final: Mengirim Alasan Penolakan
     function submitRejectAction() {
         let alasan = document.getElementById('alasanPenolakan').value;
         let nip = document.getElementById('modalNip').innerText;
@@ -216,4 +230,27 @@
         alert(`Karyawan outsourcing ${nip} ditolak dengan alasan: ${alasan}`);
         closeRejectModal();
     }
+
+    // ==========================================
+    // EVENT LISTENERS (Outside Click & Escape)
+    // ==========================================
+    window.addEventListener('click', function(event) {
+        if (event.target === detailModal) {
+            closeModal();
+        }
+        if (event.target === rejectModal) {
+            closeRejectModal();
+        }
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            // Prioritaskan menutup rejectModal jika sedang terbuka (karena ia berada di layer atas jika diakses berurutan)
+            if (!rejectModal.classList.contains('hidden')) {
+                closeRejectModal();
+            } else if (!detailModal.classList.contains('hidden')) {
+                closeModal();
+            }
+        }
+    });
 </script>
