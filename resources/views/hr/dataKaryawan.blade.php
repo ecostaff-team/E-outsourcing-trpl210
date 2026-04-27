@@ -18,16 +18,18 @@
     <div class="flex">
         {{-- SIDEBAR --}}
         <x-sidebar :menus="[
-            ['title' => 'Dashboard', 'icon' => 'fas fa-book'],
-            ['title' => 'Rekapan Detail', 'icon' => 'fas fa-user-group'],
-            ['title' => 'Ajuan Data Karyawan', 'icon' => 'fas fa-address-book'],
-            ['title' => 'Karyawan', 'icon' => 'fas fa-user-tie'],
+            ['title' => 'Dashboard', 'icon' => 'fas fa-book', 'ref' => '/hr/dashboard'],
+            ['title' => 'Rekapan Detail', 'icon' => 'fas fa-user-group','ref' => '/hr/rekapan-detail'],
+            ['title' => 'Ajuan Data Karyawan', 'icon' => 'fas fa-address-book','ref' => '/hr/ajuan-data-karyawan'],
+            ['title' => 'Karyawan', 'icon' => 'fas fa-user-tie','ref' => '/hr/data-karyawan'],
         ]" />
         <div class="flex-1 p-4 md:p-6 ml-0 min-w-0 overflow-hidden">
 
             <!-- HEADER CONTENT -->
             <x-header>HR</x-header>
             {{-- // BUAT ISI CONTENT DIBAWAH SINIIIIIII --}}
+
+            <x-hr.filter-data-karyawan></x-hr.filter-data-karyawan>
 
             <div class="bg-white p-4 md:p-8 rounded-lg shadow-lg mt-6 w-full">
                 <div class="flex flex-col md:flex-row md:justify-between gap-3">
