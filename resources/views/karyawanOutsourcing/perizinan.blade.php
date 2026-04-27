@@ -308,6 +308,8 @@
                                     Klik atau upload file
 
                                     <div class="flex flex-col items-center gap-2">
+
+                                    
                                         <i class="fa-solid fa-cloud-arrow-up text-2xl text-emerald-500"></i>
                                         <p class="text-sm font-medium text-gray-600">Klik atau upload file</p>
                                         <p class="text-xs text-gray-400">JPG, PNG, PDF (Max 5MB)</p>
