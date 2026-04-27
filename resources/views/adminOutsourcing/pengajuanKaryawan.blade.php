@@ -5,14 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pengajuan Karyawan Admin Outsorcing</title>
+<<<<<<< HEAD
+    
+=======
 
+>>>>>>> 1b0219dff50cb7ed76742e8e9ccfa63a351db430
     <link rel="icon" type="image/x-icon" href="/images/logo.png">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<<<<<<< HEAD
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> 
+=======
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+>>>>>>> 1b0219dff50cb7ed76742e8e9ccfa63a351db430
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -22,10 +31,16 @@
 
         {{-- SIDEBAR --}}
         <x-sidebar :menus="[
+<<<<<<< HEAD
+            ['title' => 'Dashboard', 'icon' => 'fas fa-book'],
+            ['title' => 'Pengajuan Karyawan', 'icon' => 'fas fa-user-group'],
+        ]" />
+=======
         ['title' => 'Dashboard', 'icon' => 'fas fa-home', 'ref' => '/admin-outsourcing/dashboard'],
         ['title' => 'Pengajuan Karyawan', 'icon' => 'fas fa-users', 'ref' => '/admin-outsourcing/pengajuan-karyawan'],
         ['title' => 'Kelola Karyawan', 'icon' => 'fas fa-user-cog', 'ref' => '/admin-outsourcing/kelola-karyawan'],
     ]">Admin Outsourcing</x-sidebar>
+>>>>>>> 1b0219dff50cb7ed76742e8e9ccfa63a351db430
 
         {{-- MAIN CONTENT --}}
         <div class="flex-1 p-6">
@@ -33,11 +48,19 @@
             {{-- HEADER --}}
             <x-header>Admin Outsourcing</x-header>
 
+<<<<<<< HEAD
+            <div class="flex justify-center items-center bg-gray-100 p-4">
+                <div class="bg-white shadow-lg w-full p-8">
+                    <h2 class="text-2xl font-bold text-center text-gray-900 mb-8">Form Pengajuan Karyawan</h2>
+
+                    <form action="#" method="POST" class="space-y-5">
+=======
             <div class="min-h-screen bg-gray-100 p-4">
                 <div class="bg-white shadow-lg w-full p-6 rounded-lg max-w-5xl mx-auto">
                     <h2 class="text-xl font-bold text-center text-gray-900 mb-6">Form Pengajuan Karyawan</h2>
 
                     <form action="#" method="POST" class="grid grid-cols-1 md:grid-cols-1 gap-4">
+>>>>>>> 1b0219dff50cb7ed76742e8e9ccfa63a351db430
                         <div>
                             <label for="nip" class="block text-sm font-bold text-gray-900 mb-2">
                                 NIP <span class="text-red-500">*</span>
@@ -79,14 +102,26 @@
                         </div>
 
                         <div class="flex justify-end pt-4">
+<<<<<<< HEAD
+                            <button type="submit" 
+=======
                             <button type="submit"
+>>>>>>> 1b0219dff50cb7ed76742e8e9ccfa63a351db430
                                 class="bg-[#009254] hover:bg-[#007a46] text-white font-bold py-3 px-8 rounded-2xl transition-all duration-200">
                                 Ajukan Data
                             </button>
                         </div>
                     </form>
+<<<<<<< HEAD
+                    
+                </div>
+            </div>
+</body>
+</html>
+=======
 
                 </div>
             </div>
 </body>
 </html>
+>>>>>>> 1b0219dff50cb7ed76742e8e9ccfa63a351db430
