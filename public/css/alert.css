@@ -1,0 +1,182 @@
+/* ================================================
+   Toast / Alert Component - Premium Design
+   ================================================ */
+
+/* --- Keyframe Animations --- */
+@keyframes toastSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(120%) scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes toastSlideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(120%) scale(0.92);
+    }
+}
+
+@keyframes progressBar {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
+}
+
+@keyframes pulseIcon {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+/* --- Toast Wrapper --- */
+#toast-container {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    pointer-events: none;
+}
+
+/* --- Individual Toast Card --- */
+.toast-card {
+    pointer-events: all;
+    min-width: 320px;
+    max-width: 400px;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.15),
+        0 4px 10px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    animation: toastSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Exit animation dikelola via inline style transition di alert.js */
+
+/* --- Toast Inner Body --- */
+.toast-body {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1rem 1.1rem;
+}
+
+/* --- Icon --- */
+.toast-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    animation: pulseIcon 1.6s ease-in-out infinite;
+    line-height: 1;
+}
+
+/* --- Content --- */
+.toast-content {
+    flex: 1;
+}
+
+.toast-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 0.15rem;
+}
+
+.toast-message {
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* --- Close Button --- */
+.toast-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.55;
+    transition: opacity 0.2s, background 0.2s;
+    flex-shrink: 0;
+    line-height: 1;
+    font-size: 1rem;
+}
+
+.toast-close:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* --- Progress Bar --- */
+.toast-progress {
+    height: 3px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.toast-progress-fill {
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    animation: progressBar linear forwards;
+}
+
+/* ================================================
+   Variant: Success  (default)
+   ================================================ */
+.toast-success {
+    background: linear-gradient(135deg, #059669 0%, #10b981 60%, #34d399 100%);
+    color: #fff;
+}
+
+/* ================================================
+   Variant: Error
+   ================================================ */
+.toast-error {
+    background: linear-gradient(135deg, #dc2626 0%, #ef4444 60%, #f87171 100%);
+    color: #fff;
+}
+
+/* ================================================
+   Variant: Warning
+   ================================================ */
+.toast-warning {
+    background: linear-gradient(135deg, #d97706 0%, #f59e0b 60%, #fbbf24 100%);
+    color: #fff;
+}
+
+/* ================================================
+   Variant: Info
+   ================================================ */
+.toast-info {
+    background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 60%, #60a5fa 100%);
+    color: #fff;
+}

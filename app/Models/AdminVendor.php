@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class AdminVendor extends Authenticatable
+class AdminVendor extends Model
 {
     use HasFactory;
 
@@ -13,33 +13,27 @@ class AdminVendor extends Authenticatable
     protected $primaryKey = 'id_admin_vendor';
 
     protected $fillable = [
-        'username',
-        'password',
-        'nama',
-        'status',
-        'asal_vendor',
-    ];
-
-    protected $hidden = [
-        'password',
-    ];
-
-    protected $casts = [
-        'password' => 'hashed',
+        'user_id',
+        'vendor_id',
     ];
 
     public function vendor()
     {
-        return $this->belongsTo(Vendor::class, 'asal_vendor', 'id_vendor');
+        return $this->belongsTo(Vendor::class, 'vendor_id', 'id_vendor');
     }
 
     public function karyawans()
     {
-        return $this->hasMany(Karyawan::class, 'id_admin_vendor', 'id_admin_vendor');
+        return $this->hasMany(Karyawan::class, 'admin_vendor_id', 'id_admin_vendor');
     }
-    
+
     public function hrAdminVendors()
     {
-        return $this->hasMany(HrAdminVendor::class, 'id_admin_vendor', 'id_admin_vendor');
+        return $this->belongsTo(HrAdminVendor::class, 'admin_vendor_id', 'id_admin_vendor');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

@@ -10,14 +10,13 @@ return new class extends Migration
     {
         Schema::create('kepala_departement', function (Blueprint $table) {
             $table->integer('id_departement')->autoIncrement();
-            $table->string('nama', 255);
-            $table->string('username', 100);
             $table->string('nama_departement', 255);
-            $table->enum('status', ['Aktif', 'Tidak_aktif']);
-            $table->string('email', 255);
-            $table->string('alamat', 255);
-            $table->string('password', 255);
             $table->timestamps();
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+            ->references('id')->on('users')
+            ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
