@@ -433,7 +433,7 @@
 
 
     <!-- MODAL SUKSES -->
-    <div id="modalSukses" class="hidden fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center">
+    <div id="modalSukses" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center">
         <div class="bg-white rounded-2xl shadow-2xl p-8 mx-4 max-w-sm w-full text-center">
             <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" id="modalIcon"
                 style="background:#dcfce7">
