@@ -4,11 +4,13 @@
                transition hover:scale-110 active:scale-95">
         ☰
     </button>
-    <div class="text-center">
-        <h3 class="text-emerald-900 font-bold text-lg md:text-2xl">
-            <img src="/images/logo.png" alt="" class="w-8 inline-block ml-2">
-            EcoGreen
-        </h3>
+    <div>
+        <h1 class="text-xl font-bold text-gray-800 md:text-2xl">
+            Selamat Datang, {{ $slot }} 👋
+        </h1>
+        <p class="text-gray-500 text-sm">
+            Semoga harimu produktif dan menyenangkan
+        </p>
     </div>
     <!-- PROFILE DROPDOWN -->
     <div x-data="{ openProfile: false }" class="relative">
@@ -37,10 +39,6 @@
                 👤 Profile
             </a>
 
-            <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">
-                🔒 Ganti Password
-            </a>
-
             <hr>
 
             <a href="#" class="block px-4 py-2 text-sm text-red-500 hover:bg-red-50">
@@ -52,14 +50,6 @@
 
 
 </div>
-<div>
-    <h1 class="text-xl font-bold text-gray-800 md:text-2xl">
-        Selamat Datang, {{ $slot }} 👋
-    </h1>
-    <p class="text-gray-500 text-sm">
-        Semoga harimu produktif dan menyenangkan
-    </p>
-</div>
+
 
 @yield('content')
-

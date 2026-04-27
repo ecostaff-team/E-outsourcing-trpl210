@@ -12,65 +12,10 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            DEFAULT: '#16a34a',
-                            dark: '#15803d',
-                            light: '#dcfce7',
-                            mid: '#bbf7d0'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        /* Sticky columns */
-        .sticky-no {
-            position: sticky;
-            left: 0;
-            z-index: 5;
-        }
-
-        .sticky-nama {
-            position: sticky;
-            left: 30px;
-            z-index: 5;
-        }
-
-        thead .sticky-no,
-        thead .sticky-nama {
-            z-index: 6;
-        }
-
-        /* Hide scrollbar but keep scroll */
-        .table-scroll {
-            overflow-x: auto;
-        }
-
-        .table-scroll::-webkit-scrollbar {
-            height: 4px;
-        }
-
-        .table-scroll::-webkit-scrollbar-track {
-            background: #f1f5f9;
-            border-radius: 9999px;
-        }
-
-        .table-scroll::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 9999px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/admin-outsourcing/dashboard.css') }}">
 </head>
 
 <body class="bg-slate-100 font-sans text-slate-800 antialiased">

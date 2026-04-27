@@ -122,15 +122,7 @@
                                 x-transition:leave-start="opacity-100 scale-100"
                                 x-transition:leave-end="opacity-0 scale-90">
 
-                                <!-- Tutorial -->
-                                <div
-                                    class="mb-4 p-3 rounded-xl bg-blue-50 border border-blue-200 text-sm text-blue-700">
-                                    🧭 <b>Cara menambahkan jadwal:</b><br>
-                                    1. Cari karyawan 🔍<br>
-                                    2. Pilih shift 🌗<br>
-                                    3. Pilih tanggal di kalender 📅<br>
-                                    4. Klik simpan 💾
-                                </div>
+                                
 
                                 <!-- Header -->
                                 <div class="flex justify-between items-center mb-6">

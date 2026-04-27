@@ -22,7 +22,7 @@
             ['title' => 'Rekapan Detail', 'icon' => 'fas fa-user-group','ref' => '/hr/rekapan-detail'],
             ['title' => 'Ajuan Data Karyawan', 'icon' => 'fas fa-address-book','ref' => '/hr/ajuan-data-karyawan'],
             ['title' => 'Karyawan', 'icon' => 'fas fa-user-tie','ref' => '/hr/data-karyawan'],
-        ]" />
+        ]" >HR</x-sidebar>
         <div class="flex-1 p-4 md:p-6 ml-0 min-w-0 overflow-hidden">
 
             <!-- HEADER CONTENT -->

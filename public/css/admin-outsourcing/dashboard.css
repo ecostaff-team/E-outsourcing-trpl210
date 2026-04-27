@@ -1,0 +1,36 @@
+/* Sticky columns */
+.sticky-no {
+    position: sticky;
+    left: 0;
+    z-index: 5;
+}
+
+.sticky-nama {
+    position: sticky;
+    left: 30px;
+    z-index: 5;
+}
+
+thead .sticky-no,
+thead .sticky-nama {
+    z-index: 6;
+}
+
+/* Hide scrollbar but keep scroll */
+.table-scroll {
+    overflow-x: auto;
+}
+
+.table-scroll::-webkit-scrollbar {
+    height: 4px;
+}
+
+.table-scroll::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 9999px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 9999px;
+}
