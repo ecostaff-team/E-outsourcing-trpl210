@@ -12,9 +12,10 @@ md:translate-x-0 z-50 shadow-2xl">
     <!-- HEADER -->
     <div>
         <div class="text-center px-4 py-6">
-            <h2 class="text-2xl font-bold">EcoGreen</h2>
-            <h3 class="text-lg font-semibold">E-Outsourcing</h3>
-            <p class="text-sm text-white/60">{{ $slot }}</p>
+            <h3 class="text-white font-bold text-lg md:text-2xl">
+                <img src="/images/logo.png" alt="" class="w-8 inline-block ml-2">
+                EcoGreen
+            </h3>
         </div>
 
         <hr class="border-white/30 mx-4">
@@ -23,7 +24,7 @@ md:translate-x-0 z-50 shadow-2xl">
         <ul id="sidebar-menu" class="mt-8 ml-4">
             @foreach ($menus as $menu)
                 <li>
-                    <a href="{{ $menu['ref']}}"
+                    <a href="{{ $menu['ref'] }}"
                         class="flex items-center gap-3 text-lg font-medium px-4 py-2 rounded-xl
                                 transition-all duration-300 hover:bg-gradient-to-r hover:to-green-400 from-white/20 hover:-translate-y-0.5 hover:translate-4">
                         <i class="{{ $menu['icon'] }}"></i>
