@@ -1,7 +1,6 @@
 let sudahMasuk = false
 let sudahKeluar = false
 let tipeAbsensi = null
-let jadwalDipilih = null
 let lokasi = null
 
 // 🔥 MAP CONFIG
@@ -10,8 +9,10 @@ const kantor = {
     lng: 104.1336049809529 */
 
     /* politeknik negeri batam */
-    lat: 1.118838493578187,
-    lng: 104.0484029502701
+    
+    lat: 1.1508969,
+    lng: 104.0439572
+
 }
 
 const radiusKantor = 200
@@ -20,103 +21,161 @@ let map
 let markerUser
 let circle
 
-function pilihJadwal(nama, masuk, keluar) {
 
-    jadwalDipilih = {
-        nama,
-        masuk,
-        keluar
-    }
 
-    // reset semua
-    document.querySelectorAll("#jadwalContainer div")
-        .forEach(el => el.classList.remove("border-emerald-500", "border-2"))
-
-    event.currentTarget.classList.add("border-emerald-500", "border-2")
-
-}
 
 
 function absenMasuk() {
-
-    if (!jadwalDipilih) {
-        alert("Pilih jadwal dulu")
-        return
-    }
+    
 
     tipeAbsensi = "masuk"
 
-    document.getElementById("statusMasuk")
-        .innerHTML = "⏳ Mengambil Lokasi..."
+    setActiveButton("masuk")
 
-    getLokasi()
-
+    document.getElementById("statusMasuk").innerHTML =
+        "Klik simpan untuk absen masuk"
 }
 
 function absenKeluar() {
 
-    if (!jadwalDipilih) {
-        alert("Pilih jadwal dulu")
-        return
-    }
-
     tipeAbsensi = "keluar"
 
-    document.getElementById("statusKeluar")
-        .innerHTML = "⏳ Mengambil Lokasi..."
+    setActiveButton("keluar")
 
-    getLokasi()
-
+    document.getElementById("statusKeluar").innerHTML =
+        "Klik simpan untuk absen keluar"
 }
 
 
-function getLokasi() {
 
-    // Random lokasi sekitar kantor (dummy)
-    const dalamRadius = Math.random() > 0.5
 
-    if (dalamRadius) {
 
-        // Dalam radius (berhasil)
-        lokasi = {
-            lat: kantor.lat,
-            lng: kantor.lng
-        }
+function simpanAbsensi() {
 
-    } else {
+    if (tipeAbsensi === "masuk" && sudahMasuk) {
+    alert("Sudah absen masuk")
+    return
+}
 
-        // Diluar radius (gagal)
-        lokasi = {
-            lat: kantor.lat + 0.002,
-            lng: kantor.lng + 0.002
-        }
+if (tipeAbsensi === "keluar" && sudahKeluar) {
+    alert("Sudah absen keluar")
+    return
+}
 
+    if (!tipeAbsensi) {
+        alert("Pilih absen masuk atau keluar dulu")
+        return
     }
 
+    if (!navigator.geolocation) {
+        alert("GPS tidak didukung")
+        return
+    }
 
-    // Marker User
+    navigator.geolocation.getCurrentPosition((pos) => {
+
+        lokasi = {
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude
+        }
+
+        updateMapUser()
+
+        const jarak = map.distance(
+            [lokasi.lat, lokasi.lng],
+            [kantor.lat, kantor.lng]
+        )
+
+        if (jarak > radiusKantor) {
+
+            alert("Diluar area kantor")
+
+            if (tipeAbsensi === "masuk") {
+                document.getElementById("statusMasuk").innerHTML = "Diluar area"
+            }
+
+            if (tipeAbsensi === "keluar") {
+                document.getElementById("statusKeluar").innerHTML = "Diluar area"
+            }
+
+            return
+        }
+
+        if (tipeAbsensi === "masuk") {
+
+    sudahMasuk = true
+
+    document.getElementById("statusMasuk").innerHTML =
+        "Sudah absen masuk (" + document.getElementById("waktu").value + ")"
+
+    tipeAbsensi = null
+}
+
+        if (tipeAbsensi === "keluar") {
+
+    if (!sudahMasuk) {
+        alert("Absen masuk dulu")
+        return
+    }
+
+    sudahKeluar = true
+
+    document.getElementById("statusKeluar").innerHTML =
+        "Sudah absen keluar (" + document.getElementById("waktu").value + ")"
+
+    tipeAbsensi = null
+
+    setActiveButton(null)
+}
+
+    }, () => {
+        alert("Gagal ambil lokasi")
+    }, {
+        enableHighAccuracy: true
+    })
+}
+
+
+function setActiveButton(tipe = null) {
+
+    const btnMasuk = document.getElementById("btnMasuk")
+    const btnKeluar = document.getElementById("btnKeluar")
+
+    // reset
+    btnMasuk.classList.remove("bg-emerald-600", "text-white")
+    btnKeluar.classList.remove("bg-emerald-600", "text-white")
+    
+
+    btnMasuk.classList.add("bg-gray-100", "text-gray-700")
+    btnKeluar.classList.add("bg-gray-100", "text-gray-700")
+
+    if (!tipe) return
+
+    if (tipe === "masuk") {
+        btnMasuk.classList.remove("bg-gray-100", "text-gray-700")
+        btnMasuk.classList.add("bg-emerald-600", "text-white")
+    }
+
+    if (tipe === "keluar") {
+        btnKeluar.classList.remove("bg-gray-100", "text-gray-700")
+        btnKeluar.classList.add("bg-emerald-600", "text-white")
+    }
+
+    
+}
+
+function updateMapUser() {
+
     if (markerUser) {
         map.removeLayer(markerUser)
     }
 
     markerUser = L.marker([lokasi.lat, lokasi.lng])
         .addTo(map)
-        .bindPopup("Lokasi Dummy")
+        .bindPopup("Lokasi Anda")
         .openPopup()
 
     map.setView([lokasi.lat, lokasi.lng], 17)
-
-}
-
-function simpanAbsensi() {
-
-    if (!lokasi) {
-        alert("Lokasi belum diambil")
-        return
-    }
-
-    cekRadius()
-
 }
 
 
@@ -162,58 +221,7 @@ function initMap() {
 
 }
 
-function cekRadius() {
 
-    const jarak = map.distance(
-        [lokasi.lat, lokasi.lng],
-        [kantor.lat, kantor.lng]
-    )
-
-    console.log("Jarak:", jarak)
-
-    if (jarak <= radiusKantor) {
-
-        if (tipeAbsensi == "masuk") {
-
-            sudahMasuk = true
-
-            document.getElementById("statusMasuk")
-                .innerHTML = "✅ Sudah Absen Masuk"
-
-        }
-
-        if (tipeAbsensi == "keluar") {
-
-            sudahKeluar = true
-
-            document.getElementById("statusKeluar")
-                .innerHTML = "✅ Sudah Absen Keluar"
-
-            alert("Absen Keluar Berhasil")
-
-        }
-
-    } else {
-
-        alert("❌ Anda di luar area kantor")
-
-        if (tipeAbsensi == "masuk") {
-
-            document.getElementById("statusMasuk")
-                .innerHTML = "❌ Diluar Area Kantor"
-
-        }
-
-        if (tipeAbsensi == "keluar") {
-
-            document.getElementById("statusKeluar")
-                .innerHTML = "❌ Diluar Area Kantor"
-
-        }
-
-    }
-
-}
 window.addEventListener("load", function () {
 
     setTimeout(() => {

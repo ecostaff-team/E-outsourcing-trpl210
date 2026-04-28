@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('lokasi_keluar', 255);
 
             $table->string('bukti', 255);
-            $table->text('keterangan')->default('hadir');
+            $table->text('keterangan');
             $table->timestamps();
             $table->integer('rekapan_kehadiran_id');
 
