@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminOutsourcingController;
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Route;
 
 
 /* Route untuk logic */
@@ -41,9 +42,7 @@ Route::get('/kepala-departemen/pengaturan', function () {
 
 /* Admin OutSourcing */
 
-Route::get('/admin-outsourcing/dashboard', function () {
-    return view('adminOutsourcing.dashboard');
-});
+Route::get('/admin-outsourcing/dashboard',  [AdminOutsourcingController::class, 'dashboard']);
 
 Route::get('/admin-outsourcing/pengajuan-karyawan', function () {
     return view('adminOutsourcing.pengajuanKaryawan');

@@ -23,10 +23,17 @@ md:translate-x-0 z-50 shadow-2xl">
         <!-- MENU -->
         <ul id="sidebar-menu" class="mt-8 ml-4">
             @foreach ($menus as $menu)
+                @php
+                    $isActive = request()->is(ltrim($menu['ref'], '/'));
+                @endphp
+
                 <li>
                     <a href="{{ $menu['ref'] }}"
-                        class="flex items-center gap-3 text-lg font-medium px-4 py-2 rounded-xl
-                                transition-all duration-300 hover:bg-gradient-to-r hover:to-green-400 from-white/20 hover:-translate-y-0.5 hover:translate-4">
+                        class="flex items-center gap-3 text-md font-medium pl-4 py-2 rounded-xl transition-all duration-300
+            {{ $isActive
+                ? 'translate-x-2 bg-white/75 text-gray-700 shadow-inner hover:bg-linear-to-r hover:to-green-400 from-white/20 hover:-translate-y-0.5 hover:translate-x-4' 
+                : 'hover:bg-linear-to-r hover:to-green-400 from-white/20 hover:-translate-y-0.5 hover:translate-x-4' }}">
+
                         <i class="{{ $menu['icon'] }}"></i>
                         {{ $menu['title'] }}
                     </a>

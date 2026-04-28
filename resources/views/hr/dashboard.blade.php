@@ -32,16 +32,16 @@
 
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-6 mb-6 mt-6">
-                <x-hr.hr-stat-card title="Total Karyawan Outsourcing Aktif" value="18" subtext="dari 24 terdaftar"
-                    icon="fas fa-users" borderColor="border-green-500" textColor="text-green-500"></x-hr.hr-stat-card>
-                <x-hr.hr-stat-card title="Total Lembur Pending" value="2" subtext="Menunggu Persetujuan"
-                    icon="fas fa-clock" borderColor="border-orange-400" textColor="text-orange-500"></x-hr.hr-stat-card>
-                <x-hr.hr-stat-card title="Ajuan Rekap Pending" value="2" subtext="Menunggu persetujuan"
+                <x-stat-card title="Total Karyawan Outsourcing Aktif" value="18" subtext="dari 24 terdaftar"
+                    icon="fas fa-users" borderColor="border-green-500" textColor="text-green-500"></x-stat-card>
+                <x-stat-card title="Total Lembur Pending" value="2" subtext="Menunggu Persetujuan"
+                    icon="fas fa-clock" borderColor="border-orange-400" textColor="text-orange-500"></x-stat-card>
+                <x-stat-card title="Ajuan Rekap Pending" value="2" subtext="Menunggu persetujuan"
                     icon="fas fa-clipboard-list" borderColor="border-indigo-500"
-                    textColor="text-indigo-600"></x-hr.hr-stat-card>
-                <x-hr.hr-stat-card title="Ajuan Karyawan Pending" value="7" subtext="Menunggu persetujuan"
+                    textColor="text-indigo-600"></x-stat-card>
+                <x-stat-card title="Ajuan Karyawan Pending" value="7" subtext="Menunggu persetujuan"
                     icon="fas fa-user-clock" borderColor="border-teal-500" textColor="text-teal-600">
-                </x-hr.hr-stat-card>
+                </x-stat-card>
             </div>
 
 

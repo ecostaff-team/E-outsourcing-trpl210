@@ -9,6 +9,11 @@
 @theme {
     --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+        
+    --color-brand: #16a34a;
+    --color-brand-dark: #15803d;
+    --color-brand-light: #dcfce7;
+    --color-brand-mid: #bbf7d0;
 }
 
 @layer base {

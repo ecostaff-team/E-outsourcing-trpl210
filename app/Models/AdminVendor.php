@@ -17,6 +17,7 @@ class AdminVendor extends Model
         'vendor_id',
     ];
 
+
     public function vendor()
     {
         return $this->belongsTo(Vendor::class, 'vendor_id', 'id_vendor');
