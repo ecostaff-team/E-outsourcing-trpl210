@@ -137,7 +137,7 @@
                         {{-- HEADER --}}
                         <div class="flex items-center justify-between mb-6">
                             <h3 class="text-lg font-semibold text-gray-800">Edit Karyawan</h3>
-                            <button @click="close()" class="text-gray-400 hover:text-gray-600">✖</button>
+                            <button @click="close()" class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark"></i></button>
                         </div>
 
                         {{-- FORM --}}
@@ -148,8 +148,8 @@
                                     class="peer w-full border border-gray-200 rounded-xl px-3 pt-5 pb-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400">
                                 <label
                                     class="absolute left-3 top-2 text-xs text-gray-400
-                    peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
-                    peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
+                                    peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
+                                    peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
                                     NIM
                                 </label>
                             </div>
@@ -159,8 +159,8 @@
                                     class="peer w-full border border-gray-200 rounded-xl px-3 pt-5 pb-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400">
                                 <label
                                     class="absolute left-3 top-2 text-xs text-gray-400
-                    peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
-                    peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
+                                    peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
+                                    peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
                                     Nama Lengkap
                                 </label>
                             </div>
@@ -170,8 +170,8 @@
                                     class="peer w-full border border-gray-200 rounded-xl px-3 pt-5 pb-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400">
                                 <label
                                     class="absolute left-3 top-2 text-xs text-gray-400
-                    peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
-                    peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
+                                    peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
+                                    peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
                                     Email
                                 </label>
                             </div>
@@ -181,8 +181,8 @@
                                     class="peer w-full border border-gray-200 rounded-xl px-3 pt-5 pb-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400">
                                 <label
                                     class="absolute left-3 top-2 text-xs text-gray-400
-                    peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
-                    peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
+                                    peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
+                                    peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
                                     Nomor Telepon
                                 </label>
                             </div>
@@ -192,8 +192,8 @@
                                     class="peer w-full border border-gray-200 rounded-xl px-3 pt-5 pb-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400"></textarea>
                                 <label
                                     class="absolute left-3 top-2 text-xs text-gray-400
-                    peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
-                    peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
+                                    peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
+                                    peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
                                     Alamat
                                 </label>
                             </div>
@@ -209,7 +209,7 @@
 
                             <button @click="saveEdit()"
                                 class="px-4 py-2 text-sm bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-md transition">
-                                💾 Simpan
+                                <i class="fa-solid fa-floppy-disk mr-1"></i>Simpan
                             </button>
                         </div>
 
@@ -220,7 +220,7 @@
                 <div x-show="modal === 'delete'" x-transition
                     class="bg-white rounded-2xl shadow-xl w-full max-w-sm p-6 text-center">
 
-                    <div class="text-3xl mb-2">⚠️</div>
+                    <div class="text-3xl mb-2"><i class="fa-solid fa-triangle-exclamation text-yellow-500 text-3xl"></i></div>
                     <h3 class="font-semibold text-gray-800">Hapus Data?</h3>
                     <p class="text-sm text-gray-500 mt-1" x-text="selected.nama_lengkap"></p>
 
