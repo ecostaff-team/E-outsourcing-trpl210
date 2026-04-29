@@ -6,13 +6,13 @@
     <div class="flex flex-col gap-4 overflow-y-auto">
         <div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-6 ">
-                <x-stat-card title="Total Karyawan Hadir" value="78" subtext="80% dari total karyawan Hadir"
+                <x-stat-card title="Total Karyawan Hadir" value="78" subtext="Selama bulan ini"
                     icon="fa-solid fa-user-check" borderColor="border-gray-200" textColor=" text-green-600"></x-stat-card>
-                <x-stat-card title="Total Karyawan Alpha" value="10" subtext="Total 12 Hari" icon="fa-solid fa-user-xmark"
+                <x-stat-card title="Total Karyawan Alpha" value="10" subtext="Tanpa keterangan" icon="fa-solid fa-user-xmark"
                     borderColor="border-gray-200 " textColor="text-red-600"></x-stat-card>
-                <x-stat-card title="Karyawan izin/sakit" value="10" subtext="Total 10 Hari" icon="fa-solid fa-file-medical"
+                <x-stat-card title="Karyawan izin/sakit" value="10" subtext="Dengan keterangan" icon="fa-solid fa-file-medical"
                     borderColor="border-gray-200" textColor=" text-yellow-600"></x-stat-card>
-                <x-stat-card title="Jumlah Karyawan" value="90" subtext="Karyawan aktif bulan ini"
+                <x-stat-card title="Jumlah Karyawan" value="98" subtext="Karyawan aktif bulan ini"
                     icon="fa-solid fa-user-group" borderColor="border-gray-200" textColor="text-purple-700">
                 </x-stat-card>
             </div>
