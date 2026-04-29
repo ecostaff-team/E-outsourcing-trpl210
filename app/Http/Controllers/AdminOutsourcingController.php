@@ -428,4 +428,6 @@ class AdminOutsourcingController extends Controller
 
         return view('adminOutsourcing.dashboard', compact('datas'));
     }
+
+    
 }
