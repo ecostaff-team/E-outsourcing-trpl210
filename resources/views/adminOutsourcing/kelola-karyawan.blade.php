@@ -9,6 +9,7 @@
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
             <div class="flex items-center justify-between mb-6">
                 <h2 class="text-xl font-semibold text-gray-800">Data Karyawan</h2>
+
                 <div class="relative">
                     <input type="text" x-model="search" placeholder="Cari karyawan..."
                         class="pl-10 pr-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-400 focus:outline-none text-sm">
@@ -37,6 +38,7 @@
                             <div class="font-medium text-gray-800" x-text="karyawan.nama_lengkap"></div>
                             <div class="text-xs text-gray-400" x-text="karyawan.nim"></div>
                         </td>
+
 
                         <td class="px-4 py-2 text-gray-600" x-text="karyawan.email"></td>
                         <td class="px-4 py-2 text-gray-600" x-text="karyawan.nomor_telepon"></td>
@@ -134,7 +136,7 @@
                         {{-- HEADER --}}
                         <div class="flex items-center justify-between mb-6">
                             <h3 class="text-lg font-semibold text-gray-800">Edit Karyawan</h3>
-                            <button @click="close()" class="text-gray-400 hover:text-gray-600">✖</button>
+                            <button @click="close()" class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark"></i></button>
                         </div>
 
                         {{-- FORM --}}
@@ -158,6 +160,7 @@
                                     class="absolute left-3 top-2 text-xs text-gray-400
                                         peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
                                         peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
+
                                     Nama Lengkap
                                 </label>
                             </div>
@@ -169,6 +172,7 @@
                                     class="absolute left-3 top-2 text-xs text-gray-400
                                         peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
                                         peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
+
                                     Email
                                 </label>
                             </div>
@@ -180,6 +184,7 @@
                                     class="absolute left-3 top-2 text-xs text-gray-400
                                         peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
                                         peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
+
                                     Nomor Telepon
                                 </label>
                             </div>
@@ -206,7 +211,7 @@
 
                             <button @click="saveEdit()"
                                 class="px-4 py-2 text-sm bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-md transition">
-                                💾 Simpan
+                                <i class="fa-solid fa-floppy-disk mr-1"></i>Simpan
                             </button>
                         </div>
 
@@ -217,7 +222,7 @@
                 <div x-show="modal === 'delete'" x-transition
                     class="bg-white rounded-2xl shadow-xl w-full max-w-sm p-6 text-center">
 
-                    <div class="text-3xl mb-2">⚠️</div>
+                    <div class="text-3xl mb-2"><i class="fa-solid fa-triangle-exclamation text-yellow-500 text-3xl"></i></div>
                     <h3 class="font-semibold text-gray-800">Hapus Data?</h3>
                     <p class="text-sm text-gray-500 mt-1" x-text="selected.nama_lengkap"></p>
 
