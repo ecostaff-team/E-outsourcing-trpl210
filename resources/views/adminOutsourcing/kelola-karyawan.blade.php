@@ -6,7 +6,7 @@
         {{-- HEADER --}}
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
             <div class="flex items-center justify-between mb-6">
-                <h2 class="text-xl font-semibold text-gray-800">Data Karyawan</h2>
+                <h2 class="text-xl font-semibold text-gray-800"><i class="fa-solid fa-id-card mr-2"></i>Data Karyawan</h2>
 
 
 
@@ -52,17 +52,17 @@
 
                                         <button @click="open('detail', karyawan)"
                                             class="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-100 hover:bg-gray-200 transition">
-                                            👁️
+                                            <i class="fa-solid fa-eye"></i>
                                         </button>
 
                                         <button @click="open('edit', karyawan)"
                                             class="w-9 h-9 flex items-center justify-center rounded-lg bg-blue-100 hover:bg-blue-200 text-blue-600 transition">
-                                            ✏️
+                                            <i class="fa-solid fa-edit"></i>
                                         </button>
 
                                         <button @click="open('delete', karyawan)"
                                             class="w-9 h-9 flex items-center justify-center rounded-lg bg-red-100 hover:bg-red-200 text-red-600 transition">
-                                            🗑️
+                                            <i class="fa-solid fa-trash"></i>
                                         </button>
 
                                     </div>
