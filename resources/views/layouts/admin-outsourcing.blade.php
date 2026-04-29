@@ -18,6 +18,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body class="bg-slate-100 font-sans text-slate-800 antialiased">
@@ -34,7 +35,7 @@
             <x-header>Admin Outsourcing</x-header>
             <!-- CONTENT -->
 
-            
+
         </div><!-- /main -->
     </div><!-- /app -->
 </body>

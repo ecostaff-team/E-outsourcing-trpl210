@@ -106,4 +106,8 @@ Route::get('/karyawanOutsourcing/jadwal-karyawan', function () {
     return view('karyawanOutsourcing.jadwalKaryawan');
 });
 
+Route::get('/karyawanOutsourcing/perizinan-karyawan', function () {
+    return view('karyawanOutsourcing.perizinanKaryawan');
+});
+
 

@@ -5,7 +5,7 @@
 
         {{-- HEADER --}}
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between mb-6">
                 <h2 class="text-xl font-semibold text-gray-800">Data Karyawan</h2>
 
                 <div class="relative">
@@ -14,69 +14,68 @@
                     <span class="absolute left-3 top-2.5 text-gray-400 text-sm">🔍</span>
                 </div>
             </div>
-        </div>
 
-        {{-- TABLE --}}
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-            <table class="w-full text-sm">
-                <thead class="bg-gray-50 text-gray-500 uppercase text-xs tracking-wide">
-                    <tr>
-                        <th class="px-6 py-4 text-left">No</th>
-                        <th class="px-6 py-4 text-left">Nama</th>
-                        <th class="px-6 py-4 text-left">Email</th>
-                        <th class="px-6 py-4 text-left">Telepon</th>
-                        <th class="px-6 py-4 text-left">Alamat</th>
-                        <th class="px-6 py-4 text-center">Aksi</th>
-                    </tr>
-                </thead>
-
-                <tbody class="divide-y">
-                    <template x-for="(karyawan, index) in filteredKaryawans()" :key="karyawan.id">
-                        <tr class="hover:bg-gray-50 transition">
-                            <td class="px-6 py-4 text-gray-500" x-text="index + 1"></td>
-
-                            <td class="px-6 py-4">
-                                <div class="font-medium text-gray-800" x-text="karyawan.nama_lengkap"></div>
-                                <div class="text-xs text-gray-400" x-text="karyawan.nim"></div>
-                            </td>
-
-                            <td class="px-6 py-4 text-gray-600" x-text="karyawan.email"></td>
-                            <td class="px-6 py-4 text-gray-600" x-text="karyawan.nomor_telepon"></td>
-                            <td class="px-6 py-4 text-gray-500 truncate max-w-xs" x-text="karyawan.alamat"></td>
-
-                            <td class="px-6 py-4">
-                                <div class="flex justify-center gap-2">
-
-                                    <button @click="open('detail', karyawan)"
-                                        class="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-100 hover:bg-gray-200 transition">
-                                        👁️
-                                    </button>
-
-                                    <button @click="open('edit', karyawan)"
-                                        class="w-9 h-9 flex items-center justify-center rounded-lg bg-blue-100 hover:bg-blue-200 text-blue-600 transition">
-                                        ✏️
-                                    </button>
-
-                                    <button @click="open('delete', karyawan)"
-                                        class="w-9 h-9 flex items-center justify-center rounded-lg bg-red-100 hover:bg-red-200 text-red-600 transition">
-                                        🗑️
-                                    </button>
-
-                                </div>
-                            </td>
+            {{-- TABLE --}}
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                <table class="w-full text-sm">
+                    <thead class="bg-gray-50 text-gray-500 uppercase text-xs tracking-wide">
+                        <tr>
+                            <th class="px-6 py-4 text-left">No</th>
+                            <th class="px-6 py-4 text-left">Nama</th>
+                            <th class="px-6 py-4 text-left">Email</th>
+                            <th class="px-6 py-4 text-left">Telepon</th>
+                            <th class="px-6 py-4 text-left">Alamat</th>
+                            <th class="px-6 py-4 text-center">Aksi</th>
                         </tr>
-                    </template>
-                </tbody>
-            </table>
-        </div>
+                    </thead>
 
-        {{-- MODAL BASE STYLE --}}
-        <template x-if="modal">
-            <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+                    <tbody class="divide-y">
+                        <template x-for="(karyawan, index) in filteredKaryawans()" :key="karyawan.id">
+                            <tr class="hover:bg-gray-50 transition">
+                                <td class="px-6 py-4 text-gray-500" x-text="index + 1"></td>
+
+                                <td class="px-6 py-4">
+                                    <div class="font-medium text-gray-800" x-text="karyawan.nama_lengkap"></div>
+                                    <div class="text-xs text-gray-400" x-text="karyawan.nim"></div>
+                                </td>
+
+                                <td class="px-6 py-4 text-gray-600" x-text="karyawan.email"></td>
+                                <td class="px-6 py-4 text-gray-600" x-text="karyawan.nomor_telepon"></td>
+                                <td class="px-6 py-4 text-gray-500 truncate max-w-xs" x-text="karyawan.alamat"></td>
+
+                                <td class="px-6 py-4">
+                                    <div class="flex justify-center gap-2">
+
+                                        <button @click="open('detail', karyawan)"
+                                            class="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-100 hover:bg-gray-200 transition">
+                                            👁️
+                                        </button>
+
+                                        <button @click="open('edit', karyawan)"
+                                            class="w-9 h-9 flex items-center justify-center rounded-lg bg-blue-100 hover:bg-blue-200 text-blue-600 transition">
+                                            ✏️
+                                        </button>
+
+                                        <button @click="open('delete', karyawan)"
+                                            class="w-9 h-9 flex items-center justify-center rounded-lg bg-red-100 hover:bg-red-200 text-red-600 transition">
+                                            🗑️
+                                        </button>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+
+            {{-- MODAL BASE STYLE --}}
+
+            <div x-show="modal" x-transition class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
 
                 {{-- DETAIL --}}
                 <div x-show="modal === 'detail'" x-transition class="bg-white rounded-2xl shadow-xl w-full max-w-md p-6">
-                    
+
                     {{-- HEADER --}}
                     <div class="flex items-center gap-4 mb-5">
                         <div
@@ -123,23 +122,93 @@
                     </div>
                 </div>
 
+
                 {{-- EDIT --}}
-                <div x-show="modal === 'edit'" x-transition class="bg-white rounded-2xl shadow-xl w-full max-w-lg p-6">
+                <div x-show="modal === 'edit'" x-transition class="bg-white rounded-2xl shadow-xl w-full max-w-md p-6">
 
-                    <h3 class="text-lg font-semibold mb-4 text-gray-800">Edit Karyawan</h3>
+                    {{-- HEADER --}}
+                    <div class="bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl w-full max-w-lg p-6 border border-white/40"
+                        @click.outside="close()">
 
-                    <div class="space-y-3">
-                        <input x-model="selected.nim" class="w-full border rounded-lg p-2 text-sm">
-                        <input x-model="selected.nama_lengkap" class="w-full border rounded-lg p-2 text-sm">
-                        <input x-model="selected.email" class="w-full border rounded-lg p-2 text-sm">
-                        <input x-model="selected.nomor_telepon" class="w-full border rounded-lg p-2 text-sm">
-                        <textarea x-model="selected.alamat" class="w-full border rounded-lg p-2 text-sm"></textarea>
-                    </div>
+                        {{-- HEADER --}}
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-semibold text-gray-800">Edit Karyawan</h3>
+                            <button @click="close()" class="text-gray-400 hover:text-gray-600">✖</button>
+                        </div>
 
-                    <div class="flex justify-end gap-2 mt-5">
-                        <button @click="close()" class="px-4 py-2 bg-gray-100 rounded-lg text-sm">Batal</button>
-                        <button @click="saveEdit()"
-                            class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-sm">Simpan</button>
+                        {{-- FORM --}}
+                        <div class="space-y-5">
+
+                            <div class="relative">
+                                <input type="text" x-model="selected.nim" placeholder=" "
+                                    class="peer w-full border border-gray-200 rounded-xl px-3 pt-5 pb-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400">
+                                <label
+                                    class="absolute left-3 top-2 text-xs text-gray-400
+                    peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
+                    peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
+                                    NIM
+                                </label>
+                            </div>
+
+                            <div class="relative">
+                                <input type="text" x-model="selected.nama_lengkap" placeholder=" "
+                                    class="peer w-full border border-gray-200 rounded-xl px-3 pt-5 pb-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400">
+                                <label
+                                    class="absolute left-3 top-2 text-xs text-gray-400
+                    peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
+                    peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
+                                    Nama Lengkap
+                                </label>
+                            </div>
+
+                            <div class="relative">
+                                <input type="email" x-model="selected.email" placeholder=" "
+                                    class="peer w-full border border-gray-200 rounded-xl px-3 pt-5 pb-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400">
+                                <label
+                                    class="absolute left-3 top-2 text-xs text-gray-400
+                    peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
+                    peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
+                                    Email
+                                </label>
+                            </div>
+
+                            <div class="relative">
+                                <input type="text" x-model="selected.nomor_telepon" placeholder=" "
+                                    class="peer w-full border border-gray-200 rounded-xl px-3 pt-5 pb-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400">
+                                <label
+                                    class="absolute left-3 top-2 text-xs text-gray-400
+                    peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
+                    peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
+                                    Nomor Telepon
+                                </label>
+                            </div>
+
+                            <div class="relative">
+                                <textarea x-model="selected.alamat" rows="3" placeholder=" "
+                                    class="peer w-full border border-gray-200 rounded-xl px-3 pt-5 pb-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400"></textarea>
+                                <label
+                                    class="absolute left-3 top-2 text-xs text-gray-400
+                    peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
+                    peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
+                                    Alamat
+                                </label>
+                            </div>
+
+                        </div>
+
+                        {{-- FOOTER --}}
+                        <div class="flex justify-end gap-2 mt-6">
+                            <button @click="close()"
+                                class="px-4 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg transition">
+                                Batal
+                            </button>
+
+                            <button @click="saveEdit()"
+                                class="px-4 py-2 text-sm bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-md transition">
+                                💾 Simpan
+                            </button>
+                        </div>
+
                     </div>
                 </div>
 
@@ -159,8 +228,9 @@
                 </div>
 
             </div>
-        </template>
 
+
+        </div>
     </div>
 
     <script>
