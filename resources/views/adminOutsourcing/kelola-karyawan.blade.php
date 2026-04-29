@@ -8,12 +8,15 @@
             <div class="flex items-center justify-between mb-6">
                 <h2 class="text-xl font-semibold text-gray-800">Data Karyawan</h2>
 
+
+
                 <div class="relative">
                     <input type="text" x-model="search" placeholder="Cari karyawan..."
                         class="pl-10 pr-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-400 focus:outline-none text-sm">
-                    <span class="absolute left-3 top-2.5 text-gray-400 text-sm">🔍</span>
+                    <span class="absolute left-3 top-2.5 text-gray-400 text-sm"><i class="fa-solid fa-magnifying-glass"></i></span>
                 </div>
             </div>
+
 
             {{-- TABLE --}}
             <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
@@ -26,6 +29,7 @@
                             <th class="px-6 py-4 text-left">Telepon</th>
                             <th class="px-6 py-4 text-left">Alamat</th>
                             <th class="px-6 py-4 text-center">Aksi</th>
+
                         </tr>
                     </thead>
 
@@ -79,7 +83,7 @@
                     {{-- HEADER --}}
                     <div class="flex items-center gap-4 mb-5">
                         <div
-                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-400 to-emerald-500 text-white flex items-center justify-center font-semibold text-lg shadow-md">
+                            class="w-12 h-12 rounded-xl bg-linear-to-br from-green-400 to-emerald-500 text-white flex items-center justify-center font-semibold text-lg shadow-md">
                             <span x-text="selected.nama_lengkap?.charAt(0)"></span>
                         </div>
 
@@ -89,7 +93,7 @@
                         </div>
 
                         <button @click="close()" class="ml-auto text-gray-400 hover:text-gray-600 transition">
-                            ✖
+                            <i class="fa-solid fa-times"></i>
                         </button>
                     </div>
 

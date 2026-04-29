@@ -1,6 +1,6 @@
 @extends('layouts.admin-outsourcing')
-    {{-- css --}}
-    <link rel="stylesheet" href="{{ asset('css/admin-outsourcing/dashboard.css') }}">
+{{-- css --}}
+<link rel="stylesheet" href="{{ asset('css/admin-outsourcing/dashboard.css') }}">
 
 @section('content')
     <div class="flex flex-col gap-4 overflow-y-auto">
@@ -10,9 +10,8 @@
                     icon="fa-solid fa-user-check" borderColor="border-gray-200" textColor=" text-green-600"></x-stat-card>
                 <x-stat-card title="Total Karyawan Alpha" value="10" subtext="Total 12 Hari" icon="fa-solid fa-user-xmark"
                     borderColor="border-gray-200 " textColor="text-red-600"></x-stat-card>
-                <x-stat-card title="Karyawan izin/sakit" value="10" subtext="Total 10 Hari"
-                    icon="fa-solid fa-file-medical" borderColor="border-gray-200"
-                    textColor=" text-yellow-600"></x-stat-card>
+                <x-stat-card title="Karyawan izin/sakit" value="10" subtext="Total 10 Hari" icon="fa-solid fa-file-medical"
+                    borderColor="border-gray-200" textColor=" text-yellow-600"></x-stat-card>
                 <x-stat-card title="Jumlah Karyawan" value="90" subtext="Karyawan aktif bulan ini"
                     icon="fa-solid fa-user-group" borderColor="border-gray-200" textColor="text-purple-700">
                 </x-stat-card>
@@ -80,12 +79,17 @@
             <!-- Header chart -->
             <div class="flex items-center justify-between mb-2 flex-wrap gap-3">
                 <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-chart-column text-brand text-sm"></i>
-                    <h2 class="text-sm font-bold text-slate-800">Rekap Kehadiran Bulanan
-                         <div>
-                            <label for="filterBulanChart" class="sr-only">Pilih Bulan</label>
-                            <input type="" id="filterBulanChart" name="filterBulanChart"
-                                class="w-full sm:w-40 border border-gray-400 rounded-lg px-3 py-2 text-sm text-gray-700 transition-all focus:ring-2 focus:ring-green-500 outline-none bg-white shadow-sm cursor-pointer">
+                    <h2 class="text-sm font-bold text-slate-800">Rekap Kehadiran Tahunan
+                        <div>
+                            <select id="filterTahunChart" name="filterTahunChart"
+                                class="w-full sm:w-40 border border-gray-400 rounded-lg px-3 py-2 text-sm text-gray-500 focus:ring-2 focus:ring-green-500 outline-none bg-white shadow-sm">
+                                <option value="">Pilih Tahun</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2024">2025</option>
+                                <option value="2024">2026</option>
+                            </select>
                         </div>
                     </h2>
 
