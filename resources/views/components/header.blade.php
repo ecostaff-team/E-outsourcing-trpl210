@@ -14,7 +14,6 @@
     </div>
     <!-- PROFILE DROPDOWN -->
     <div x-data="{ openProfile: false }" class="relative">
-
         <div @click="openProfile = !openProfile"
             class="flex items-center gap-1 bg-white px-2 py-1 rounded-xl shadow
                                cursor-pointer hover:shadow-lg transition md:px-4 md:py-2 md:gap-3">
