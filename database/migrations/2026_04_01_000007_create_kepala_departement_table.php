@@ -9,13 +9,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('kepala_departement', function (Blueprint $table) {
-            $table->integer('id_departement')->autoIncrement();
+            $table->integer('id_kepala_departement')->autoIncrement();
             $table->string('nama_departement', 255);
             $table->timestamps();
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
-            ->references('id')->on('users')
+            ->references('id_user')->on('users')
             ->onDelete('cascade')->onUpdate('cascade');
         });
     }

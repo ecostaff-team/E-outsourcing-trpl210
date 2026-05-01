@@ -8,17 +8,17 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('shiift', function (Blueprint $table) {
+        Schema::create('shift', function (Blueprint $table) {
             $table->integer('id_shift')->autoIncrement();
             $table->time('jam_masuk');
             $table->time('jam_keluar');
-            $table->enum('tipe_shift', ['Pagi', 'Sore', 'Malam']);
+            $table->string('tipe_shift', 50);
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('shiift');
+        Schema::dropIfExists('shift');
     }
 };

@@ -15,12 +15,13 @@ return new class extends Migration
             $table->timestamp('waktu_telat')->nullable();
             $table->date('tanggal');
             $table->string('lokasi_masuk', 255);
-            $table->string('lokasi_keluar', 255);
+            $table->string('lokasi_keluar', 255)->nullable();
+            $table->enum('status_rekapan', ['valid', 'tidak valid'])->default('valid');
 
-            $table->string('bukti', 255);
-            $table->text('keterangan');
+            /* bukti menjelaskan apakah kehadiranya diterima pada rekapan */
+            $table->string('bukti', 255)->nullable();
+            $table->text('keterangan')->nullable();
             $table->timestamps();
-            $table->integer('rekapan_kehadiran_id');
 
             $table->integer('jadwal_id');
             $table->foreign('jadwal_id', 'jadwal_mencatatt_kehadiran')
@@ -32,9 +33,9 @@ return new class extends Migration
                 ->references('id_tipe_kehadiran')->on('tipe_kehadiran')
                 ->onDelete('cascade')->onUpdate('cascade');
 
-
+            $table->integer('rekapan_kehadiran_id');
             $table->foreign('rekapan_kehadiran_id', 'rekapan_dari_kehadiran')
-                ->references('id_rekap')->on('rekap_kehadiran')
+                ->references('id_rekapan')->on('rekap_kehadiran')
                 ->onDelete('cascade')->onUpdate('cascade');
         });
     }

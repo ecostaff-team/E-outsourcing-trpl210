@@ -6,13 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /* Tabel vendor atau perusahaan outsourcing */
     public function up(): void
     {
         Schema::create('vendor', function (Blueprint $table) {
             $table->integer('id_vendor')->autoIncrement();
-            $table->string('vendor_name', 255);
+            $table->string('nama_vendor', 255);
             $table->enum('status', ['active', 'inactive'])->default('active');
-            $table->string('phone_number', 13);
+            $table->string('nomor_tlp', 13);
             $table->string('email', 255);
             $table->string('alamat', 255);
             $table->timestamps();
