@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class KepalaDepartement extends Authenticatable
+class KepalaDepartemen extends Authenticatable
 {
     use HasFactory;
 
-    protected $table = 'kepala_departement';
-    protected $primaryKey = 'id_departement';
+    protected $table = 'kepala_departemen';
+    protected $primaryKey = 'id_departemen';
 
     protected $fillable = [
-        'nama_departement',
+        'nama_departemen',
         'user_id',
     ];
 
