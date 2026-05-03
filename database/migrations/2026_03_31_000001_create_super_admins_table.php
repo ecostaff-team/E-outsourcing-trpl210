@@ -9,17 +9,19 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
+    /* Tabel Super Admin dengan relasi ke tabel user */
     public function up(): void
     {
         Schema::create('super_admin', function (Blueprint $table) {
-            $table->integer('id_super_admin')->autoIncrement();
-            $table->string('name')->unique();
+            $table->integer('id_admin')->autoIncrement();
+            $table->string('username')->unique();
             $table->string('password');
             $table->timestamps();
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
-            ->references('id')->on('users')
+            ->references('id_user')->on('users')
             ->onDelete('cascade')->onUpdate('cascade');
         });
     }

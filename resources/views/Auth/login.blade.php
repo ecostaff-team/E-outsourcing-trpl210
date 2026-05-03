@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('layouts.Auth')
 
 @section('content')
     <livewire:auth.login />

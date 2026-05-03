@@ -2,7 +2,8 @@
         #animationOverlay {
             position: fixed;
             inset: 0;
-            background-color: #f0fdf4; /* Warna hijau super muda */
+            background-color: #bbdfc6;
+            /* Warna hijau super muda */
             z-index: 9999;
             display: none;
             justify-content: center;
@@ -12,21 +13,44 @@
 
         /* 1. Logo Naik ke atas dan mengecil */
         @keyframes logoUpAndShrink {
-            0% { transform: translateY(100px) scale(1.6); opacity: 0; }
-            30% { transform: translateY(0px) scale(1.6); opacity: 1; }
-            100% { transform: translateY(-50px) scale(0.6); opacity: 1; }
+            0% {
+                transform: translateY(100px) scale(1.6);
+                opacity: 0;
+            }
+
+            30% {
+                transform: translateY(0px) scale(1.6);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-50px) scale(0.6);
+                opacity: 1;
+            }
         }
 
         /* 2. Menggelinding ke kiri */
         @keyframes rollLeft {
-            0% { transform: translateX(0) rotate(0deg); }
-            100% { transform: translateX(-200px) rotate(-720deg); }
+            0% {
+                transform: translateX(0) rotate(0deg);
+            }
+
+            100% {
+                transform: translateX(-200px) rotate(-360deg);
+            }
         }
 
-        /* 3. Teks Eco Green Muncul dari belakang logo ke kanan */
+        /* 3. Teks Eco Green Muncul dari belakang logo ke kiri */
         @keyframes revealText {
-            0% { transform: translateX(-200px); opacity: 0; }
-            100% { transform: translateX(30px); opacity: 1; }
+            0% {
+                transform: translateX(200px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(30px);
+                opacity: 1;
+            }
         }
 
         .anim-logo-wrapper {
@@ -42,9 +66,36 @@
         .anim-text {
             font-size: 4rem;
             font-weight: 700;
-            color: #059669; /* Emerald 600 */
+            color: #169928;
+            /* Emerald 600 */
             opacity: 0;
             position: absolute;
             animation: revealText 0.8s ease-out 1.8s forwards;
             white-space: nowrap;
+        }
+
+        /* Animasi Partikel Bintang */
+        @keyframes starAnimation {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0);
+            }
+        }
+
+        .stars {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: starAnimation 2s linear infinite;
         }

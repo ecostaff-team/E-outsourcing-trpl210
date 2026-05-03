@@ -62,7 +62,7 @@
 
                         </span>
 
-                        <input type="text" placeholder="👤Enter username" wire:model.live="email"
+                        <input type="text" placeholder="👤Enter Email" wire:model.live="email"
                             class="w-full pl-10 pr-4 py-2 mb-3 bg-white/80 text-black placeholder-black/70 rounded-lg
                                     outline-none transition
                                     focus:placeholder-black/90
@@ -83,11 +83,11 @@
                     </div>
 
                     <button type="submit"
-                        class="w-full mb-3 bg-emerald-600 text-white/70 hover:text-white transition py-2 rounded-lg hover:bg-emerald-700 transition">
+                        class="w-full mb-3 bg-emerald-600 text-white/70 hover:text-white transition py-2 rounded-lg hover:bg-emerald-700">
                         Masuk
                     </button>
                     <button type="button"
-                        class="w-full bg-transparent border border-white/50 text-white/70 hover:text-white transition py-2 rounded-lg hover:bg-white/10 transition">
+                        class="w-full bg-transparent border border-white/50 text-white/70 hover:text-white transition py-2 rounded-lg hover:bg-white/10">
                         Lupa Password
                     </button>
 

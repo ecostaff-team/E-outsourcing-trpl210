@@ -1,0 +1,70 @@
+#map {
+    z-index: 1;
+}
+
+.inp-label {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.375rem;
+}
+
+.req {
+    color: #ef4444;
+}
+
+.inp {
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 0.625rem 0.875rem;
+    font-size: 0.875rem;
+    color: #111827;
+    outline: none;
+    transition: border-color .15s, box-shadow .15s;
+    background: #fff;
+}
+
+.inp:focus {
+    border-color: #3C8B5E;
+    box-shadow: 0 0 0 3px rgba(60, 139, 94, .12);
+}
+
+.inp::placeholder {
+    color: #9ca3af;
+}
+
+.slide-track {
+    display: flex;
+    transition: transform .4s cubic-bezier(.4, 0, .2, 1);
+}
+
+.slide-panel {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.fade-in-up {
+    animation: fadeUp .4s ease both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Section accent bar */
+.section-bar {
+    width: 3px;
+    height: 1.25rem;
+    border-radius: 9999px;
+    flex-shrink: 0;
+}

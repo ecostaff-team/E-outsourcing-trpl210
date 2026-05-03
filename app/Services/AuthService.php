@@ -22,7 +22,7 @@ class AuthService
         return [
             'success' => true,
             'user' => $user,
-            'redirect' => $this->getRedirectByRole($user->role)
+            'redirect' => $this->getRedirectByRole($user->role->value)
         ];
     }
 

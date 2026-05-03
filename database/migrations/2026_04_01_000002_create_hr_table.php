@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /* Tabel Hr dengan relasi ke tabel user */
     public function up(): void
     {
         Schema::create('hr', function (Blueprint $table) {
@@ -14,7 +15,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
-            ->references('id')->on('users')
+            ->references('id_user')->on('users')
             ->onDelete('cascade')->onUpdate('cascade');
         });
     }

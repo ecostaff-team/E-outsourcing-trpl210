@@ -1,21 +1,16 @@
+{{-- Mengambil data dari layout untuk tamplating halaman adminOutsourcing --}}
 @extends('layouts.admin-outsourcing')
-{{-- css --}}
+
+{{-- mengambil style dari halaman adminOutsourcing dashboard --}}
 <link rel="stylesheet" href="{{ asset('css/admin-outsourcing/dashboard.css') }}">
 
+{{-- mengisi konten halaman adminOutsourcing --}}
 @section('content')
     <div class="flex flex-col gap-4 overflow-y-auto">
+
+        {{-- Bagian statistik karyawan — menggunakan Livewire (terhubung ke database) --}}
         <div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-6 ">
-                <x-stat-card title="Total Karyawan Hadir" value="78" subtext="80% dari total karyawan Hadir"
-                    icon="fa-solid fa-user-check" borderColor="border-gray-200" textColor=" text-green-600"></x-stat-card>
-                <x-stat-card title="Total Karyawan Alpha" value="10" subtext="Total 12 Hari" icon="fa-solid fa-user-xmark"
-                    borderColor="border-gray-200 " textColor="text-red-600"></x-stat-card>
-                <x-stat-card title="Karyawan izin/sakit" value="10" subtext="Total 10 Hari" icon="fa-solid fa-file-medical"
-                    borderColor="border-gray-200" textColor=" text-yellow-600"></x-stat-card>
-                <x-stat-card title="Jumlah Karyawan" value="90" subtext="Karyawan aktif bulan ini"
-                    icon="fa-solid fa-user-group" borderColor="border-gray-200" textColor="text-purple-700">
-                </x-stat-card>
-            </div>
+            @livewire(\App\Livewire\AdminOutsourcing\DashboardStats::class)
         </div>
 
         <!-- ─── TABEL REKAP ────────────────────── -->
@@ -31,7 +26,6 @@
                             <label class="text-[10px] font-semibold text-slate-500 uppercase tracking-wide">Bulan</label>
                             <input type="month" name="filterBulan" id="filterBulan"
                                 class="w-full sm:w-40 border border-gray-400 rounded-lg px-3 py-2 text-sm text-gray-700 transition-all focus:ring-2 focus:ring-green-500 outline-none bg-white shadow-sm cursor-pointer">
-
                         </div>
                         <div class="flex items-center gap-2 mt-2 bottom-0">
                             <button onclick="renderTable()"
@@ -43,11 +37,11 @@
                                 <i class="fa-solid fa-rotate-left text-xs"></i> Reset
                             </button>
                         </div>
-
-
                     </div>
                 </div>
                 <div class="flex items-center gap-4">
+
+                    {{-- button export excel --}}
                     <button
                         class="inline-flex items-center gap-1.5 bg-brand hover:bg-brand-dark text-white text-xs font-semibold px-3.5 py-2 rounded-lg transition-colors">
                         <i class="fa-solid fa-file-excel"></i> Export Excel
@@ -55,6 +49,7 @@
                 </div>
             </div>
 
+            {{-- menggunakan komponent tabel rekap absensi dan mengambil data dummy dari array controller adminOutsourcing --}}
             <x-tabel-rekap-absensi :koloms="range(1, 31)" :datas="$datas" />
 
             <div class="flex items-center justify-between mt-4 pt-4 border-t border-slate-100 flex-wrap gap-3">
@@ -108,11 +103,14 @@
                     </div>
                 </div>
             </div>
+
+            {{-- media tempat untuk chart --}}
             <div class="relative w-full">
                 <canvas id="chartRekap"></canvas>
             </div>
         </div>
-
     </div><!-- /content -->
+
+    {{-- mengambil script untuk halaman adminOutsourcing dashboard dari folder public js --}}
     <script src="{{ asset('js/admin-outsourcing/dashboard.js') }}"></script>
 @endsection

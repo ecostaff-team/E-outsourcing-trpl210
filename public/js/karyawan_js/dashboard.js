@@ -9,7 +9,7 @@ const kantor = {
     lng: 104.1336049809529 */
 
     /* politeknik negeri batam */
-    
+
     lat: 1.1508969,
     lng: 104.0439572
 
@@ -26,7 +26,7 @@ let circle
 
 
 function absenMasuk() {
-    
+
 
     tipeAbsensi = "masuk"
 
@@ -144,7 +144,7 @@ function setActiveButton(tipe = null) {
     // reset
     btnMasuk.classList.remove("bg-emerald-600", "text-white")
     btnKeluar.classList.remove("bg-emerald-600", "text-white")
-    
+
 
     btnMasuk.classList.add("bg-gray-100", "text-gray-700")
     btnKeluar.classList.add("bg-gray-100", "text-gray-700")
@@ -161,7 +161,7 @@ function setActiveButton(tipe = null) {
         btnKeluar.classList.add("bg-emerald-600", "text-white")
     }
 
-    
+
 }
 
 function updateMapUser() {
@@ -312,4 +312,33 @@ function loadGrafik() {
         }
     })
 }
+
+function ambilLokasi() {
+    const info = document.getElementById('infoLokasi');
+
+    navigator.geolocation.getCurrentPosition(
+        (pos) => {
+            const lat = pos.coords.latitude;
+            const lng = pos.coords.longitude;
+
+            info.innerText = `Lat: ${lat.toFixed(5)}, Lng: ${lng.toFixed(5)}`;
+        },
+        (err) => {
+            switch(err.code) {
+                case err.PERMISSION_DENIED:
+                    info.innerText = "Izin lokasi ditolak ";
+                    break;
+                case err.POSITION_UNAVAILABLE:
+                    info.innerText = "Lokasi tidak tersedia";
+                    break;
+                case err.TIMEOUT:
+                    info.innerText = "Mengambil lokasi terlalu lama ";
+                    break;
+                default:
+                    info.innerText = "Gagal mengambil lokasi";
+            }
+        }
+    );
+}
+
 

@@ -1,7 +1,7 @@
 <div class="flex items-center justify-between mb-6">
     <button @click="open = !open"
         class="top-4 left-4 md:hidden bg-white p-2 rounded-lg shadow
-               transition hover:scale-110 active:scale-95">
+               transition hover:scale-110 active:scale-95 ">
         ☰
     </button>
     <div>
@@ -14,7 +14,6 @@
     </div>
     <!-- PROFILE DROPDOWN -->
     <div x-data="{ openProfile: false }" class="relative">
-
         <div @click="openProfile = !openProfile"
             class="flex items-center gap-1 bg-white px-2 py-1 rounded-xl shadow
                                cursor-pointer hover:shadow-lg transition md:px-4 md:py-2 md:gap-3">

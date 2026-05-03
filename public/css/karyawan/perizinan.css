@@ -1,0 +1,84 @@
+/* Upload area drag state */
+.drag-over {
+    border-color: #3C8B5E !important;
+    background-color: #f0fdf4 !important;
+}
+
+/* File preview card animation */
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.file-card {
+    animation: fadeSlideIn 0.3s ease;
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+    backdrop-filter: blur(4px);
+}
+
+/* Image preview fit */
+#previewImg {
+    max-height: 70vh;
+    object-fit: contain;
+}
+
+/* Status badge */
+.badge-menunggu {
+    background: #fef9c3;
+    color: #854d0e;
+}
+
+.badge-disetujui {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.badge-ditolak {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Scrollbar thin */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3C8B5E;
+    border-radius: 10px;
+}
+
+.card-hover {
+    transition: all 0.25s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-2px);
+}
+
+.btn-press {
+    transition: all 0.15s ease;
+}
+
+.btn-press:active {
+    transform: scale(0.96);
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+}

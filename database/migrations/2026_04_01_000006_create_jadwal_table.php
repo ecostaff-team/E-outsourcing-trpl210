@@ -10,14 +10,14 @@ return new class extends Migration
     {
         Schema::create('jadwal', function (Blueprint $table) {
             $table->integer('id_jadwal')->autoIncrement();
-            $table->enum('status', ['Aktif', 'Tidak_aktif']);
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->date('tanggal');
             $table->integer('dibuat_oleh');
-            $table->integer('shift_id');
             $table->timestamps();
 
+            $table->integer('shift_id');
             $table->foreign('shift_id', 'jadwa_diatur_shift')
-                ->references('id_shift')->on('shiift')
+                ->references('id_shift')->on('shift')
                 ->onDelete('cascade')->onUpdate('cascade');
         });
     }

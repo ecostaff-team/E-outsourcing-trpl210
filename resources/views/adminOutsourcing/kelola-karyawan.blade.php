@@ -1,81 +1,80 @@
+{{-- Mengambil data dari layout untuk tamplating halaman adminOutsourcing --}}
 @extends('layouts.admin-outsourcing')
 
+{{-- mengisi konten halaman adminOutsourcing --}}
 @section('content')
     <div x-data="modalKaryawan()" class="p-6">
 
         {{-- HEADER --}}
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
             <div class="flex items-center justify-between mb-6">
-                <h2 class="text-xl font-semibold text-gray-800"><i class="fa-solid fa-id-card mr-2"></i>Data Karyawan</h2>
-
-
+                <h2 class="text-xl font-semibold text-gray-800">Data Karyawan</h2>
 
                 <div class="relative">
                     <input type="text" x-model="search" placeholder="Cari karyawan..."
                         class="pl-10 pr-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-400 focus:outline-none text-sm">
-                    <span class="absolute left-3 top-2.5 text-gray-400 text-sm"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <span class="absolute left-3 top-2.5 text-gray-400 text-sm"><i
+                            class="fa-solid fa-magnifying-glass"></i></span>
                 </div>
             </div>
 
 
-            {{-- TABLE --}}
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                <table class="w-full text-sm">
-                    <thead class="bg-gray-50 text-gray-500 uppercase text-xs tracking-wide">
-                        <tr>
-                            <th class="px-6 py-4 text-left">No</th>
-                            <th class="px-6 py-4 text-left">Nama</th>
-                            <th class="px-6 py-4 text-left">Email</th>
-                            <th class="px-6 py-4 text-left">Telepon</th>
-                            <th class="px-6 py-4 text-left">Alamat</th>
-                            <th class="px-6 py-4 text-center">Aksi</th>
+            {{-- component table siap pakai --}}
 
-                        </tr>
-                    </thead>
+            {{-- data headers menyatakan kolom tabel --}}
+            <x-table-reusable :headers="['No', 'Nama', 'Email', 'Telepon', 'Alamat', 'Aksi']">
 
-                    <tbody class="divide-y">
-                        <template x-for="(karyawan, index) in filteredKaryawans()" :key="karyawan.id">
-                            <tr class="hover:bg-gray-50 transition">
-                                <td class="px-6 py-4 text-gray-500" x-text="index + 1"></td>
+                {{-- data body menyatakan baris tabel dan diisi dengan data --}}
 
-                                <td class="px-6 py-4">
-                                    <div class="font-medium text-gray-800" x-text="karyawan.nama_lengkap"></div>
-                                    <div class="text-xs text-gray-400" x-text="karyawan.nim"></div>
-                                </td>
+                {{-- x-for menyatakan perulangan data dan :key menyatakan key unik untuk setiap data --}}
+                {{-- tamplate menyatakan template --}}
+                <template x-for="(karyawan, index) in filteredKaryawans()" :key="karyawan.id">
+                    <tr class="odd:bg-white even:bg-gray-100 shadow-sm hover:bg-green-50 cursor-pointer">
 
-                                <td class="px-6 py-4 text-gray-600" x-text="karyawan.email"></td>
-                                <td class="px-6 py-4 text-gray-600" x-text="karyawan.nomor_telepon"></td>
-                                <td class="px-6 py-4 text-gray-500 truncate max-w-xs" x-text="karyawan.alamat"></td>
+                        {{-- x-text menyatakan menampilkan data --}}
+                        <td class="px-4 py-2 text-gray-500" x-text="index + 1"></td>
 
-                                <td class="px-6 py-4">
-                                    <div class="flex justify-center gap-2">
+                        <td class="px-4 py-2">
+                            <div class="font-medium text-gray-800" x-text="karyawan.nama_lengkap"></div>
+                            <div class="text-xs text-gray-400" x-text="karyawan.nim"></div>
+                        </td>
 
-                                        <button @click="open('detail', karyawan)"
-                                            class="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-100 hover:bg-gray-200 transition">
-                                            <i class="fa-solid fa-eye"></i>
-                                        </button>
 
-                                        <button @click="open('edit', karyawan)"
-                                            class="w-9 h-9 flex items-center justify-center rounded-lg bg-blue-100 hover:bg-blue-200 text-blue-600 transition">
-                                            <i class="fa-solid fa-edit"></i>
-                                        </button>
+                        <td class="px-4 py-2 text-gray-600" x-text="karyawan.email"></td>
+                        <td class="px-4 py-2 text-gray-600" x-text="karyawan.nomor_telepon"></td>
+                        <td class="px-4 py-2 text-gray-500 truncate max-w-xs" x-text="karyawan.alamat"></td>
 
-                                        <button @click="open('delete', karyawan)"
-                                            class="w-9 h-9 flex items-center justify-center rounded-lg bg-red-100 hover:bg-red-200 text-red-600 transition">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </button>
+                        <td class="px-4 py-2">
+                            <div class="flex justify-center gap-2">
+                                {{-- tombol berfungsi untuk membuka modal detail dengan triger onclick yang terhung dengan x-click --}}
+                                <button @click="open('detail', karyawan)"
+                                    class="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-100 hover:bg-gray-200 transition">
+                                    👁️
+                                </button>
 
-                                    </div>
-                                </td>
-                            </tr>
-                        </template>
-                    </tbody>
-                </table>
-            </div>
+                                {{-- tombol berfungsi untuk membuka modal edit dengan triger onclick yang terhung dengan x-click --}}
+                                <button @click="open('edit', karyawan)"
+                                    class="w-9 h-9 flex items-center justify-center rounded-lg bg-blue-100 hover:bg-blue-200 text-blue-600 transition">
+                                    ✏️
+                                </button>
+
+                                {{-- tombol berfungsi untuk membuka modal delete dengan triger onclick yang terhung dengan x-click --}}
+                                <button @click="open('delete', karyawan)"
+                                    class="w-9 h-9 flex items-center justify-center rounded-lg bg-red-100 hover:bg-red-200 text-red-600 transition">
+                                    🗑️
+                                </button>
+                            </div>
+                        </td>
+
+                    </tr>
+                </template>
+
+            </x-table-reusable>
 
             {{-- MODAL BASE STYLE --}}
 
-            <div x-show="modal" x-transition class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+            <div x-show="modal" x-transition
+                class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
 
                 {{-- DETAIL --}}
                 <div x-show="modal === 'detail'" x-transition class="bg-white rounded-2xl shadow-xl w-full max-w-md p-6">
@@ -137,7 +136,7 @@
                         {{-- HEADER --}}
                         <div class="flex items-center justify-between mb-6">
                             <h3 class="text-lg font-semibold text-gray-800">Edit Karyawan</h3>
-                            <button @click="close()" class="text-gray-400 hover:text-gray-600">✖</button>
+                            <button @click="close()" class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark"></i></button>
                         </div>
 
                         {{-- FORM --}}
@@ -148,8 +147,8 @@
                                     class="peer w-full border border-gray-200 rounded-xl px-3 pt-5 pb-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400">
                                 <label
                                     class="absolute left-3 top-2 text-xs text-gray-400
-                    peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
-                    peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
+                                        peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
+                                        peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
                                     NIM
                                 </label>
                             </div>
@@ -159,8 +158,9 @@
                                     class="peer w-full border border-gray-200 rounded-xl px-3 pt-5 pb-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400">
                                 <label
                                     class="absolute left-3 top-2 text-xs text-gray-400
-                    peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
-                    peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
+                                        peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
+                                        peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
+
                                     Nama Lengkap
                                 </label>
                             </div>
@@ -170,8 +170,9 @@
                                     class="peer w-full border border-gray-200 rounded-xl px-3 pt-5 pb-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400">
                                 <label
                                     class="absolute left-3 top-2 text-xs text-gray-400
-                    peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
-                    peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
+                                        peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
+                                        peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
+
                                     Email
                                 </label>
                             </div>
@@ -181,8 +182,9 @@
                                     class="peer w-full border border-gray-200 rounded-xl px-3 pt-5 pb-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400">
                                 <label
                                     class="absolute left-3 top-2 text-xs text-gray-400
-                    peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
-                    peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
+                                        peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
+                                        peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
+
                                     Nomor Telepon
                                 </label>
                             </div>
@@ -192,8 +194,8 @@
                                     class="peer w-full border border-gray-200 rounded-xl px-3 pt-5 pb-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400"></textarea>
                                 <label
                                     class="absolute left-3 top-2 text-xs text-gray-400
-                    peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
-                    peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
+                                        peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm
+                                        peer-focus:top-2 peer-focus:text-xs peer-focus:text-green-500">
                                     Alamat
                                 </label>
                             </div>
@@ -209,7 +211,7 @@
 
                             <button @click="saveEdit()"
                                 class="px-4 py-2 text-sm bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-md transition">
-                                💾 Simpan
+                                <i class="fa-solid fa-floppy-disk mr-1"></i>Simpan
                             </button>
                         </div>
 
@@ -220,7 +222,7 @@
                 <div x-show="modal === 'delete'" x-transition
                     class="bg-white rounded-2xl shadow-xl w-full max-w-sm p-6 text-center">
 
-                    <div class="text-3xl mb-2">⚠️</div>
+                    <div class="text-3xl mb-2"><i class="fa-solid fa-triangle-exclamation text-yellow-500 text-3xl"></i></div>
                     <h3 class="font-semibold text-gray-800">Hapus Data?</h3>
                     <p class="text-sm text-gray-500 mt-1" x-text="selected.nama_lengkap"></p>
 
@@ -230,76 +232,9 @@
                             class="flex-1 bg-red-500 text-white py-2 rounded-lg text-sm">Hapus</button>
                     </div>
                 </div>
-
             </div>
-
-
         </div>
     </div>
 
-    <script>
-        function modalKaryawan() {
-            return {
-                search: '',
-                modal: null,
-                selected: {},
-
-                karyawans: [{
-                        id: 1,
-                        nim: '2021001',
-                        nama_lengkap: 'Budi Santoso',
-                        email: 'budi@email.com',
-                        nomor_telepon: '0812',
-                        alamat: 'Jakarta'
-                    },
-                    {
-                        id: 2,
-                        nim: '2021002',
-                        nama_lengkap: 'Siti Rahayu',
-                        email: 'siti@email.com',
-                        nomor_telepon: '0823',
-                        alamat: 'Bandung'
-                    },
-                    {
-                        id: 3,
-                        nim: '2021003',
-                        nama_lengkap: 'Ahmad Fauzi',
-                        email: 'ahmad@email.com',
-                        nomor_telepon: '0834',
-                        alamat: 'Surabaya'
-                    },
-                ],
-
-                open(type, data) {
-                    this.modal = type
-                    this.selected = {
-                        ...data
-                    }
-                },
-
-                close() {
-                    this.modal = null
-                },
-
-                deleteData() {
-                    this.karyawans = this.karyawans.filter(k => k.id !== this.selected.id)
-                    this.close()
-                },
-
-                saveEdit() {
-                    const i = this.karyawans.findIndex(k => k.id === this.selected.id)
-                    if (i !== -1) this.karyawans[i] = {
-                        ...this.selected
-                    }
-                    this.close()
-                },
-
-                filteredKaryawans() {
-                    return this.karyawans.filter(k =>
-                        k.nama_lengkap.toLowerCase().includes(this.search.toLowerCase())
-                    )
-                }
-            }
-        }
-    </script>
+    <script src="{{ asset('js/admin-outsourcing/kelola-karyawan.js') }}"></script>
 @endsection
