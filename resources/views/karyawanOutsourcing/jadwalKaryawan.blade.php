@@ -20,11 +20,15 @@
     <div class="flex min-h-screen">
 
         <x-sidebar :menus="[
-            ['title' => 'Absensi', 'icon' => 'fas fa-home', 'ref' => '/karyawanOutsourcing/dahsboard'],
+            ['title' => 'Absensi', 'icon' => 'fas fa-home', 'ref' => '/karyawanOutsourcing/dashboard'],
             ['title' => 'Jadwalku', 'icon' => 'fas fa-users', 'ref' => '/karyawanOutsourcing/jadwal-karyawan'],
-            ['title' => 'Pengajuan Lembur', 'icon' => 'fas fa-users', 'ref' => '/karyawanOutsourcing/pengajuanKaryawan'],
-            ['title' => 'Perizinan Sakit', 'icon' => 'fas fa-cog', 'ref' => '#'],
-        ]">Karyawan Outsourcing </x-sidebar>
+            [
+                'title' => 'Pengajuan Lembur',
+                'icon' => 'fas fa-users',
+                'ref' => '/karyawanOutsourcing/pengajuanKaryawan',
+            ],
+            ['title' => 'Perizinan Sakit', 'icon' => 'fas fa-cog', 'ref' => '/karyawanOutsourcing/perizinan-karyawan'],
+        ]">Karyawan Outsourcing</x-sidebar>
 
         <div x-show="open" @click="open = false" class="fixed inset-0 bg-black/40 backdrop-blur-sm md:hidden z-40"></div>
 

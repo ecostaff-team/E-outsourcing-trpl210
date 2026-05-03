@@ -29,14 +29,14 @@
     <div class="flex min-h-screen">
         <!--  SIDEBAR -->
         <x-sidebar :menus="[
-            ['title' => 'Absensi', 'icon' => 'fas fa-home', 'ref' => '/karyawanOutsourcing/dahsboard'],
+            ['title' => 'Absensi', 'icon' => 'fas fa-home', 'ref' => '/karyawanOutsourcing/dashboard'],
             ['title' => 'Jadwalku', 'icon' => 'fas fa-users', 'ref' => '/karyawanOutsourcing/jadwal-karyawan'],
             [
                 'title' => 'Pengajuan Lembur',
                 'icon' => 'fas fa-users',
                 'ref' => '/karyawanOutsourcing/pengajuanKaryawan',
             ],
-            ['title' => 'Perizinan Sakit', 'icon' => 'fas fa-cog', 'ref' => '#'],
+            ['title' => 'Perizinan Sakit', 'icon' => 'fas fa-cog', 'ref' => '/karyawanOutsourcing/perizinan-karyawan'],
         ]">Karyawan Outsourcing</x-sidebar>
 
         <div class="flex-1 p-6 ml-0">
