@@ -62,23 +62,23 @@
 
                         </span>
 
-                        <input type="text" placeholder="👤Enter Email" wire:model.live="email"
+                        <input type="text" placeholder="Enter Email" wire:model.live="email"
                             class="w-full pl-10 pr-4 py-2 mb-3 bg-white/80 text-black placeholder-black/70 rounded-lg
                                     outline-none transition
                                     focus:placeholder-black/90
                                     focus:ring-2 focus:ring-emerald-500
-                                    focus:shadow-[0_0_12px_rgba(255,255,255,0.25)] @error('email') border-red-500 @enderror"/>
+                                    focus:shadow-[0_0_12px_rgba(255,255,255,0.25)] @error('email') border-red-500 @enderror" />
                     </div>
 
                     <div class="relative mb-6">
                         <input type="{{ $showPassword ? 'text' : 'password' }}" wire:model="password"
-                            placeholder="🔑 Enter password"
+                            placeholder=" Enter password"
                             class="w-full pl-10 pr-10 py-2 bg-white/80 text-black rounded-lg outline-none" />
 
                         <!-- tombol eye -->
                         <button type="button" wire:click="togglePassword"
                             class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600">
-                            {{ $showPassword ? '' : '' }}
+                            <i class="fas {{ $showPassword ? 'fa-eye-slash' : 'fa-eye' }}"></i>
                         </button>
                     </div>
 
@@ -133,12 +133,12 @@
                     <label class="block text-sm mb-1">Email</label>
                     <input type="email" wire:model="email"
                         class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                        placeholder="Masukkan email">
+                        placeholder=" Masukkan email">
                 </div>
 
                 <div class="relative mb-6">
                     <input type="{{ $showPassword ? 'text' : 'password' }}" wire:model="password"
-                        placeholder="🔑 Enter password"
+                        placeholder=" Enter password"
                         class="w-full pl-10 pr-10 py-2 bg-white/80 text-black rounded-lg outline-none" />
 
                     <!-- tombol eye -->
