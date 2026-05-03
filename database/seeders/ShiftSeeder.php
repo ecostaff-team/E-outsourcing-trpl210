@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Shiift;
+use App\Models\Shift;
 use Illuminate\Database\Seeder;
 
 class ShiftSeeder extends Seeder
@@ -13,19 +13,19 @@ class ShiftSeeder extends Seeder
      */
     public function run(): void
     {
-        Shiift::create([
+        Shift::create([
             'jam_masuk' => '07:00:00',
             'jam_keluar' => '15:00:00',
             'tipe_shift' => 'Pagi',
         ]);
 
-        Shiift::create([
+        Shift::create([
             'jam_masuk' => '15:00:00',
             'jam_keluar' => '23:00:00',
             'tipe_shift' => 'Sore',
         ]);
 
-        Shiift::create([
+        Shift::create([
             'jam_masuk' => '23:00:00',
             'jam_keluar' => '07:00:00',
             'tipe_shift' => 'Malam',

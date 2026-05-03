@@ -18,13 +18,12 @@
     <div class="flex">
         {{-- SIDEBAR --}}
         <x-sidebar :menus="[
-            ['title' => 'Penjadwalan', 'icon' => 'fas fa-home', 'ref' => '/kepala-departemen/dashboard'],
-            ['title' => 'Karyawan', 'icon' => 'fas fa-users', 'ref' => '/kepala-departemen/karyawan'],
-            ['title' => 'Pengajuan', 'icon' => 'fas fa-users', 'ref' => '/kepala-departemen/pengajuan'],
-            ['title' => 'Laporan', 'icon' => 'fas fa-cog', 'ref' => '/kepala-departemen/laporan'],
-            ['title' => 'Shift', 'icon' => 'fas fa-cog', 'ref' => '/kepala-departemen/shift'],
-            ['title' => 'Pengaturan', 'icon' => 'fas fa-cog', 'ref' => '/kepala-departemen/pengaturan'],
-        ]">kepala-departemen</x-sidebar>
+            ['title' => 'Penjadwalan', 'icon' => 'fa-solid fa-calendar', 'ref' => '/kepala-departement/dashboard'],
+            ['title' => 'Karyawan', 'icon' => 'fas fa-users', 'ref' => '/kepala-departement/karyawan'],
+            ['title' => 'Pengajuan', 'icon' => 'fa-solid fa-file-arrow-up', 'ref' => '/kepala-departement/pengajuan'],
+            ['title' => 'Laporan', 'icon' => 'fa-solid fa-file-lines', 'ref' => '/kepala-departement/laporan'],
+            ['title' => 'Shift', 'icon' => 'fa-solid fa-user-clock', 'ref' => '/kepala-departement/shift'],
+        ]">kepala-departement</x-sidebar>
         <div class="flex-1 p-6 ml-0">
             <x-header>Kepala Departemen {{-- <-- Ganti aja ini kalo mau --}}</x-header>
             <div class="max-w-7xl mx-auto p-6 bg-white/60 mt-2 rounded-2xl">
@@ -67,20 +66,19 @@
                 <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden">
 
                     <!-- HEADER -->
-                    <div
-                        class="grid grid-cols-6 text-xs font-semibold text-gray-500
+                        <div
+                        class="grid grid-cols-5 text-xs font-semibold text-gray-500
                     bg-gray-50 px-6 py-4 uppercase tracking-wide">
                         <div>Nama</div>
                         <div>Departemen</div>
                         <div>Shift</div>
                         <div>Status</div>
                         <div>Jam</div>
-                        <div class="text-center">Aksi</div>
                     </div>
 
                     <!-- ROW -->
                     <div
-                        class="grid grid-cols-6 items-center px-6 py-4 border-t
+                        class="grid grid-cols-5 items-center px-6 py-4 border-t
                     hover:bg-gray-50 transition group">
 
                         <!-- Nama -->
@@ -106,7 +104,7 @@
                             <span
                                 class="px-3 py-1 rounded-full text-xs font-medium
                              bg-emerald-100 text-emerald-700">
-                                🌄 Pagi
+                                Pagi
                             </span>
                         </div>
 
@@ -123,35 +121,12 @@
                         <div class="font-semibold text-gray-800">40h</div>
 
                         <!-- Aksi -->
-                        <div class="flex justify-center gap-2">
-
-                            <button
-                                class="p-2 rounded-lg bg-gray-100 hover:bg-orange-100
-                           text-gray-500 hover:text-orange-500
-                           transition-all duration-200">
-                                <i class="fas fa-pen text-xs"></i>
-                            </button>
-
-                            <button
-                                class="p-2 rounded-lg bg-gray-100 hover:bg-blue-100
-                           text-gray-500 hover:text-blue-500
-                           transition-all duration-200">
-                                <i class="fas fa-calendar text-xs"></i>
-                            </button>
-
-                            <button
-                                class="p-2 rounded-lg bg-gray-100 hover:bg-red-100
-                           text-gray-500 hover:text-red-500
-                           transition-all duration-200">
-                                <i class="fas fa-trash text-xs"></i>
-                            </button>
-
-                        </div>
+                        
                     </div>
 
                     <!-- ROW 2 -->
                     <div
-                        class="grid grid-cols-6 items-center px-6 py-4 border-t
+                        class="grid grid-cols-5 items-center px-6 py-4 border-t
                     hover:bg-gray-50 transition group">
 
                         <div class="flex items-center gap-3">
@@ -174,7 +149,7 @@
                             <span
                                 class="px-3 py-1 rounded-full text-xs font-medium
                              bg-yellow-100 text-yellow-700">
-                                ☀️ Siang
+                                Siang
                             </span>
                         </div>
 
@@ -188,24 +163,7 @@
 
                         <div class="font-semibold text-gray-800">38h</div>
 
-                        <div class="flex justify-center gap-2">
-
-                            <button
-                                class="p-2 rounded-lg bg-gray-100 hover:bg-orange-100 text-gray-500 hover:text-orange-500">
-                                <i class="fas fa-pen text-xs"></i>
-                            </button>
-
-                            <button
-                                class="p-2 rounded-lg bg-gray-100 hover:bg-blue-100 text-gray-500 hover:text-blue-500">
-                                <i class="fas fa-calendar text-xs"></i>
-                            </button>
-
-                            <button
-                                class="p-2 rounded-lg bg-gray-100 hover:bg-red-100 text-gray-500 hover:text-red-500">
-                                <i class="fas fa-trash text-xs"></i>
-                            </button>
-
-                        </div>
+                        
                     </div>
 
                 </div>

@@ -1,7 +1,7 @@
     <div wire:id="{{ $this->getId() }}">
 
         {{-- ─── Filter Bulan ─────────────────────────────────── --}}
-        <div class="flex flex-wrap items-center gap-3 mb-5">
+{{--         <div class="flex flex-wrap items-center gap-3 mb-5">
             <div class="flex flex-col gap-1">
                 <label class="text-[10px] font-semibold text-slate-500 uppercase tracking-wide">
                     Filter Statistik Bulan
@@ -15,7 +15,7 @@
                 >
             </div>
 
-            {{-- Label bulan aktif --}}
+
             <div class="mt-4">
                 <span class="text-xs px-3 py-1.5 rounded-full bg-green-50 text-green-700
                             border border-green-200 font-semibold">
@@ -24,7 +24,7 @@
                 </span>
             </div>
 
-        </div>
+        </div> --}}
 
         {{-- ─── Stat Cards Grid ───────────────────────────────── --}}
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

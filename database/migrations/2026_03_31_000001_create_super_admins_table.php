@@ -15,8 +15,6 @@ return new class extends Migration
     {
         Schema::create('super_admin', function (Blueprint $table) {
             $table->integer('id_admin')->autoIncrement();
-            $table->string('username')->unique();
-            $table->string('password');
             $table->timestamps();
 
             $table->unsignedBigInteger('user_id');

@@ -15,19 +15,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
-<body  x-data="{ ...dashboard(), open: false }" class="bg-gray-100">
+<body x-data="{ ...dashboard(), open: false }" class="bg-gray-100">
 
 
     <div class="flex">
         {{-- SIDEBAR --}}
         <x-sidebar :menus="[
-            ['title' => 'Penjadwalan', 'icon' => 'fas fa-home', 'ref' => '/kepala-departemen/dashboard'],
-            ['title' => 'Karyawan', 'icon' => 'fas fa-users', 'ref' => '/kepala-departemen/karyawan'],
-            ['title' => 'Pengajuan', 'icon' => 'fas fa-users', 'ref' => '/kepala-departemen/pengajuan'],
-            ['title' => 'Laporan', 'icon' => 'fas fa-cog', 'ref' => '/kepala-departemen/laporan'],
-            ['title' => 'Shift', 'icon' => 'fas fa-cog', 'ref' => '/kepala-departemen/shift'],
-            ['title' => 'Pengaturan', 'icon' => 'fas fa-cog', 'ref' => '/kepala-departemen/pengaturan'],
-        ]">kepala-departemen</x-sidebar>
+            ['title' => 'Penjadwalan', 'icon' => 'fa-solid fa-calendar', 'ref' => '/kepala-departement/dashboard'],
+            ['title' => 'Karyawan', 'icon' => 'fas fa-users', 'ref' => '/kepala-departement/karyawan'],
+            ['title' => 'Pengajuan', 'icon' => 'fa-solid fa-file-arrow-up', 'ref' => '/kepala-departement/pengajuan'],
+            ['title' => 'Laporan', 'icon' => 'fa-solid fa-file-lines', 'ref' => '/kepala-departement/laporan'],
+            ['title' => 'Shift', 'icon' => 'fa-solid fa-user-clock', 'ref' => '/kepala-departement/shift'],
+        ]">kepala-departement</x-sidebar>
 
         <div class="flex-1 p-6 ml-0">
             <x-header>Kepala Departemen {{-- <-- Ganti aja ini kalo mau --}}</x-header>
@@ -41,10 +40,6 @@
                 </div>
                 <div class='flex gap-2'>
                     <div x-data="{ open: false }">
-
-                        <button @click="open = true" class="px-5 py-2.5 bg-emerald-400 text-white rounded-xl">
-                            notif
-                        </button>
 
                         <div x-show="open" class="fixed inset-0 flex items-center justify-center bg-black/50">
 
@@ -60,7 +55,7 @@
                                                 Small modal
                                             </h3>
                                             <button @click="open = false"
-    class="text-gray-400 hover:bg-gray-200 rounded-lg w-8 h-8 flex items-center justify-center">
+                                                class="text-gray-400 hover:bg-gray-200 rounded-lg w-8 h-8 flex items-center justify-center">
                                         </div>
                                         <!-- Modal body -->
                                         <div class="p-4 md:p-5 space-y-4">
@@ -98,14 +93,14 @@
 
                     <button
                         class="px-5 py-2.5 bg-emerald-400 hover:bg-primary-700 text-white/90 font-medium rounded-xl shadow-md hover:shadow-lg hover:bg-emerald-500 hover:text-white active:scale-95 transition-all duration-200 ease-in-out">
-                        <p class="text-bold text-md">cetak</p>
+                        <p class="text-bold text-md"><i class="fa-solid fa-print"></i></p>
                     </button>
                     <div x-data="{ open: false, closing: false }">
 
                         <!-- Button -->
                         <button @click="open = true"
                             class="px-5 py-2.5 bg-emerald-400 hover:bg-primary-700 text-white/90 font-medium rounded-xl shadow-md hover:shadow-lg hover:bg-emerald-500 hover:text-white active:scale-95 transition-all duration-200 ease-in-out"">
-                            ✨ Tambah Jadwal
+                            <i class="fa-solid fa-plus"></i> Tambah Jadwal
                         </button>
 
                         <!-- Overlay -->
@@ -122,11 +117,11 @@
                                 x-transition:leave-start="opacity-100 scale-100"
                                 x-transition:leave-end="opacity-0 scale-90">
 
-                                
+
 
                                 <!-- Header -->
                                 <div class="flex justify-between items-center mb-6">
-                                    <h2 class="text-xl font-bold text-gray-800">📅 Tambah Jadwal</h2>
+                                    <h2 class="text-xl font-bold text-gray-800"><i class="fa-solid fa-plus"></i> Tambah Jadwal</h2>
 
                                     <!-- Close button with rotation -->
                                     <button
@@ -147,7 +142,7 @@
                                         <label class="text-sm font-medium text-gray-600">Tanggal</label>
 
                                         <input type="text" x-model="formattedDate" @click="toggle()" readonly
-                                            placeholder="📅 Pilih tanggal"
+                                            placeholder=" Pilih tanggal"
                                             class="w-full mt-1 px-3 py-2.5 rounded-xl border cursor-pointer">
 
                                         <!-- Kalender (tidak kepotong lagi) -->
@@ -184,7 +179,7 @@
                                     <!-- Search -->
                                     <div>
                                         <label class="text-sm font-medium text-gray-600">Karyawan</label>
-                                        <input type="text" placeholder="🔍 Cari nama..."
+                                        <input type="text" placeholder=" Cari nama..."
                                             class="w-full mt-1 px-3 py-2.5 rounded-xl border focus:ring-2 focus:ring-blue-400">
                                     </div>
 
@@ -194,10 +189,10 @@
                                         <select
                                             class="w-full mt-1 px-3 py-2.5 rounded-xl border focus:ring-2 focus:ring-indigo-400">
                                             <option>Pilih Shift</option>
-                                            <option>🌅 Pagi</option>
-                                            <option>🌇 Sore</option>
-                                            <option>🌙 Malam</option>
-                                            <option>🏖️ Libur</option>
+                                            <option> Pagi</option>
+                                            <option> Sore</option>
+                                            <option> Malam</option>
+                                            <option> Libur</option>
                                         </select>
                                     </div>
 
@@ -227,9 +222,7 @@
                 <div class="bg-white rounded-2xl shadow-md p-5 hover:shadow-lg transition">
                     <div class="flex justify-between items-center">
                         <h3 class="text-lg font-semibold text-gray-800">Karyawan</h3>
-                        <span class="px-2 py-1 text-xs bg-green-100 text-green-700 rounded-md">
-                            Active
-                        </span>
+
                     </div>
                     <p class="mt-2 text-sm text-gray-600">
                         Total karyawan aktif dalam sistem.
@@ -238,8 +231,7 @@
                         <div class="mt-4 text-2xl font-bold text-gray-800">128</div>
                         <div class="mt-4 ml-2 flex flex-col justify-end items-end">
                             <span class="text-sm text-gray-600">terakhir update hari ini</span>
-                            <button
-                                class="text-sm text-blue-600 hover:text-blue-800 hover:cursor-pointer active:scale-95 transition-all duration-200 ease-in-out text-right">detail</button>
+                            
                         </div>
                     </div>
                 </div>
@@ -248,9 +240,7 @@
                 <div class="bg-white rounded-2xl shadow-md p-5 hover:shadow-lg transition">
                     <div class="flex justify-between items-center">
                         <h3 class="text-lg font-semibold text-gray-800">Absensi Hari Ini</h3>
-                        <span class="px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded-md">
-                            Today
-                        </span>
+
                     </div>
                     <p class="mt-2 text-sm text-gray-600">
                         Jumlah kehadiran karyawan hari ini.
@@ -259,8 +249,7 @@
                         <div class="mt-4 text-2xl font-bold text-gray-800">97</div>
                         <div class="mt-4 ml-2 flex flex-col justify-end items-end">
                             <span class="text-sm text-gray-600">terakhir update 1 hari </span>
-                            <button
-                                class="text-sm text-blue-600 hover:text-blue-800 hover:cursor-pointer active:scale-95 transition-all duration-200 ease-in-out text-right">detail</button>
+                            
                         </div>
                     </div>
                 </div>
@@ -269,9 +258,7 @@
                 <div class="bg-white rounded-2xl shadow-md p-5 hover:shadow-lg transition">
                     <div class="flex justify-between items-center">
                         <h3 class="text-lg font-semibold text-gray-800">Terlambat</h3>
-                        <span class="px-2 py-1 text-xs bg-yellow-100 text-yellow-700 rounded-md">
-                            Warning
-                        </span>
+
                     </div>
                     <p class="mt-2 text-sm text-gray-600">
                         Karyawan yang datang terlambat.
@@ -280,8 +267,7 @@
                         <div class="mt-4 text-2xl font-bold text-gray-800">12</div>
                         <div class="mt-4 ml-2 flex flex-col justify-end items-end ">
                             <span class="text-sm text-gray-600">terakhir update 2 hari </span>
-                            <button
-                                class="text-sm text-blue-600 hover:text-blue-800 hover:cursor-pointer active:scale-95 transition-all duration-200 ease-in-out text-right">detail</button>
+
                         </div>
 
                     </div>
@@ -291,9 +277,7 @@
                 <div class="bg-white rounded-2xl shadow-md p-5 hover:shadow-lg transition">
                     <div class="flex justify-between items-center">
                         <h3 class="text-lg font-semibold text-gray-800">Izin / Cuti</h3>
-                        <span class="px-2 py-1 text-xs bg-red-100 text-red-700 rounded-md">
-                            Alert
-                        </span>
+
                     </div>
                     <p class="mt-2 text-sm text-gray-600">
                         Jumlah karyawan tidak hadir.
@@ -302,8 +286,6 @@
                         <div class="mt-4 text-2xl font-bold text-gray-800">19</div>
                         <div class="mt-4 ml-2 flex flex-col justify-end items-end">
                             <span class="text-sm text-gray-600">terakhir update 344 hari </span>
-                            <button
-                                class="text-sm text-blue-600 hover:text-blue-800 hover:cursor-pointer active:scale-95 transition-all duration-200 ease-in-out text-right">detail</button>
                         </div>
                     </div>
                 </div>
@@ -315,25 +297,15 @@
                 <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
 
                     <!-- Header -->
-                    <div class="flex items-center gap-2">
-                        <template x-for="mode in ['today','week','month']">
-                            <button @click="view = mode"
-                                :class="view === mode ?
-                                    'bg-blue-100 text-blue-600' :
-                                    'bg-gray-100 text-gray-600'"
-                                class="px-3 py-1 rounded-lg text-sm capitalize transition">
-                                <span x-text="mode"></span>
-                            </button>
-                        </template>
-                    </div>
+
 
                     <!-- Navigasi tanggal -->
                     <div class="flex items-center gap-3">
-                        <button class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100">◀</button>
+                        <button class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100"><i class="fa-solid fa-arrow-left"></i></button>
 
                         <h2 class="font-semibold text-gray-800" x-text="currentWeek"></h2>
 
-                        <button class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100">▶</button>
+                        <button class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100"><i class="fa-solid fa-arrow-right"></i></button>
                     </div>
 
                     <!-- Filter -->
@@ -346,15 +318,8 @@
                             <option>Semua Dept</option>
                         </select>
                     </div>
-
                 </div>
 
-                <div>
-                    <button
-                        class="px-3 py-1.5 text-sm mb-4 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition duration-200">
-                        Tambahkan Jadwal
-                    </button>
-                </div>
                 <div class="grid grid-cols-8 border rounded-xl overflow-hidden text-sm overflow-x-auto min-w-900px">
                     <!-- Header -->
                     <div class="bg-gray-50 p-3 font-semibold text-gray-600">KARYAWAN</div>
@@ -369,10 +334,11 @@
 
                     <!-- Rows -->
                     <template x-for="emp in employees">
-                        <div class="contents">
+                        <div x-data="{ open: false }" class="contents">
 
                             <!-- Karyawan -->
-                            <div class="p-3 flex items-center gap-2 border-t hover:bg-gray-50 transition">
+                            <div @click="open = true"
+                                class="p-3 flex items-center gap-2 border-t hover:bg-gray-50 transition pointer">
                                 <div class="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center text-xs"
                                     x-text="emp.initials"></div>
 
@@ -415,7 +381,61 @@
 
                                 </div>
                             </template>
-                        </div>
+
+                            <div x-show="open" x-transition
+                                class="fixed inset-0 flex items-center justify-center bg-black/40">
+                                <div @click.away="open = false"
+                                    class="bg-white w-full max-w-md rounded-2xl shadow-xl p-6 space-y-5">
+
+                                    <!-- Header -->
+                                    <div class="flex justify-between items-center">
+                                        <h2 class="text-lg font-semibold text-gray-800">Atur Shift Kerja</h2>
+                                        <button @click="open = false"
+                                            class="text-gray-400 hover:text-red-500 text-xl">×</button>
+                                    </div>
+
+                                    <!-- Shift Dropdown -->
+                                    <div>
+                                        <label class="text-sm text-gray-600">Pilih Shift</label>
+                                        <select x-model="shift"
+                                            class="w-full mt-1 p-3 border rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none">
+                                            <option value="">-- pilih shift --</option>
+                                            <option value="pagi"> Pagi</option>
+                                            <option value="sore"> Sore</option>
+                                            <option value="malam"> Malam</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Date Range -->
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div>
+                                            <label class="text-sm text-gray-600">Mulai</label>
+                                            <input type="date" x-model="start"
+                                                class="w-full mt-1 p-3 border rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none">
+                                        </div>
+
+                                        <div>
+                                            <label class="text-sm text-gray-600">Selesai</label>
+                                            <input type="date" x-model="end"
+                                                class="w-full mt-1 p-3 border rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none">
+                                        </div>
+                                    </div>
+
+                                    <!-- Footer -->
+                                    <div class="flex justify-end gap-2 pt-3">
+                                        <button @click="open = false"
+                                            class="px-4 py-2 rounded-xl bg-gray-200 hover:bg-gray-300">
+                                            Batal
+                                        </button>
+
+                                        <button
+                                            class="px-4 py-2 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700">
+                                            Simpan
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
                     </template>
                 </div>
             </div>

@@ -19,9 +19,4 @@ class Vendor extends Model
         'email',
         'alamat',
     ];
-    
-    public function adminVendors()
-    {
-        return $this->hasMany(AdminVendor::class, 'asal_vendor', 'id_vendor');
-    }
 }

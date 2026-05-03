@@ -18,22 +18,21 @@
     <div class="flex">
         {{-- SIDEBAR --}}
         <x-sidebar :menus="[
-            ['title' => 'Penjadwalan', 'icon' => 'fas fa-home', 'ref' => '/kepala-departemen/dashboard'],
-            ['title' => 'Karyawan', 'icon' => 'fas fa-users', 'ref' => '/kepala-departemen/karyawan'],
-            ['title' => 'Pengajuan', 'icon' => 'fas fa-users', 'ref' => '/kepala-departemen/pengajuan'],
-            ['title' => 'Laporan', 'icon' => 'fas fa-cog', 'ref' => '/kepala-departemen/laporan'],
-            ['title' => 'Shift', 'icon' => 'fas fa-cog', 'ref' => '/kepala-departemen/shift'],
-            ['title' => 'Pengaturan', 'icon' => 'fas fa-cog', 'ref' => '/kepala-departemen/pengaturan'],
-        ]">kepala-departemen</x-sidebar>
+            ['title' => 'Penjadwalan', 'icon' => 'fa-solid fa-calendar', 'ref' => '/kepala-departement/dashboard'],
+            ['title' => 'Karyawan', 'icon' => 'fas fa-users', 'ref' => '/kepala-departement/karyawan'],
+            ['title' => 'Pengajuan', 'icon' => 'fa-solid fa-file-arrow-up', 'ref' => '/kepala-departement/pengajuan'],
+            ['title' => 'Laporan', 'icon' => 'fa-solid fa-file-lines', 'ref' => '/kepala-departement/laporan'],
+            ['title' => 'Shift', 'icon' => 'fa-solid fa-user-clock', 'ref' => '/kepala-departement/shift'],
+        ]">kepala-departement</x-sidebar>
 
         <div class="flex-1 p-6 ml-0">
             <x-header>Kepala Departemen</x-header>
 
-            <div class="max-w-6xl mx-auto p-6" x-data="lemburApp()">
+            <div class="max-w-6xl mx-auto p-6 bg-white/70 rounded-2xl shadow" x-data="lemburApp()">
 
                 <!-- Title -->
                 <div class="mb-6">
-                    <h2 class="text-2xl font-bold text-gray-800">📋 Persetujuan Lembur</h2>
+                    <h2 class="text-2xl font-bold text-gray-800">Persetujuan Lembur</h2>
                     <p class="text-gray-500 text-sm">Klik salah satu data untuk melihat detail dan memberikan keputusan.
                     </p>
                 </div>
@@ -90,10 +89,10 @@
                         <!-- Action -->
                         <div class="flex justify-end gap-3 mt-6">
                             <button @click="approve()"
-                                class="px-4 py-2 bg-green-500 text-white rounded-xl hover:bg-green-600">✔
+                                class="px-4 py-2 bg-green-500 text-white rounded-xl hover:bg-green-600">
                                 Terima</button>
                             <button @click="reject()"
-                                class="px-4 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600">✖ Tolak</button>
+                                class="px-4 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600"> Tolak</button>
                         </div>
 
                     </div>

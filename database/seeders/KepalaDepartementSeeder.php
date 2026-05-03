@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\KepalaDepartement;
+use App\Enums\UserRole;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class KepalaDepartementSeeder extends Seeder
 {
@@ -14,20 +15,19 @@ class KepalaDepartementSeeder extends Seeder
      */
     public function run(): void
     {
-        $userKepalaDepartement = User::where('role', 'kepala_departemen')->take(3)->get();
-        KepalaDepartement::create([
-            'nama_departement' => 'IT',
-            'user_id' => $userKepalaDepartement[0]->id
-        ]);
+        $users = User::query()
+            ->where('role', UserRole::KepalaDepartemen->value)
+            ->get();
 
-        KepalaDepartement::create([
-            'nama_departement' => 'Human Resources',
-            'user_id' => $userKepalaDepartement[1]->id
-        ]);
-
-        KepalaDepartement::create([
-            'nama_departement' => 'Operasional',
-            'user_id' => $userKepalaDepartement[2]->id
-        ]);
+        foreach ($users as $user) {
+            DB::table('kepala_departement')->updateOrInsert(
+                ['user_id' => $user->id_user],
+                [
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                    'nama_departement' => 'Departemen IT' ,
+                ]
+            );
+        }
     }
 }

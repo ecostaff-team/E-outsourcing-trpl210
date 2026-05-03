@@ -23,20 +23,19 @@
 
     <!-- SIDEBAR -->
     <x-sidebar :menus="[
-        ['title' => 'Penjadwalan', 'icon' => 'fas fa-home', 'ref' => '/kepala-departemen/dashboard'],
-            ['title' => 'Karyawan', 'icon' => 'fas fa-users', 'ref' => '/kepala-departemen/karyawan'],
-            ['title' => 'Pengajuan', 'icon' => 'fas fa-users', 'ref' => '/kepala-departemen/pengajuan'],
-            ['title' => 'Laporan', 'icon' => 'fas fa-cog', 'ref' => '/kepala-departemen/laporan'],
-            ['title' => 'Shift', 'icon' => 'fas fa-cog', 'ref' => '/kepala-departemen/shift'],
-            ['title' => 'Pengaturan', 'icon' => 'fas fa-cog', 'ref' => '/kepala-departemen/pengaturan'],
-    ]">kepala-departemen</x-sidebar>
+            ['title' => 'Penjadwalan', 'icon' => 'fa-solid fa-calendar', 'ref' => '/kepala-departement/dashboard'],
+            ['title' => 'Karyawan', 'icon' => 'fas fa-users', 'ref' => '/kepala-departement/karyawan'],
+            ['title' => 'Pengajuan', 'icon' => 'fa-solid fa-file-arrow-up', 'ref' => '/kepala-departement/pengajuan'],
+            ['title' => 'Laporan', 'icon' => 'fa-solid fa-file-lines', 'ref' => '/kepala-departement/laporan'],
+            ['title' => 'Shift', 'icon' => 'fa-solid fa-user-clock', 'ref' => '/kepala-departement/shift'],
+        ]">kepala-departement</x-sidebar>
 
     <div class="flex-1 p-6">
 
         <!-- HEADER -->
         <x-header>Kepala Departemen</x-header>
 
-        <div class="max-w-6xl mx-auto space-y-8 mt-4">
+        <div class="max-w-6xl mx-auto p-6 bg-white/70 rounded-2xl shadow space-y-8 mt-4">
 
             <!-- TITLE -->
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">

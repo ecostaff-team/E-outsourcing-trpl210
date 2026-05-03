@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Shiift extends Model
+class Shift extends Model
 {
     use HasFactory;
 
-    protected $table = 'shiift';
+    protected $table = 'shift';
     protected $primaryKey = 'id_shift';
 
     protected $fillable = [

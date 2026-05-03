@@ -14,24 +14,20 @@ Route::get('/kepala-departement/dashboard', function () {
     return view('kepala-departement.dashboard');
 });
 
-Route::get('/kepala-departemen/karyawan', function () {
+Route::get('/kepala-departement/karyawan', function () {
     return view('kepala-departement.karyawan');
 });
 
-Route::get('/kepala-departemen/shift', function () {
+Route::get('/kepala-departement/shift', function () {
     return view('kepala-departement.shift');
 });
 
-Route::get('/kepala-departemen/laporan', function () {
+Route::get('/kepala-departement/laporan', function () {
     return view('kepala-departement.cutiizin');
 });
 
-Route::get('/kepala-departemen/pengajuan', function () {
+Route::get('/kepala-departement/pengajuan', function () {
     return view('kepala-departement.pengajuanKaryawan');
-});
-
-Route::get('/kepala-departemen/pengaturan', function () {
-    return view('kepala-departement.pengaturan');
 });
 
 /* Kepala departement seelesai */

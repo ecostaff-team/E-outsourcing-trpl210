@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
      * 6. AdminVendor        → butuh: Vendor
      * 7. Karyawan           → butuh: AdminVendor + KepalaDepartement
      */
+    
     public function run(): void
     {
         // --- Tabel tanpa dependensi (parent tables) ---

@@ -5,8 +5,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
         @vite('resources/css/app.css')
 
+        <link rel="icon" type="image/x-icon" href="/images/logo.png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -61,7 +63,7 @@
             <p class="text-sm text-gray-500 mb-4">Tambah, ubah, dan hapus akun Admin Outsourcing, HR, dan Kepala
                 Departemen
             </p>
-            
+
             {{-- melakukan request kepada bagian service folder app/livewire/superAdmin/dashboardAdmin --}}
             @livewire('super-admin.dashboard-stats')
 

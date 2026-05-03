@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Enums\UserRole;
+use App\models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use App\models\User;
 
 class SuperAdminSeeder extends Seeder
 {
@@ -16,17 +16,20 @@ class SuperAdminSeeder extends Seeder
      * Note: Menggunakan DB::table karena kolom di migration adalah 'name',
      * bukan 'nama' seperti di model. Perlu disinkronkan nanti.
      */
-
     public function run(): void
     {
-        $userSuperAdmin = User::where('role', 'super_admin')->first();
+        $users = User::query()
+            ->where('role', UserRole::SuperAdmin->value)
+            ->get();
 
-        DB::table('super_admin')->insert([
-            'name' => 'Super Admin',
-            'password' => Hash::make('admin123'),
-            'created_at' => now(),
-            'updated_at' => now(),
-            'user_id' => $userSuperAdmin->id,
-        ]);
+        foreach ($users as $user) {
+            DB::table('super_admin')->updateOrInsert(
+                ['user_id' => $user->id_user],
+                [
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]
+            );
+        }
     }
 }

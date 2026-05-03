@@ -6,18 +6,98 @@
     <div x-data="modalKaryawan()" class="p-6">
 
         {{-- HEADER --}}
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-2">
             <div class="flex items-center justify-between mb-6">
                 <h2 class="text-xl font-semibold text-gray-800">Data Karyawan</h2>
 
-                <div class="relative">
-                    <input type="text" x-model="search" placeholder="Cari karyawan..."
-                        class="pl-10 pr-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-400 focus:outline-none text-sm">
-                    <span class="absolute left-3 top-2.5 text-gray-400 text-sm"><i
-                            class="fa-solid fa-magnifying-glass"></i></span>
-                </div>
-            </div>
+                <div x-data="{ open: false }" class="relative">
+                    <button @click="open = true"
+                        class="px-4 py-2 bg-emerald-500 text-white rounded-xl shadow hover:bg-emerald-600 transition flex items-center gap-2">
+                        + Tambah User
+                    </button>
+                    <div x-show="open" x-transition class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+                        <!-- CARD -->
+                        <div @click.away="open = false" class="bg-white w-full max-w-lg rounded-2xl shadow-xl p-6">
 
+                            <!-- HEADER -->
+                            <div class="flex justify-between items-center mb-5">
+                                <h2 class="text-xl font-bold text-gray-800">Tambah User</h2>
+
+                                <button @click="open = false" class="text-gray-400 hover:text-gray-600 text-xl">
+                                    ✕
+                                </button>
+                            </div>
+
+                            <!-- FORM -->
+                            <form class="space-y-4">
+
+                                <!-- NIP -->
+                                <div>
+                                    <label class="text-sm text-gray-600">NIP</label>
+                                    <input type="text"
+                                        class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                                        placeholder="Masukkan NIP">
+                                </div>
+
+                                <!-- Nama -->
+                                <div>
+                                    <label class="text-sm text-gray-600">Nama Lengkap</label>
+                                    <input type="text"
+                                        class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                                        placeholder="Nama lengkap">
+                                </div>
+
+                                <!-- Email -->
+                                <div>
+                                    <label class="text-sm text-gray-600">Email</label>
+                                    <input type="email"
+                                        class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                                        placeholder="email@domain.com">
+                                </div>
+
+                                <!-- No Telepon -->
+                                <div>
+                                    <label class="text-sm text-gray-600">No Telepon</label>
+                                    <input type="text"
+                                        class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                                        placeholder="08xxxxxxxxxx">
+                                </div>
+
+                                <!-- Alamat -->
+                                <div>
+                                    <label class="text-sm text-gray-600">Alamat</label>
+                                    <textarea class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none" rows="3"
+                                        placeholder="Alamat lengkap"></textarea>
+                                </div>
+
+                                <!-- ACTION -->
+                                <div class="flex justify-end gap-2 pt-2">
+
+                                    <button type="button" @click="open = false"
+                                        class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">
+                                        Batal
+                                    </button>
+
+                                    <button type="submit"
+                                        class="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 shadow">
+                                        Simpan
+                                    </button>
+
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="relative mb-2">
+                <input type="text" x-model="search" placeholder="Cari karyawan..."
+                    class="pl-10 pr-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-green-400 focus:outline-none text-sm">
+                <span class="absolute left-3 top-2.5 text-gray-400 text-sm"><i
+                        class="fa-solid fa-magnifying-glass"></i></span>
+            </div>
 
             {{-- component table siap pakai --}}
 
@@ -49,19 +129,19 @@
                                 {{-- tombol berfungsi untuk membuka modal detail dengan triger onclick yang terhung dengan x-click --}}
                                 <button @click="open('detail', karyawan)"
                                     class="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-100 hover:bg-gray-200 transition">
-                                    👁️
+                                    <i class="fa-solid fa-eye text-gray-600"></i>
                                 </button>
 
                                 {{-- tombol berfungsi untuk membuka modal edit dengan triger onclick yang terhung dengan x-click --}}
                                 <button @click="open('edit', karyawan)"
                                     class="w-9 h-9 flex items-center justify-center rounded-lg bg-blue-100 hover:bg-blue-200 text-blue-600 transition">
-                                    ✏️
+                                    <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
 
                                 {{-- tombol berfungsi untuk membuka modal delete dengan triger onclick yang terhung dengan x-click --}}
                                 <button @click="open('delete', karyawan)"
                                     class="w-9 h-9 flex items-center justify-center rounded-lg bg-red-100 hover:bg-red-200 text-red-600 transition">
-                                    🗑️
+                                    <i class="fa-solid fa-trash"></i>
                                 </button>
                             </div>
                         </td>
@@ -136,7 +216,8 @@
                         {{-- HEADER --}}
                         <div class="flex items-center justify-between mb-6">
                             <h3 class="text-lg font-semibold text-gray-800">Edit Karyawan</h3>
-                            <button @click="close()" class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-xmark"></i></button>
+                            <button @click="close()" class="text-gray-400 hover:text-gray-600"><i
+                                    class="fa-solid fa-xmark"></i></button>
                         </div>
 
                         {{-- FORM --}}
@@ -222,7 +303,8 @@
                 <div x-show="modal === 'delete'" x-transition
                     class="bg-white rounded-2xl shadow-xl w-full max-w-sm p-6 text-center">
 
-                    <div class="text-3xl mb-2"><i class="fa-solid fa-triangle-exclamation text-yellow-500 text-3xl"></i></div>
+                    <div class="text-3xl mb-2"><i class="fa-solid fa-triangle-exclamation text-yellow-500 text-3xl"></i>
+                    </div>
                     <h3 class="font-semibold text-gray-800">Hapus Data?</h3>
                     <p class="text-sm text-gray-500 mt-1" x-text="selected.nama_lengkap"></p>
 
