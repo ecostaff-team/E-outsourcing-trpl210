@@ -20,10 +20,10 @@
     {{-- kode CDN untuk font awesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    {{-- kode CDN untuk leaflet map --}}
+    {{-- kode CDN untuk leaflet map ini hanya unntuk user karyawan outsorcing --}}
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    {{-- kode CDN untuk leaflet --}}
+
+    {{-- kode CDN untuk leaflet map ini hanya unntuk user karyawan outsorcing --}}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
@@ -35,6 +35,9 @@
 
     {{-- kode CDN untuk chart.js --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    {{-- Livewire styles — wajib ada agar komponen Livewire dapat bekerja --}}
+    @livewireStyles
 
 </head>
 
@@ -49,10 +52,15 @@
             <x-header>Admin Outsourcing</x-header>
             <x-alert></x-alert>
             <!-- CONTENT -->
+            
 
 
         </div><!-- /main -->
     </div><!-- /app -->
+
+    {{-- Livewire scripts — wajib ada di akhir body agar reaktivitas berjalan --}}
+    @livewireScripts
+
 </body>
 
 </html>

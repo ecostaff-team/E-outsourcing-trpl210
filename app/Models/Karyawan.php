@@ -1,11 +1,10 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Karyawan extends Authenticatable
+class Karyawan extends Model
 {
     use HasFactory;
 
@@ -22,19 +21,16 @@ class Karyawan extends Authenticatable
         'user_id',
     ];
 
-    public function adminVendor()
-    {
-        return $this->belongsTo(AdminVendor::class, 'admin_vendor_id', 'id_admin_vendor');
-    }
 
-    public function kepalaDepartement()
-    {
-        return $this->belongsTo(KepalaDepartement::class, 'kepala_dept_id', 'id_departement');
-    }
 
-    public function emburs()
+    public function lemburs()
     {
         return $this->hasMany(Lembur::class, 'id_karyawan', 'id_karyawan');
+    }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function karyawanJadwals()
