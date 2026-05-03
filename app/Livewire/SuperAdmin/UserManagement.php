@@ -48,7 +48,7 @@ class UserManagement extends Component
         $this->resetPage();
     }
 
-    public function switchTab( $tab)
+    public function switchTab(string $tab)
     {
         $this->activeTab = $tab;
         $this->resetPage();
@@ -59,6 +59,7 @@ class UserManagement extends Component
         $this->resetForm();
         $this->showModal = true;
     }
+
 
     public function closeModal()
     {
