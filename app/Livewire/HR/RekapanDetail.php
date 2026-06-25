@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Outsourcing;
 use App\Enums\UserRole;
 use App\Enums\Status;
+use App\Enums\Validasi;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -18,6 +19,7 @@ class RekapanDetail extends Component
     public array  $users   = [];
     public        $vendors = [];
     public bool   $sudahFilter = false;
+    public array  $loadedRekapIds = [];
 
     public ?int    $tahun               = null;
     public ?int    $bulanAngka          = null;
@@ -102,25 +104,67 @@ class RekapanDetail extends Component
 
         $awalCarbon = Carbon::parse($this->periodeAwal);
 
+        $this->loadedRekapIds = [];
+
         foreach ($rawUsers as $user) {
             $formatted[] = $this->processKehadiranData($user, $awalCarbon);
         }
 
         $this->users       = $formatted;
         $this->sudahFilter = true;
+
+        $this->hitungStatusRekap();
     }
 
     /**
      * Memproses data kehadiran untuk satu karyawan dan menghitung rekapannya.
+     * Jika tidak ada rekap_kehadiran untuk periode ini milik karyawan bersangkutan,
+     * kembalikan flag belum_ada_data = true agar view menampilkan "Masih menunggu data".
      */
     private function processKehadiranData(User $user, Carbon $awalCarbon): array
     {
+        // Cari id rekapan yang:
+        // 1. tanggal_validasinya berada di periode yang dipilih
+        // 2. ada record kehadiran untuk user ini (via karyawan_jadwal)
+        $rekapIds = DB::table('rekap_kehadiran')
+            ->select('rekap_kehadiran.id_rekapan')
+            ->join('kehadiran', 'kehadiran.rekapan_kehadiran_id', '=', 'rekap_kehadiran.id_rekapan')
+            ->join('jadwal', 'kehadiran.jadwal_id', '=', 'jadwal.id_jadwal')
+            ->join('karyawan_jadwal', 'jadwal.id_jadwal', '=', 'karyawan_jadwal.jadwal_id')
+            ->where('karyawan_jadwal.user_id', $user->id_user)
+            ->whereBetween('rekap_kehadiran.tanggal_validasi', [$this->periodeAwal, $this->periodeAkhir])
+            ->pluck('rekap_kehadiran.id_rekapan')
+            ->unique();
+
+        // Jika belum ada rekapan tersimpan untuk karyawan ini pada periode ini,
+        // tandai sebagai belum ada data (mengikuti data dashboard admin outsourcing).
+        if ($rekapIds->isEmpty()) {
+            return [
+                'user'          => $user,
+                'belum_ada_data'=> true,
+                'kehadiran_map' => [],
+                'summary'       => [
+                    'h'  => 0,
+                    'a'  => 0,
+                    'si' => 0,
+                    'l'  => 0,
+                ],
+            ];
+        }
+
+        foreach ($rekapIds as $id) {
+            if (!in_array($id, $this->loadedRekapIds)) {
+                $this->loadedRekapIds[] = $id;
+            }
+        }
+
         $kehadiranData = DB::table('kehadiran')
             ->join('jadwal', 'kehadiran.jadwal_id', '=', 'jadwal.id_jadwal')
             ->join('karyawan_jadwal', 'jadwal.id_jadwal', '=', 'karyawan_jadwal.jadwal_id')
             ->join('tipe_kehadiran', 'kehadiran.tipe_kehadiran_id', '=', 'tipe_kehadiran.id_tipe_kehadiran')
+            ->join('rekap_kehadiran', 'kehadiran.rekapan_kehadiran_id', '=', 'rekap_kehadiran.id_rekapan')
             ->where('karyawan_jadwal.user_id', $user->id_user)
-            ->whereBetween('kehadiran.tanggal', [$this->periodeAwal, $this->periodeAkhir])
+            ->whereIn('kehadiran.rekapan_kehadiran_id', $rekapIds)
             ->select('kehadiran.tanggal', 'tipe_kehadiran.status_kehadiran')
             ->get();
 
@@ -131,10 +175,10 @@ class RekapanDetail extends Component
             $kehadiranMap[$urut] = $this->mappingKode[$kehadiran->status_kehadiran] ?? '-';
         }
 
-        $hadir    = collect($kehadiranMap)->filter(fn($v) => $v === 'H')->count();
-        $mangkir  = collect($kehadiranMap)->filter(fn($v) => $v === 'A')->count();
-        $sakitIzin= collect($kehadiranMap)->filter(fn($v) => in_array($v, ['S', 'I']))->count();
-        $cuti     = collect($kehadiranMap)->filter(fn($v) => $v === 'L')->count();
+        $hadir     = collect($kehadiranMap)->filter(fn($v) => $v === 'H')->count();
+        $mangkir   = collect($kehadiranMap)->filter(fn($v) => $v === 'A')->count();
+        $sakitIzin = collect($kehadiranMap)->filter(fn($v) => in_array($v, ['S', 'I']))->count();
+        $cuti      = collect($kehadiranMap)->filter(fn($v) => $v === 'L')->count();
 
         $this->totalH  += $hadir;
         $this->totalA  += $mangkir;
@@ -143,6 +187,7 @@ class RekapanDetail extends Component
 
         return [
             'user'          => $user,
+            'belum_ada_data'=> false,
             'kehadiran_map' => $kehadiranMap,
             'summary'       => [
                 'h'  => $hadir,
@@ -184,17 +229,66 @@ class RekapanDetail extends Component
         $this->periodeAwal       = null;
         $this->periodeAkhir      = null;
         $this->labelPeriode      = '';
+        $this->loadedRekapIds    = [];
+    }
+
+    public function hitungStatusRekap(): void
+    {
+        if (empty($this->loadedRekapIds)) {
+            $this->statusRekap = 'Belum Ada Data';
+            return;
+        }
+
+        $statuses = DB::table('rekap_kehadiran')
+            ->whereIn('id_rekapan', $this->loadedRekapIds)
+            ->pluck('status_validasi')
+            ->unique()
+            ->toArray();
+
+        if (in_array(Validasi::Invalid->value, $statuses)) {
+            $this->statusRekap = 'Ditolak';
+        } elseif (in_array(Validasi::Pending->value, $statuses) || in_array(null, $statuses, true)) {
+            $this->statusRekap = 'Menunggu Persetujuan';
+        } else {
+            $this->statusRekap = 'Disetujui';
+        }
     }
 
     public function setujuiRekap(): void
     {
-        $this->statusRekap = 'Disetujui';
+        if (empty($this->loadedRekapIds)) {
+            session()->flash('error', 'Tidak ada data untuk disetujui.');
+            return;
+        }
+
+        DB::table('rekap_kehadiran')
+            ->whereIn('id_rekapan', $this->loadedRekapIds)
+            ->update([
+                'status_validasi' => Validasi::Valid->value,
+                'pevalidasi' => auth()->id() ?? 1,
+                'updated_at' => now()
+            ]);
+
+        $this->hitungStatusRekap();
         session()->flash('success', 'Rekap berhasil disetujui.');
     }
 
     public function tolakRekap(): void
     {
-        $this->statusRekap = 'Ditolak';
+        if (empty($this->loadedRekapIds)) {
+            session()->flash('error', 'Tidak ada data untuk ditolak.');
+            return;
+        }
+
+        DB::table('rekap_kehadiran')
+            ->whereIn('id_rekapan', $this->loadedRekapIds)
+            ->update([
+                'status_validasi' => Validasi::Invalid->value,
+                'pevalidasi' => auth()->id() ?? 1,
+                'updated_at' => now()
+            ]);
+
+        $this->hitungStatusRekap();
         session()->flash('success', 'Rekap telah ditolak.');
     }
 

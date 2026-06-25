@@ -186,6 +186,7 @@
                                             ->take(2)->map(fn($w) => strtoupper($w[0]))->join('');
                             $colors = ['bg-green-600','bg-emerald-600','bg-blue-500','bg-purple-600','bg-orange-500'];
                             $bg = $colors[$index % count($colors)];
+                            $belumAdaData = $data['belum_ada_data'] ?? false;
                         @endphp
                         <tr class="group hover:bg-gray-50 bg-white transition-colors cursor-pointer">
                             <td class="px-4 py-3 text-gray-500">{{ (($halamanAktif - 1) * $perPage) + ($index + 1) }}</td>
@@ -202,10 +203,7 @@
                                         <div class="font-bold text-gray-800">{{ $user->nama_lengkap }}</div>
                                         <div class="text-[10px] text-gray-400">
                                             {{ $user->outsourcing?->nama_outsourcing ?? '-' }}
-
                                         </div>
-
-
                                     </div>
                                 </div>
                             </td>
@@ -214,36 +212,49 @@
                                 {{ $user->departemen?->nama_departemen ?? '-' }}
                             </td>
 
-                            {{-- Kolom per hari --}}
-                            @for ($i = 1; $i <= $jumlahHariDalamBulan; $i++)
-                                @php
-                                    $kode = $map[$i] ?? null;
-                                    // Tentukan style berdasarkan kode
-                                    $style = match($kode) {
-                                        'H'     => 'bg-green-100 text-green-700',
-                                        'A'     => 'bg-red-100 text-red-700',
-                                        'S'     => 'bg-yellow-100 text-yellow-700',
-                                        'I'     => 'bg-blue-100 text-blue-700',
-                                        'L'     => 'bg-purple-100 text-purple-700',
-                                        default => null,
-                                    };
-                                @endphp
-                                <td class="px-1 py-3 text-center">
-                                    @if ($kode && $style)
-                                        <span class="inline-flex w-5 h-5 items-center justify-center rounded text-[10px] font-bold {{ $style }}">
-                                            {{ $kode }}
-                                        </span>
-                                    @else
-                                        <span class="text-gray-300">-</span>
-                                    @endif
+                            {{-- Cek apakah data rekap dari admin outsourcing sudah ada --}}
+                            @if ($belumAdaData)
+                                {{-- Belum ada data rekap yang dikirim admin outsourcing --}}
+                                <td colspan="{{ $jumlahHariDalamBulan + 4 }}"
+                                    class="px-4 py-4 text-center">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full
+                                                 bg-yellow-50 border border-yellow-200 text-yellow-600 text-xs font-medium">
+                                        <i class="fas fa-clock text-[10px]"></i>
+                                        Masih menunggu data
+                                    </span>
                                 </td>
-                            @endfor
+                            @else
+                                {{-- Kolom per hari — data dari rekap_kehadiran --}}
+                                @for ($i = 1; $i <= $jumlahHariDalamBulan; $i++)
+                                    @php
+                                        $kode = $map[$i] ?? null;
+                                        // Tentukan style berdasarkan kode
+                                        $style = match($kode) {
+                                            'H'     => 'bg-green-100 text-green-700',
+                                            'A'     => 'bg-red-100 text-red-700',
+                                            'S'     => 'bg-yellow-100 text-yellow-700',
+                                            'I'     => 'bg-blue-100 text-blue-700',
+                                            'L'     => 'bg-purple-100 text-purple-700',
+                                            default => null,
+                                        };
+                                    @endphp
+                                    <td class="px-1 py-3 text-center">
+                                        @if ($kode && $style)
+                                            <span class="inline-flex w-5 h-5 items-center justify-center rounded text-[10px] font-bold {{ $style }}">
+                                                {{ $kode }}
+                                            </span>
+                                        @else
+                                            <span class="text-gray-300">-</span>
+                                        @endif
+                                    </td>
+                                @endfor
 
-                            {{-- Summary --}}
-                            <td class="px-4 py-3 text-center font-bold text-green-600 border-l border-gray-100 bg-green-50/30">{{ $sum['h'] }}</td>
-                            <td class="px-4 py-3 text-center font-bold text-red-600 bg-red-50/30">{{ $sum['a'] }}</td>
-                            <td class="px-4 py-3 text-center font-bold text-yellow-600 bg-yellow-50/30">{{ $sum['si'] }}</td>
-                            <td class="px-4 py-3 text-center font-bold text-purple-600 bg-purple-50/30">{{ $sum['l'] }}</td>
+                                {{-- Summary --}}
+                                <td class="px-4 py-3 text-center font-bold text-green-600 border-l border-gray-100 bg-green-50/30">{{ $sum['h'] }}</td>
+                                <td class="px-4 py-3 text-center font-bold text-red-600 bg-red-50/30">{{ $sum['a'] }}</td>
+                                <td class="px-4 py-3 text-center font-bold text-yellow-600 bg-yellow-50/30">{{ $sum['si'] }}</td>
+                                <td class="px-4 py-3 text-center font-bold text-purple-600 bg-purple-50/30">{{ $sum['l'] }}</td>
+                            @endif
                         </tr>
                     @empty
                         <tr>
@@ -327,6 +338,7 @@
         </div>
 
         {{-- Tombol Setujui / Tolak --}}
+        @if($statusRekap !== 'Belum Ada Data')
         <div class="p-4 border-t border-gray-100 bg-gray-50 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
                 <span class="text-sm text-gray-600">Status rekap:</span>
@@ -412,6 +424,7 @@
                 </div>
             </div>
         </div>
+        @endif
 
         {{-- Flash message --}}
         @if (session('success'))
