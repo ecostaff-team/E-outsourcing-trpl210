@@ -45,11 +45,11 @@
             </div>
 
 
-            <div class="bg-white p-4 md:p-8 rounded-lg shadow-lg mt-6">
+            <div class="bg-white p-4 md:p-8 rounded-lg shadow-lg mt-6" x-data="{ startDate: '', endDate: '' }">
                 <div class="flex flex-col md:flex-row md:justify-between gap-4 sm:gap-3 mb-4">
                     <div class="flex flex-col sm:flex-row items-center gap-2 w-full sm:w-auto">
                         <div class="relative w-full sm:w-auto">
-                            <input type="date" id="start_date" name="start_date"
+                            <input type="date" id="start_date" name="start_date" x-model="startDate"
                                 class="w-full sm:w-40 border rounded-lg px-3 py-2 text-sm text-gray-700 transition-all focus:ring-2 focus:ring-green-500 outline-none bg-white shadow-sm cursor-pointer"
                                 title="Tanggal Mulai">
                         </div>
@@ -58,12 +58,12 @@
                         <span class="text-gray-500 text-sm font-medium sm:hidden">sampai dengan</span>
 
                         <div class="relative w-full sm:w-auto">
-                            <input type="date" id="end_date" name="end_date"
+                            <input type="date" id="end_date" name="end_date" x-model="endDate"
                                 class="w-full sm:w-40 border rounded-lg px-3 py-2 text-sm text-gray-700 transition-all focus:ring-2 focus:ring-green-500 outline-none bg-white shadow-sm cursor-pointer"
                                 title="Tanggal Akhir">
                         </div>
                     </div>
-                    <button
+                    <button @click="window.location.href = `/hr/lembur/export?start_date=${startDate}&end_date=${endDate}`"
                         class="bg-green-600 shadow-lg text-white hover:text-green-700 px-4 py-2 rounded-lg text-sm flex items-center gap-2 cursor-pointer transition-colors duration-200 hover:bg-white border-transparent border hover:border-green-600">
                         <i class="fas fa-file-excel"></i>
                         Export Excel

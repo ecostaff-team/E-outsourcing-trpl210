@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminOutsourcingController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HrDashboardController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -58,6 +59,8 @@ Route::get('/admin-outsourcing/kelola-karyawan', function () {
 Route::get('/hr/dashboard', function () {
     return view('hr.dashboard');
 })->name('hr.dashboard');
+
+Route::get('/hr/lembur/export', [HrDashboardController::class, 'exportLembur'])->name('hr.lembur.export');
 
 Route::get('/hr/rekapan-detail', function () {
     return view('hr.rekapanDetail');
