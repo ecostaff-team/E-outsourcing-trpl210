@@ -41,6 +41,12 @@ class AuthService
         // * jika status user active maka session akan di generate ulang demi keamanan
         session()->regenerate();
 
+        // * Menyimpan kredensial plaintext ke dalam session untuk keperluan Dynamic Database Connection
+        session([
+            'db_username' => $email,
+            'db_password' => $password
+        ]);
+
         //* mengembalikan data dan memanggil fungsi getRedirectByRole
         return [
             'success' => true,
