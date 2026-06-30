@@ -1,7 +1,32 @@
 <div
     x-data="{
         showModal: @entangle('showModal'),
-        showDeleteConfirm: @entangle('showDeleteConfirm')
+        showDeleteConfirm: @entangle('showDeleteConfirm'),
+        openCreateModal() {
+            this.showModal = true;
+            $wire.isEditing = false;
+            $wire.editingUserId = null;
+            $wire.nama_lengkap = '';
+            $wire.email = '';
+            $wire.nomor_tlp = '';
+            $wire.role = '';
+            $wire.password = '';
+            $wire.password_confirmation = '';
+        },
+        openEditModal(id, nama, email, no_tlp, role) {
+            this.showModal = true;
+            $wire.isEditing = true;
+            $wire.editingUserId = id;
+            $wire.nama_lengkap = nama;
+            $wire.email = email;
+            $wire.nomor_tlp = no_tlp;
+            $wire.role = role;
+        },
+        openDeleteModal(id, nama) {
+            this.showDeleteConfirm = true;
+            $wire.deletingUserId = id;
+            $wire.deletingUserName = nama;
+        }
     }"
 >
     {{-- =========================================================== --}}
@@ -51,7 +76,8 @@
                     class="border border-gray-500 rounded-lg px-3 py-2 text-sm w-64 focus:ring-2 focus:ring-green-500 outline-none">
             </div>
             <button
-                wire:click="openModal"
+                @click="openCreateModal()"
+                type="button"
                 class="bg-green-600 shadow-lg text-white px-4 py-2 rounded-lg text-sm transition-all hover:bg-green-700">
                 <i class="fas fa-plus mr-1"></i> Tambah Akun
             </button>
@@ -86,11 +112,13 @@
                             <td class="p-3 text-gray-600">{{ $user->nomor_tlp ?? '-' }}</td>
                             <td class="p-3 text-gray-600">{{ $user->created_at ? $user->created_at->format('d M Y') : '-' }}</td>
                             <td class="p-3 text-center">
-                                <button wire:click="editAkun({{ $user->id_user }})" title="Edit"
+                                <button @click="openEditModal({{ $user->id_user }}, '{{ addslashes($user->nama_lengkap) }}', '{{ addslashes($user->email) }}', '{{ addslashes($user->nomor_tlp ?? '') }}', '{{ $user->role instanceof \App\Enums\UserRole ? $user->role->value : $user->role }}')" title="Edit"
+                                    type="button"
                                     class="bg-yellow-400 text-white px-2 py-1 rounded hover:bg-yellow-500">
                                     <i class="fas fa-pen"></i>
                                 </button>
-                                <button wire:click="confirmHapus({{ $user->id_user }})" title="Hapus"
+                                <button @click="openDeleteModal({{ $user->id_user }}, '{{ addslashes($user->nama_lengkap) }}')" title="Hapus"
+                                    type="button"
                                     class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">
                                     <i class="fas fa-trash"></i>
                                 </button>
@@ -136,7 +164,7 @@
             x-transition:leave-start="opacity-100 scale-100"
             x-transition:leave-end="opacity-0 scale-95"
             class="bg-white w-full max-w-xl rounded-xl overflow-y-auto shadow-2xl"
-            @click.outside="$wire.closeModal()"
+            @click.outside="showModal = false"
         >
             {{-- HEADER --}}
             <div class="bg-green-700 text-white px-5 py-4 flex justify-between items-center rounded-t-xl">
@@ -144,7 +172,7 @@
                     <h3 class="font-bold text-lg">{{ $isEditing ? 'Edit Akun' : 'Tambah Akun' }}</h3>
                     <p class="text-xs text-green-200">{{ $isEditing ? 'Perbarui data akun pengguna' : 'Isi semua kolom yang wajib diisi' }}</p>
                 </div>
-                <button @click="$wire.closeModal()" class="text-white hover:text-green-200 text-xl transition">&times;</button>
+                <button @click="showModal = false" type="button" class="text-white hover:text-green-200 text-xl transition">&times;</button>
             </div>
 
             {{-- BODY --}}
@@ -201,7 +229,7 @@
 
             {{-- FOOTER --}}
             <div class="bg-gray-50 flex flex-col md:flex-row justify-end gap-3 px-6 py-4 border-t border-gray-200 rounded-b-xl">
-                <button @click="$wire.closeModal()"
+                <button @click="showModal = false" type="button"
                     class="px-5 py-2 border border-gray-300 text-gray-700 rounded-lg w-full md:w-auto hover:bg-gray-100 transition-all font-medium">
                     Batal
                 </button>
@@ -255,7 +283,7 @@
                     <br><span class="text-red-500 text-xs">Tindakan ini tidak dapat dibatalkan.</span>
                 </p>
                 <div class="flex gap-3 justify-center">
-                    <button wire:click="cancelHapus"
+                    <button @click="showDeleteConfirm = false" type="button"
                         class="px-5 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 transition font-medium text-sm">
                         Batal
                     </button>
